@@ -3,7 +3,7 @@
 void exercicio() 
 {
 	printf("Exercicio numero 2\n");
-	printf("Construa um algoritmo que calcule a area de um circulo cujo raio eh fornecido pelo usuario(use area = 3.14 x raio2\n)");
+	printf("Construa um algoritmo que calcule a area de um circulo cujo raio eh fornecido pelo usuario(use area = 3.14 x raio2)\n");
 }
 
 float calculaArea(float raio)
