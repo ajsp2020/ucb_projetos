@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2d377e27-2442-4573-a802-e4a89e5b6e8a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/Questao7.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao10.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao11.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao4.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao5.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao8.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao9.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/.idea/FACULDADE.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/etica.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/etica/Aula1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/materias.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/sistemas/acesso.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/sistemas/mudancadebase.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/sistemas_computacionais.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/ucb.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PYTHON/acesso.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PYTHON/testemudanca.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/.vs/ProjectSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/.vs/ProjectSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/.vs/slnx.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/.vs/slnx.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/AULA/bhaskara.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/AULA/bhaskara.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/Lista 01/primeiroExercicio.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/Lista 01/primeiroExercicio.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/Lista 1/exercicio1.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/Lista 1/exercicio2.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/Lista 1/exercicio3.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/Lista 1/exercicio4.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/Lista 1/exercicio5.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/Lista 1/exercicio6.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/Lista 1/exercicio7.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/Lista 1/exercicio7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao1.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao1V2.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/Questao6.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PRÁT. PROF. I - SISTEMAS COMPUTACIONAIS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PRÁT. PROF. I - SISTEMAS COMPUTACIONAIS.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PYTHON/mudancadebase.py" beforeDir="false" afterPath="$PROJECT_DIR$/PYTHON/mudancadebase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SistemaComputacionaisJava/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SistemaComputacionaisJava/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SistemaComputacionaisJava/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SistemaComputacionaisJava/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SistemaComputacionaisJava/src/Binario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/coversaodebases.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mudancadebase.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1qWZDuQgeHTUsWWYZ5CGHwj1w71" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/PYTHON" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\joao-\Dropbox\antonio\2021\estudo\UCB\UCB\PRÁT. PROF. I - SISTEMAS COMPUTACIONAIS\PYTHON" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.acesso">
+    <configuration name="acesso" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PRÁT. PROF. I - SISTEMAS COMPUTACIONAIS" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PYTHON" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PYTHON/acesso.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="coversaodebases" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PRÁT. PROF. I - SISTEMAS COMPUTACIONAIS" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PYTHON" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PYTHON/coversaodebases.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="mudancadebase" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PRÁT. PROF. I - SISTEMAS COMPUTACIONAIS" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PYTHON" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PYTHON/mudancadebase.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="teste" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PRÁT. PROF. I - SISTEMAS COMPUTACIONAIS" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PYTHON" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PYTHON/teste.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.acesso" />
+        <item itemvalue="Python.mudancadebase" />
+        <item itemvalue="Python.teste" />
+        <item itemvalue="Python.coversaodebases" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2d377e27-2442-4573-a802-e4a89e5b6e8a" name="Default Changelist" comment="" />
+      <created>1617197194586</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1617197194586</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>
