@@ -1,11 +1,18 @@
 from sistemas.mudancadebase import Binario, Decimal
 
+class Teoria:
+    import re
+    def le_arquivo(self):
+        with open("sistemas/mudancadebase.txt", "r", encoding='utf-8') as f:
+            self._texto = f.read()
+
+        print(self._texto)
 
 class Sistemas:
     def __init__(self, assunto):
         self.__assunto = assunto
 
-        if self.__assunto == '1':
+        if self.__assunto == '2':
 
             escolha = int(input("Digite 1: Para transformar o valor de decimal para binário ou hexadecimal:\n"
                                 "Digite 2: Para transformar o valor de binario ou hexadecimal em decimal(2): \n"))
@@ -23,7 +30,6 @@ class Sistemas:
 
             else:
                 print("Número não suportado")
-
 
             retorno = input("Deseja pesquisar novo valor? (S/N): ")
             retorno = retorno.capitalize()

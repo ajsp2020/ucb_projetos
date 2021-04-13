@@ -10,6 +10,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\sistemas\mudancadebase.txt">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\ucb.py">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
