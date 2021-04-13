@@ -1,4 +1,4 @@
-#from mudancadebase import Binario, Decimal
+
 from mudancadebase import Binario, Decimal
 
 

@@ -2,30 +2,80 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d377e27-2442-4573-a802-e4a89e5b6e8a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/Questao7.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao10.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao11.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao4.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao5.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao8.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao9.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FACULDADE/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FACULDADE/.idea/FACULDADE.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FACULDADE/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FACULDADE/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FACULDADE/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FACULDADE/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FACULDADE/etica.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FACULDADE/etica/Aula1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FACULDADE/materias.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FACULDADE/sistemas/acesso.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FACULDADE/sistemas/mudancadebase.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FACULDADE/sistemas_computacionais.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FACULDADE/ucb.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PYTHON/acesso.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PYTHON/testemudanca.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/Questao15.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao12.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao14.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao16.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/.idea/csv-plugin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/.vs/ALGORITMOS E PROGRAMAÇÃO/v16/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/.vs/ALGORITMOS E PROGRAMAÇÃO/v16/Browse.VC.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/.vs/ALGORITMOS E PROGRAMAÇÃO/v16/Browse.VC.db-shm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/.vs/ALGORITMOS E PROGRAMAÇÃO/v16/Browse.VC.db-wal" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/.vs/ALGORITMOS E PROGRAMAÇÃO/v16/Browse.VC.opendb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/.vs/ProjectSettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/.vs/VSWorkspaceState.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/.vs/slnx.sqlite" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/.vs/ALGORITMOS E PROGRAMAÇÃO/v16/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/.vs/ALGORITMOS E PROGRAMAÇÃO/v16/Browse.VC.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/.vs/ProjectSettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/.vs/VSWorkspaceState.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/.vs/slnx.sqlite" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/AULA/aula.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/AULA/bhaskara.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/AULA/bhaskara.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/AULA/extra.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/AULA/idade.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/AULA/media.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/AULA/media.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/AULA/media3.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 1/exercicio1.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 1/exercicio2.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 1/exercicio3.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 1/exercicio4.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 1/exercicio5.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 1/exercicio6.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 1/exercicio7.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 1/exercicio7.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 2/questao.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 2/questao.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 2/questao.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 2/questao1.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 2/questao11.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 2/questao12.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 2/questao14.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 2/questao15.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 2/questao16.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 2/questao2.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 2/questao3.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 2/questao4.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 2/questao6.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 2/questao7.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista 2/questao8.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista A/primeiroExercicio.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista A/primeiroExercicio.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista A/segundo.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista A/segundoExercicio.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista A/terceiro.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/C/Lista A/terceiroExercicio.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/PYTHON/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/PYTHON/.idea/PYTHON.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/PYTHON/.idea/csv-plugin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/PYTHON/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/PYTHON/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/PYTHON/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/PYTHON/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/PYTHON/LISTA02/Questao6.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/PYTHON/LISTA02/Questao7.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/PYTHON/LISTA02/questao1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/PYTHON/LISTA02/questao10.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/PYTHON/LISTA02/questao11.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/PYTHON/LISTA02/questao12.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/PYTHON/LISTA02/questao2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/PYTHON/LISTA02/questao3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/PYTHON/LISTA02/questao4.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/PYTHON/LISTA02/questao5.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/PYTHON/LISTA02/questao8.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FACULDADE/algoritmos/PYTHON/LISTA02/questao9.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/.vs/ProjectSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/.vs/ProjectSettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/.vs/slnx.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/.vs/slnx.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/AULA/bhaskara.c" beforeDir="false" />
@@ -40,20 +90,25 @@
       <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/Lista 1/exercicio6.c" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/Lista 1/exercicio7.c" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/Lista 1/exercicio7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/Questao6.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/Questao6.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/Questao7.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/Questao7.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao1.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao1V2.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/Questao6.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/PRÁT. PROF. I - SISTEMAS COMPUTACIONAIS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PRÁT. PROF. I - SISTEMAS COMPUTACIONAIS.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PYTHON/mudancadebase.py" beforeDir="false" afterPath="$PROJECT_DIR$/PYTHON/mudancadebase.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SistemaComputacionaisJava/.classpath" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SistemaComputacionaisJava/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SistemaComputacionaisJava/.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SistemaComputacionaisJava/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SistemaComputacionaisJava/src/Binario.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/coversaodebases.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mudancadebase.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao10.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao10.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao11.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao11.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao2.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao3.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao4.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao5.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao8.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao8.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao9.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ALGORITMOS E PROGRAMAÇÃO/PYTHON/LISTA02/questao9.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FACULDADE/etica.py" beforeDir="false" afterPath="$PROJECT_DIR$/../FACULDADE/etica.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FACULDADE/etica/Aula1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../FACULDADE/etica/Aula1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FACULDADE/materias.py" beforeDir="false" afterPath="$PROJECT_DIR$/../FACULDADE/materias.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FACULDADE/sistemas/acesso.py" beforeDir="false" afterPath="$PROJECT_DIR$/../FACULDADE/sistemas/acesso.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FACULDADE/sistemas/mudancadebase.py" beforeDir="false" afterPath="$PROJECT_DIR$/../FACULDADE/sistemas/mudancadebase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FACULDADE/sistemas_computacionais.py" beforeDir="false" afterPath="$PROJECT_DIR$/../FACULDADE/sistemas_computacionais.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FACULDADE/ucb.py" beforeDir="false" afterPath="$PROJECT_DIR$/../FACULDADE/ucb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +134,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/PYTHON" />
   </component>
   <component name="RecentsManager">
