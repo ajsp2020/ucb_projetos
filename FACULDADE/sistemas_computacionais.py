@@ -1,7 +1,7 @@
 from sistemas.mudancadebase import Binario, Decimal
 
 class Teoria:
-    import re
+
     def le_arquivo(self):
         with open("sistemas/mudancadebase.txt", "r", encoding='utf-8') as f:
             self._texto = f.read()
