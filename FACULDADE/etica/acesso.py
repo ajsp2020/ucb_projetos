@@ -4,8 +4,11 @@ import os
 class Acesso:
 
     aulas = os.listdir('aulas')
+    lista_aula = []
     for entry in aulas:
-        print(entry)
+        lista_aula.append(entry)
+        for indice, aula in enumerate(lista_aula):
+            print(indice, aula)
 
     def __init__(self):
         self.__entrada = input("Qual aula deseja acessar? ")
