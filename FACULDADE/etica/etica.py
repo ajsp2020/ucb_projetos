@@ -7,7 +7,7 @@ class Etica:
 
 
         if self.__aula == 'aula1':
-            self.f = open('etica/aulas/aula1.txt', "r")
+            self.f = open('aulas/aula1.txt', "r")
             print(self.f.read())
 
 

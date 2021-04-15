@@ -1,5 +1,4 @@
-from sistemas_computacionais import Sistemas, Teoria
-import algoritmos
+from FACULDADE.sistemas.teoria import Sistemas, Teoria
 
 
 class Materias:
