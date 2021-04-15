@@ -31,6 +31,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\FACULDADE\sistemas\acesso_geral.py">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\FACULDADE\sistemas\mudancadebase.py">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>

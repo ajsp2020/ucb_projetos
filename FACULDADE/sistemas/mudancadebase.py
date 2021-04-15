@@ -8,7 +8,7 @@
     Sistemas posicionais: Os algarismos possuem um valor relativo à posição que ocupam no número.
 """
 
-class Binario:
+class Decimal:
     """
     - Decimal -> Base
     - Sucessivas divisões dentro do conjunto dos naturais
@@ -125,7 +125,7 @@ class Binario:
         if self.__tamanho > 1:
             self.__parte_fracionaria.clear()
 
-class Decimal:
+class Binario:
     """
      - Formula geral:
         Nb = S(n ->1) an * b ** (n -1)
@@ -134,28 +134,42 @@ class Decimal:
         * b = base
         * an = Algoritmo na posição n
     """
-    def calcula_decimal(self, valor, base):
+    def calcula_decimal(self, valor, base): # Recebendo o valor em binário ou hexadecimal
         self.__valor = valor
-        self.__base = base
+        self.__base = base # A base pode ser 2 ou 16
         self.__soma = 0
 
         hexa = {'A': 10, 'B': 11, 'C': 12, 'D': 13, 'E':14, 'F': 15}
-        numeros = [self.__valor for self.__valor in self.__valor]
+        numeros = [self.__valor for self.__valor in self.__valor] # Separando os valores e colocando numa lista
 
-        for valor in hexa.keys():
+        for valor in hexa.keys(): # Substituindo os valores caso seja em A, B... F para de 10 a 15
             for i in range(len(numeros)):
                 if valor == numeros[i]:
                     numeros[i] = hexa[valor]
 
-        numeros = [int(numero) for numero in numeros]
+        numeros = [int(numero) for numero in numeros] # Transformando os valores em inteiro
         n = len(numeros) - 1
 
-        for numero in numeros:
+        for numero in numeros: # Para cada numero o resultado será mutiplicado de acordo com a formula e impresso
 
             _ = numero * (self.__base ** n)
-            print(f"({numero} * ({self.__base} ** {n})): ", _)
-            self.__soma += numero * (self.__base ** n)
+            print(f"({numero} * ({self.__base} ** {n})): ", _) # Impressão parcial
+            self.__soma += numero * (self.__base ** n) # formula genérica, valida para base qualquer base
             n -= 1
         print("")
-        print(f"O valor em decimal é: {self.__soma}")
+        print(f"O valor em decimal é: {self.__soma}") # impressão total
 
+    def calcula_hexadecimal(self, binario):
+
+        self.__binario = binario
+
+        print(self.__binario[6:1:-1])
+
+
+
+
+
+
+
+if __name__ == '__main__':
+    Binario().calcula_hexadecimal('101010')
