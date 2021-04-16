@@ -4,7 +4,9 @@
 #include <string.h>
 #include <ctype.h>
 
-void apresentacao()
+#define TAM_NOME 20
+
+void apresentacao() 
 {
 	printf("Questão 8:\nModifique o algoritmo 4 (Sr. ou Sra.), feito anteriormente, para ler a altura e apresentar o"
 		"peso ideal da pessoa, utilizando as seguintes fórmulas:\n"
@@ -78,10 +80,10 @@ int main()
 {
 	setlocale(LC_ALL, "");
 
-	char nome[20], sexo;
+	char nome[TAM_NOME], sexo;
 	float altura, peso;
 
-	apresentacao();
+	apresentacao(); 
 	peganome(nome);
 	pegasexo(&sexo);
 	pegaaltura(&altura);
