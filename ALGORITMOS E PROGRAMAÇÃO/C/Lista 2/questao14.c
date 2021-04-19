@@ -2,6 +2,7 @@
 #include<locale.h>
 #include <stdlib.h>
 
+#define VALORES 3
 
 
 void apresentacao()
@@ -22,10 +23,10 @@ void validavalor(int status, float* valor, int i)
 	}
 }
 
-void pegavalores(float valores[3])
+void pegavalores(float *valores, int num_valores)
 {
 	float valor;
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < num_valores; i++)
 	{
 		printf("Digite o valor %d ",i + 1);
 		int status = scanf("%f", &valor);
@@ -41,7 +42,7 @@ void pegaomaior(float *valores, int num_valores, float* maior)
 		*maior = valores[0];
 		return;
 	}
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < num_valores; i++)
 	{
 		if (valores[i] < valores[i + 1])
 		{
@@ -61,12 +62,12 @@ void imprimeresultado(float maior)
 
 int main()
 {
-	int num_valores = 3;
+	int num_valores = VALORES;
 	float *valores = malloc(sizeof(float*) * num_valores);
 	float maior;
 	setlocale(LC_ALL, "");
 	apresentacao();
-	pegavalores(valores);
+	pegavalores(valores, num_valores);
 	pegaomaior(valores, num_valores, &maior);
 	imprimeresultado(maior);
 	free(valores);
