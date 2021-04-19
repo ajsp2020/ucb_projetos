@@ -5,6 +5,7 @@
 #define TAM_LISTA 3
 #define TAM_NOME 40
 
+
 struct pessoa {
 
 	char nome[TAM_LISTA][TAM_NOME];
@@ -12,6 +13,7 @@ struct pessoa {
 };
 typedef struct pessoa PESSOA;
 
+PESSOA p;
 
 
 void apresentacao()
@@ -36,7 +38,7 @@ void pegadados(PESSOA *p)
 	}
 }
 
-void crialistaposicao( int posicao[TAM_LISTA])
+void crialistaposicao(int posicao[TAM_LISTA])
 {
 	for (int i = 0; i < TAM_LISTA; i++)
 	{
@@ -45,27 +47,27 @@ void crialistaposicao( int posicao[TAM_LISTA])
 }
 
 
-void selecionaaltura(PESSOA *p, int posicao[TAM_LISTA]) // Pensar numa forma de criar uma lista em paralelo e com os valores prévios acessar o valor para pegar o nome equivalente
+void selecionaaltura(PESSOA* p, int posicao[TAM_LISTA], int tam_lista) 
 {
-	float a;
-	int pos;
-
-	for (int i= 0; i < TAM_LISTA; i++)
+	if (tam_lista < 2)
 	{
-		for (int j = 0; j < TAM_LISTA; j++)
+		return;
+	}
+
+	for (int i = 0; i < tam_lista; i++)
+	{
+		if (p->altura[i] > p->altura[i + 1])
 		{
-			if (p->altura[i] > p->altura[j])
-			{
-				
-				a = p->altura[i];
-				pos = posicao[i];
-				p->altura[i] = p->altura[j];
-				posicao[i] = posicao[j];
-				p->altura[j] = a;
-				posicao[j] = pos;
-			}
+			float a = p->altura[i];
+			int pos = posicao[i];
+			p->altura[i] = p->altura[i + 1];
+			posicao[i] = posicao[i + 1];
+			p->altura[i + 1] = a;
+			posicao[i + 1] = pos;
 		}
 	}
+
+	selecionaaltura(p, posicao, tam_lista - 1);
 }
 
 void imprimeresultado(PESSOA* p, int posicao[TAM_LISTA])
@@ -78,14 +80,13 @@ int main()
 {
 	setlocale(LC_ALL, "");
 
-	PESSOA p;
-
+	int tam_lista = TAM_LISTA;
 	int posicao[TAM_LISTA];
 	char n[TAM_NOME];
 
 	apresentacao();
 	pegadados(&p);
 	crialistaposicao(posicao);
-	selecionaaltura(&p, posicao);
+	selecionaaltura(&p, posicao, tam_lista);
 	imprimeresultado(&p, posicao);
 }
