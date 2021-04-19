@@ -1,8 +1,8 @@
 #include<stdio.h>
 #include<locale.h>
+#include <stdlib.h>
 
 
-void imprimeresultado();
 
 void apresentacao()
 {
@@ -34,37 +34,40 @@ void pegavalores(float valores[3])
 	}
 }
 
-void pegaomaior(float valores[3], float* maior)
+void pegaomaior(float *valores, int num_valores, float* maior)
 {
-	for (int i= 0; i < 3; i++)
+	if (num_valores < 1)
 	{
-		for (int j = 0; j < 3; j++)
+		*maior = valores[0];
+		return;
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		if (valores[i] < valores[i + 1])
 		{
-			if (valores[i] > valores[j])
-			{
-				float temp = valores[i];
-				valores[i] = valores[j];
-				valores[j] = temp;
-			}
+			float temp = valores[i];
+			valores[i] = valores[i + 1];
+			valores[i + 1] = temp;
 		}
 	}
-		
-	imprimeresultado(valores);
+	pegaomaior(valores, num_valores - 1, maior);
+	
 }
 
-
-void imprimeresultado(float valores[3])
+void imprimeresultado(float maior)
 {
-	printf("%.2f\n", valores[0]);
+	printf("O maior número é: %.2f\n", maior);
 }
 
 int main()
 {
-	float valores[3];
+	int num_valores = 3;
+	float *valores = malloc(sizeof(float*) * num_valores);
 	float maior;
 	setlocale(LC_ALL, "");
 	apresentacao();
 	pegavalores(valores);
-	pegaomaior(valores, &maior);
-	
+	pegaomaior(valores, num_valores, &maior);
+	imprimeresultado(maior);
+	free(valores);
 }
