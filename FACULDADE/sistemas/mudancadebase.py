@@ -163,9 +163,27 @@ class Binario:
 
         self.__binario = binario
 
-        print(self.__binario[6:1:-1])
+        self.lista_binario = [self.__binario for self.__binario in self.__binario]
+
+        tamanho = len(self.lista_binario) -1
+
+        self.nova_lista(self.lista_binario.reverse(), tamanho)
+
+    def nova_lista(self, binario, inicio):
+        print(inicio)
+
+        print(self.lista_binario)
+        if inicio < -3:
+            return
+
+        for i in range(inicio, inicio -4, -1):
+            print(self.lista_binario[i])
+
+        self.nova_lista(self.lista_binario, inicio - 4)
 
 
+        # Tentar mudar a lógica para completar os valores caso não seja multiplo de 4 para assim dividir
+        # tipo - > if len(lista) % 4 != 0
 
 
 
