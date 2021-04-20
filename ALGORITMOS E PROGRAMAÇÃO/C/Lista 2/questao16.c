@@ -19,7 +19,7 @@ PESSOA p;
 void apresentacao()
 {
 	printf("Questão 16:\nFazer um algoritmo que leia o nome e a altura de três pessoas, determine e apresente o nome\n"
-		"e a altura da menor delas.\n");
+		"e a altura da menor delas.\n\n");
 }
 
 void pegadados(PESSOA *p)
@@ -49,12 +49,12 @@ void crialistaposicao(int posicao[TAM_LISTA])
 
 void selecionaaltura(PESSOA* p, int posicao[TAM_LISTA], int tam_lista) 
 {
-	if (tam_lista < 2)
+	if (tam_lista < 1)
 	{
 		return;
 	}
 
-	for (int i = 0; i < tam_lista; i++)
+	for (int i = 0; i < tam_lista - 1 ; i++)
 	{
 		if (p->altura[i] > p->altura[i + 1])
 		{
