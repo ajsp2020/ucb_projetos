@@ -125,7 +125,7 @@ class Decimal:
         if self.__tamanho > 1:
             self.__parte_fracionaria.clear()
 
-class Binario:
+class Binario: # Transforma um valor binário ou hexadecimal em decimal
     """
      - Formula geral:
         Nb = S(n ->1) an * b ** (n -1)
@@ -158,36 +158,68 @@ class Binario:
             n -= 1
         print("")
         print(f"O valor em decimal é: {self.__soma}") # impressão total
+        return self.__soma
 
     def calcula_hexadecimal(self, binario):
 
         self.__binario = binario
+        self.__inteiro, self.__fracao = self.__binario.split(',')
 
-        self.lista_binario = [self.__binario for self.__binario in self.__binario]
+        self.adiciona_zero_int(self.__inteiro)
+        self.adiciona_zero_fracao(self.__fracao)
 
-        tamanho = len(self.lista_binario) -1
+        self.__inteiro = self.divide(self.__inteiro)
+        self.__fracao = self.divide(self.__fracao)
 
-        self.nova_lista(self.lista_binario.reverse(), tamanho)
+        self.__inteiro = self.nova_lista(self.__inteiro)
+        self.__fracao = self.nova_lista(self.__fracao)
 
-    def nova_lista(self, binario, inicio):
-        print(inicio)
+        self.__inteiro= self.__hexadecimal(self.__inteiro)
+        self.__fracao = self.__hexadecimal(self.__fracao)
 
-        print(self.lista_binario)
-        if inicio < -3:
-            return
+        print(self.__inteiro, self.__fracao)
+    def adiciona_zero_int(self, valor): # Adiciona zero a parte inteira
+        valor = len(valor)
+        if valor % 4 == 0:
+            return self.__inteiro
 
-        for i in range(inicio, inicio -4, -1):
-            print(self.lista_binario[i])
+        else:
+            self.__inteiro = '0' + self.__inteiro
+            return self.adiciona_zero_int(self.__inteiro)
 
-        self.nova_lista(self.lista_binario, inicio - 4)
+    def adiciona_zero_fracao(self, valor): # Adiciona zero a parte fracionária
+        valor = len(valor)
+        if valor % 4 == 0:
+            return self.__fracao
 
+        else:
+            self.__fracao = self.__fracao + '0'
+            return self.adiciona_zero_fracao(self.__fracao)
 
-        # Tentar mudar a lógica para completar os valores caso não seja multiplo de 4 para assim dividir
-        # tipo - > if len(lista) % 4 != 0
+    def divide(self, valor): # dividi as partes em intervalo de 4
+        n = 4
+        return [valor[i:i+n] for i in range(0, len(valor), n)]
 
+    def nova_lista(self, valor):
+        lista = []
+        for v in valor:
+            lista.append(Binario().calcula_decimal(v, 2))
+        return lista
 
+    def __hexadecimal(self, valor):
+        lista = []
+        hexadecimais = {10: 'A', 11: 'B', 12: 'C', 13: 'D', 14: 'E', 15: 'F'}
 
+        for item in valor:
+            for hexa in hexadecimais.keys():
+                if item == hexa:
+                    item = hexadecimais[hexa]
+
+            lista.append(item)
+
+        return lista
 
 
 if __name__ == '__main__':
-    Binario().calcula_hexadecimal('101010')
+
+    Binario().calcula_hexadecimal('1011101100010100011111101,10111010101010111101')
