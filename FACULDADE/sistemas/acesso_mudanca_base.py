@@ -1,27 +1,29 @@
-
-from mudancadebase import Binario, Decimal
+from binario import Binario
+from decimal import Decimal
+from hexadecimal import Hexadecimal
 
 class AcessoMB:
 
 
     def menu(self):
-        escolha = int(input("Digite 1: Para transformar o valor de DECIMAL para BINÁRIO ou HEXADECIMAL:\n"
-                            "Digite 2: Para transformar o valor de BINÁRIO ou HEXADECIMAL em DECIMAL: \n"
-                            "Digite 3: Para transformar de BINÁRIO para HEXADECIMAL:\n"))
+        escolha = int(input("Digite 1: Para transformar o valor de DECIMAL em BINÁRIO ou HEXADECIMAL:\n"
+                            "Digite 2: Para transformar o valor de BINÁRIO em DECIMAL ou HEXADECIMAL:\n"
+                            "Digite 3: Para transformar o valor de HEXADECIMAL em BINÁRIO ou DECIMAL:\n"))
         if escolha == 1:
-            valor = input("Digite o valor do número decimal: ")
-            base = input("Digite o valor da base que deseja converter: ")
+            valor = input("Digite o número em decimal: ")
             print("Valor em binário:")
-            Decimal().calcula_binario_int(valor, base)
+            Decimal().calcula_binario_int(valor)
 
         elif escolha == 2:
-            valor = (input("Digite o valor do número em binário ou hexadecimal: "))
-            base = int(input("Digite o valor da base: "))
+            valor = (input("Digite o número em binário: "))
             print("Valor em decimal:")
-            print(Binario().calcula_decimal(valor, base))
+            print(Binario().calcula_decimal(valor))
 
         elif escolha == 3:
-            pass
+            valor = (input("Digite o número em hexadecimal: "))
+            print("Valor em decimal:")
+            print(Hexadecimal().calcula_decimal(valor))
+
 
         else:
             print("Número não suportado")

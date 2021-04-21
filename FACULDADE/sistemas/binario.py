@@ -1,0 +1,114 @@
+
+"""
+- Sistemas de numeração:
+
+    Sistemas não posicionais: Os algarismos têm um valor fixo independente da posição que ocupem.
+    (exemplo: Algarismos romanos)
+
+    Sistemas posicionais: Os algarismos possuem um valor relativo à posição que ocupam no número.
+"""
+
+
+class Binario: # Transforma um valor binário ou hexadecimal em decimal
+    """
+     - Formula geral:
+        Nb = S(n ->1) an * b ** (n -1)
+
+        * n = Posição do algoritmo
+        * b = base
+        * an = Algoritmo na posição n
+    """
+    def calcula_decimal(self, valor): # Recebendo o valor em binário ou hexadecimal
+        self.__valor = valor
+        self.__base = 2
+        self.__soma = 0
+
+        numeros = [self.__valor for self.__valor in self.__valor] # Separando os valores e colocando numa lista
+
+        numeros = [int(numero) for numero in numeros] # Transformando os valores em inteiro
+        n = len(numeros) - 1
+
+        for numero in numeros: # Para cada numero o resultado será mutiplicado de acordo com a formula e impresso
+
+            _ = numero * (self.__base ** n)
+            print(f"({numero} * ({self.__base} ** {n})): ", _) # Impressão parcial
+            self.__soma += numero * (self.__base ** n) # formula genérica, valida para base qualquer base
+            n -= 1
+        print("")
+        print(f"O valor em decimal é: {self.__soma}") # impressão total
+        return self.__soma
+
+    def calcula_hexadecimal(self, binario):
+
+        self.__binario = binario
+
+        if ',' in self.__binario:
+            self.__inteiro, self.__fracao = self.__binario.split(',')
+            self.calcula_inteiro()
+            self.calcula_fracao()
+            print(self.__inteiro, self.__fracao)
+
+        else:
+            self.__inteiro = self.__binario
+            self.calcula_inteiro()
+            print(self.__inteiro)
+
+    def calcula_inteiro(self):
+        self.adiciona_zero_int(self.__inteiro)
+        self.__inteiro = self.divide(self.__inteiro)
+        self.__inteiro = self.nova_lista(self.__inteiro)
+        self.__inteiro = self.__hexadecimal(self.__inteiro)
+
+
+    def calcula_fracao(self):
+        self.adiciona_zero_fracao(self.__fracao)
+        self.__fracao = self.divide(self.__fracao)
+        self.__fracao = self.nova_lista(self.__fracao)
+        self.__fracao = self.__hexadecimal(self.__fracao)
+
+
+    def adiciona_zero_int(self, valor): # Adiciona zero a parte inteira
+        valor = len(valor)
+        if valor % 4 == 0:
+            return self.__inteiro
+
+        else:
+            self.__inteiro = '0' + self.__inteiro
+            return self.adiciona_zero_int(self.__inteiro)
+
+    def adiciona_zero_fracao(self, valor): # Adiciona zero a parte fracionária
+        valor = len(valor)
+        if valor % 4 == 0:
+            return self.__fracao
+
+        else:
+            self.__fracao = self.__fracao + '0'
+            return self.adiciona_zero_fracao(self.__fracao)
+
+    def divide(self, valor): # dividi as partes em intervalo de 4
+        n = 4
+        return [valor[i:i+n] for i in range(0, len(valor), n)]
+
+    def nova_lista(self, valor):
+        lista = []
+        for v in valor:
+            lista.append(Binario().calcula_decimal(v, 2))
+        return lista
+
+    def __hexadecimal(self, valor):
+        lista = []
+        hexadecimais = {10: 'A', 11: 'B', 12: 'C', 13: 'D', 14: 'E', 15: 'F'}
+
+        for item in valor:
+            for hexa in hexadecimais.keys():
+                if item == hexa:
+                    item = hexadecimais[hexa]
+
+            lista.append(item)
+
+        return lista
+
+
+if __name__ == '__main__':
+
+    Binario().calcula_hexadecimal('1011101100010100011111101,0101')
