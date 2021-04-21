@@ -2,9 +2,9 @@
 #include<locale.h> // para implementar a localização de programas.
 #include<stdlib.h>
 #include<string.h>
-#include"projeto.h"
 
-
+#define TAM_NOME 20
+#define TAM_LISTA 2
 
 void dadosautor()
 {
@@ -104,5 +104,6 @@ int main()
 	printf("%d\n", qtd_sessoes);
 	printf("%d\n", qtd_pessoas);
 	printf("idades[6] = %d\n", idades[6]);
-
+	free(idades);
+	free(sexo);
 }
