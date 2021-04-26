@@ -1,109 +1,178 @@
+
 #include<stdio.h> // Esta biblioteca contém várias funções de entrada e saída. 
 #include<locale.h> // para implementar a localização de programas.
-#include<stdlib.h>
-#include<string.h>
+#include<stdlib.h> // nescessário para usar as funções malloc e free e system
+#include<string.h> //  Manipulação de strings
+#include <ctype.h> // para incluir a biblioteca do tooper
+#include"projeto.h" // header file
+#include "dados.h" // header file
 
-#define TAM_NOME 20
-#define TAM_LISTA 2
+// VALORES CONSTANTES PARA O PROCESSO DE VALIDAÇÃO:
 
-void dadosautor()
+FILME f;
+CLASSIFICACAO c;
+
+
+// IMPRIME OS DADOS DO ALUNO:
+void dadosaluno()
 {
-	printf("Projeto prático 01:\n"
-			"NOME: Antonio João da Silva Pereira\n"
+	printf("NOME: Antonio João da Silva Pereira\n"
 			"MATRÍCULA: \n"
 			"CURSO: Ciências da Computação\n\n");
+	Espera();
 }
 
-void validavalor(int status, int* valor, int j, int i)
+// LIMPA A TELA 
+void limpatela()
 {
-	int temp, input;
-	while (status != 1 || *valor < 0)
+	system("cls");
+}
+
+// APLICA AS FUNÇÕES DE ACORDO COM OS INPUTS DO IMPRIMEMENU();
+void direcionaresposta(int resp1, char* resp2)
+{
+	if (resp1 < 1 || resp1 > 6)
 	{
-		while ((temp = getchar()) != EOF && temp != '\n');
-		printf("Input inválido....\n");
-
-		if (j == 0)
-		{
-			printf("Digite a quantidade de seções que serão realizadas: ");
-		}
-		if (j == 1)
-		{
-			printf("Digite a quantidade de pessoas que assistiram a seção: ");
-		}
-		if (j == 2)
-		{
-			printf("Digite a idade da pessoa %d: ", i + 1);
-		}
-
-		status = scanf("%d", valor);
-		fflush(stdin);
+		printf("Input inválido!\n");
+		imprimemenu();
+	}
+	//DIRECIONA AS FUNÇÕES DE ACORDO COM O INPUT:
+	else if (resp1 == 1) pegafilmes(&f);
+	else if (resp1 == 2) imprimedadosfilme();
+	else if (resp1 == 3) imprimesessoes(c);
+	else if (resp1 == 4) letexto();
+	else if (resp1 == 5) dadosaluno(); 
+	else if (resp1 == 6)
+	{
+		// PERGUNTA SE DESEJA SAIR OU CONTINUAR NO MENU
+		printf("Deseja sair (S/N): ");
+		scanf(" %c", resp2);
+		*resp2 = toupper(*resp2);
 	}
 }
 
-void pegasessoes(int* qtd_secoes)
+// LÊ O TEXTO COM O ASSUNTO TEÓRICO
+void letexto()
 {
-	printf("Digite a quantidade de seções que serão realizadas: ");
-	int status = scanf("%d", qtd_secoes);
-	fflush(stdin);
-	validavalor(status, qtd_secoes, 0, 0);
-	if (*qtd_secoes != 2)
+	FILE* arq;
+	char Linha[500];
+	char* result;
+	int i;
+
+	// Abre um arquivo TEXTO para LEITURA
+	arq = fopen("introducao.txt", "rt");
+	if (arq == NULL)  // Se houve erro na abertura
 	{
-		printf("Somente é aceito 2 seções como input:\n");
-		pegasessoes(qtd_secoes);
+		printf("Problemas na abertura do arquivo\n");
+		return;
 	}
+	i = 1;
+	while (!feof(arq))
+	{
+		// Lê uma linha (inclusive com o '\n')
+		result = fgets(Linha, 150, arq);  // o 'fgets' lê até 149 caracteres ou até o '\n'
+		if (result)  // Se foi possível ler
+			printf("Linha %d : %s", i, Linha);
+		i++;
+	}
+	fclose(arq);
+	Espera();
+}
+
+// DA UMA PAUSE NO PROGRAMA E ESPERA "ENTER" COMO INPUT:
+void Espera()  // Definição da função "Espera"
+{
+	int tecla;
+	while (tecla != 10) // nl(newline) = 10 na tabela ASCII (\n)
+	{
+		tecla = getchar();
+		printf("Digite ENTER\n");
+	}
+}
+
+// MENU
+void menu()
+{
+	printf("Digite 1 para inserir os dados:\n"
+		"Digite 2 para imprimir o nome do filme, a quantidade de pessoas do sexo feminino e a quantidade de pessoas do sexo"
+		"masculino que assistiram ao filme:\n"
+		"Digite 3 para imprimir quantidade de pessoas maiores de idade(idade maior ou igual a 18 anos) do sexo masculino e a\n"
+		"            quantidade de pessoas maiores de idade do sexo feminino que estiveram presentes em cada sessão:\n"
+		"Digite 4 para ler o texo com a base teórica:\n"
+		"Digite 5 para imprimir os dados do aluno:\n"
+		"Digite 6 para sair:\n");
+}
+
+// 
+void imprimemenu()
+{
+	int resp1;
+	char resp2 = 'N';
+
+	do 
+	{    
+		menu();
+		// Iniciar meu struct com as variáveis iniciar com 0 como padrão
+		// INPUT
+
+		int status = scanf("%d", &resp1);
+		validavalor(&status, &resp1, 3, 0, 0);
+		limpatela();
+
+		// JOGA PARA AS FUNÇÕES DE ACORDO COM O INPUT
+		direcionaresposta(resp1, &resp2);
+		Espera();
+		limpatela();
+
+	} while (resp2 == 'N'); 
+}
+
+// IMPRIME DADOS DE ACORDO COM A QUESTÃO 1 DO PROJETO
+void imprimedadosfilme()
+{
+	int soma_f = 0;
+	int soma_m = 0;
+	for (int i = 0; i < f.sessoes; i++)
+	{
+		soma_f += contasexo(&f, i, 1, 1);
+		soma_m += contasexo(&f, i, 1, 0);
+	}
+	printf("NOME DO FILME: %s", f.nome);
+	printf("PESSOAS DO SEXO FEMININO: %d\n", soma_f);
+	printf("PESSOAS DO SEXO MASCULINO: %d\n", soma_m);
+	Espera();
+}
+
+// IMPRIME DADOS DE ACORDO COM A QUESTÃO 2 DO PROJETO
+void imprimesessoes()
+{
+	contaidades(&f,&c,f.sessoes);
+	printf("QUANTIDADE DE PESSOAS POR CLASSIFICAÇÃO DE IDADE:\n\n");
+	printf("CRIANÇAS (3 ATÉ 13 ANOS): %d\n", c.criancas);
+	printf("ADOLESCENTES (14 ATÉ 17 ANOS): %d\n", c.adolecentes);
+	printf("ADULTOS (18 ATÉ 64 ANOS): %d\n", c.adultos);
+	printf("IDOSOS (65 ATÉ 100 ANOS): %d\n", c.idosos);
 	
-}
-
-void pegapessoas(int* qtd_pessoas)
-{
-	printf("Digite a quantidade de pessoas que assistiram a seção: ");
-	int status = scanf("%d", qtd_pessoas);
-	fflush(stdin);
-	validavalor(status, qtd_pessoas, 1, 0);
-	if (*qtd_pessoas < 10)
+	int maiores;
+	int masculino = 0;
+	int feminino = 0;
+	printf("\nPESSOAS MAIORES QUE 18: \n\n");
+	for (int i = 0; i < f.sessoes; i++)
 	{
-		printf("É aceito no mínimo 10 pessoas como input:\n");
-		pegapessoas(qtd_pessoas);
+		printf("SESSÃO %d:\n", i + 1);
+		masculino += contasexo(&f,i, 2, 0);
+		feminino += contasexo(&f,i, 2, 1);
+		printf("PESSOAS MAIORES DE 18 DO SEXO MASCULINO: %d \n", masculino);
+		printf("PESSOAS MAIORES DE 18 DO SEXO FEMININO: %d \n", feminino);
 	}
-}
-
-void pegaidades(int* idades, int qtd_pessoas, int v)
-{
-	int idade;
-	for (int i = v; i < qtd_pessoas; i++)
-	{
-		printf("Digite a idade da pessoa %d: ", i + 1);
-		int status = scanf("%d", &idades[i]);
-		fflush(stdin);
-		validavalor(status, &idades[i], 2, i);
-		if (idades[i] < 3 || idades[i] > 100)
-		{
-			printf("É aceito somente idades entre 3 a 100 anos como input:\n");
-			pegaidades(idades, qtd_pessoas, i);
-			break;
-		}
-	}
+	Espera();
 }
 
 int main()
 {
-	setlocale(LC_ALL, ""); 
-	// Variáveis:
-	int qtd_sessoes, qtd_pessoas;
-	int *idades = malloc(sizeof(int*) * qtd_pessoas);
-	char nome_filmes[TAM_LISTA][TAM_NOME];
-	char *sexo = malloc(sizeof(char*) * qtd_pessoas);
+	setlocale(LC_ALL, "");
+	printf("Projeto prático 01:\n");
 
-	// funções
-	dadosautor(); // Imprime os dados do autor
-	pegasessoes(&qtd_sessoes); // Pega a quantidade de seções 
-	//pegafilmes(); // Pega o nome do filme
-	pegapessoas(&qtd_pessoas); // Pega a quantidade de pessoas
-	//pegasexo(); // Pega o sexo das pessoas
-	pegaidades(idades, qtd_pessoas, 0); // Pega a idade das pessoas
-	printf("%d\n", qtd_sessoes);
-	printf("%d\n", qtd_pessoas);
-	printf("idades[6] = %d\n", idades[6]);
-	free(idades);
-	free(sexo);
+	imprimemenu();
+	liberamemoria(&f);
 }
