@@ -3,14 +3,14 @@
 
 //CONSTANTE COM O VALOR DO TAMANHO DO NOME: 
 
-void dados_aluno();
+void dadosAluno();
 
-void direciona_resposta(int resp1, char* resp2);
-void le_texto();
+void direcionaResposta(int resp1, char* resp2);
+void leTexto();
 void Espera();
 
-void imprime_menu();
-void imprime_filme();
-void imprime_sessoes();
+void imprimeMenu();
+void imprimeFilme();
+void imprimeSessoes();
 
 #endif

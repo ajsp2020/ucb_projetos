@@ -3,7 +3,7 @@
 
 // VALORES CONSTANTES PARA O PROCESSO DE VALIDAÇÃO:
 #define NUM_SESSOES 2 // quantidade de sessões permitidas
-#define NUM_PESSOAS 2 // quantidade mínima de pessoas permitida
+#define NUM_PESSOAS 10 // quantidade mínima de pessoas permitida
 #define TAM_FILME 1 // tamanho mínimo que é aceito como input para o nome do filme
 #define TAM_NOME 40 // tamanho máximo que é aceito como input para o tamanho do filme 
 
@@ -43,23 +43,27 @@ typedef struct classificacao CLASSIFICACAO;
 
 typedef struct filme FILME;
 
-void validavalor(int* status, int* valor, int j, int k, int v);
-void validasexo(char* sexo, int j);
-void validafilme(char* nome_filme, int* len, int tam_fime, int tam_nome);
+void validaValor(int* status, int* valor, int entrada, int contador);
+void validaSexo(char* sexo, int j);
+void validaFilme(char* nome_filme, int* len);
 
-void pegapessoas(FILME* f);
-void pegasessoes(FILME* f);
-void pegaidades(FILME* f, int k, int v);
-void pegasexo(FILME* f, int i, int j);
-void pegafilmes(FILME* f);
+int pegaSessoes(FILME* f);
+void pegaPessoas(FILME* f);
 
-void alocamemoria(FILME* f);
-void alocamemoria_(FILME* f);
-void liberamemoria(FILME* f);
+void pegaIdades(FILME* f, int sessao, int pessoa);
+void pegaSexo(FILME* f, int i, int j);
+void pegaFilmes(FILME* f);
 
-void contaidades(FILME* f, CLASSIFICACAO* c, int sessoes);
-int contasexo(FILME* f, int valor, int questao, int sexo);
+void alocaMemoria(FILME* f);
+void alocaMemoria_(FILME* f);
+void liberaMemoria(FILME* f);
+
+void contaIdades(FILME* f, CLASSIFICACAO* c, int sessoes);
+int contaSexo(FILME* f, int valor, int questao, int sexo);
 
 void menu();
-void limpa_tela();
+void limpaTela();
+
+int retornaSessoes(FILME f);
+char* retornaFilme(FILME f);
 #endif

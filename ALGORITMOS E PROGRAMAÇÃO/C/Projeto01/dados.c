@@ -6,46 +6,45 @@
 
 // VALIDANDO OS DADOS:
 // VALIDA DADOS DE ENTRADA PARA VALORES INTEIRO
-//void validavalor(int* status, int* valor, valor no switch, int k, int v)
-void validavalor(int* status, int* valor, int j, int k, int v)
+//void validavalor(int* status, int* valor, valor no switch, valor de entrada, contador)
+void validaValor(int* status, int* valor, int entrada, int contador)
 {
 	int temp, input;
 
-	if (j == 2 && (*valor < 3 || *valor > 100)) *status = 0;
+	if (entrada == 2 && (*valor < 3 || *valor > 100)) *status = 0;
 
 	while (*status != 1 || *valor < 0)
 	{
 		while ((temp = getchar()) != EOF && temp != '\n');
 		printf("Input inválido....\n");
 
-		switch (j)
+		switch (entrada)
 		{
-		case 0:
+		case 0: // Para sessoes 
 			printf("Digite a quantidade de seções que serão realizadas: ");
 			break;
 
-		case 1:
+		case 1: // Para pessoas
 			printf("Digite a quantidade de pessoas que assistiram a seção: ");
 			break;
 
-		case 2:
-
-			printf("Digite a idade da pessoa %d: ", v + 1);
+		case 2: // Para idade
+			printf("Digite a idade da pessoa %d: ", contador + 1);
 			break;
 
-		case 3:
-			limpa_tela();
+		case 3: 
+			limpaTela();
 			menu();
 			break;
 		}
 		*status = scanf("%d", valor);
-		if (j == 2 && (*valor < 3 || *valor > 100)) *status = 0;
+		if (entrada == 2 && (*valor < 3 || *valor > 100)) *status = 0;
 	}
 }
 
 // PEGANDO OS DADOS: 
 // VALIDA OS DADOS PARA O SEXO
-void validasexo(char* sexo, int j)
+void validaSexo(char* sexo, int j)
 {
 	int sexovalido = *sexo == 'M' || *sexo == 'F';
 	while (!sexovalido)
@@ -58,116 +57,128 @@ void validasexo(char* sexo, int j)
 }
 
 // VALIDA OS DADOS PARA O NOME DO FILME
-void validafilme(char* nome_filme, int* len, int tam_fime, int tam_nome)
+void validaFilme(char* nome_filme, int* len)
 {
-	while (*len == tam_fime) //	analiza de o tamanho do array é igual a 1
+	while (*len == TAM_FILME) //	enquanto o valor for igual 1 vai:
 	{
-		printf("Digite o nome do filme: ");
-		fgets(nome_filme, tam_nome, stdin);
+		limpaTela();  // Limpa a tela
+		printf("Digite o nome do filme: "); // Pergunta o nome
+		fgets(nome_filme, TAM_NOME, stdin); 
 		fflush(stdin);
 		*len = strlen(nome_filme);
-		printf("Nome do filme: %s\n", nome_filme);
 	}
 }
 
 // PEGANDO A QUANTIDADE DE SESSOES:
-void pegasessoes(FILME* f)
+int pegaSessoes(FILME* f)
 {
-	printf("Digite a quantidade de seções que serão realizadas: ");
+	printf("Digite a quantidade de seções que serão realizadas: "); // Pega o numero de sessoes 
 	int status = scanf("%d", &f->sessoes);
 	fflush(stdin);
-	validavalor(&status, &f->sessoes, 0, 0, 0);
+	validaValor(&status, &f->sessoes, 0, 0); //Valida o valor do input
 	if (f->sessoes != NUM_SESSOES) // 2
 	{
 		printf("Somente é aceito 2 seções como input:\n");
-		pegasessoes(f);
+		pegaSessoes(f);
+		return 0; // Evitar que continue 
 	}
-	alocamemoria(f);
+	alocaMemoria(f); // aloca a memoria
+}
+
+int retornaSessoes(FILME f) // Função de retorno para a quantidade de sessoes
+{
+	return f.sessoes;
 }
 // PEGA A QUANTIDADE DE PESSOAS EM CADA SESSAO 
-void pegapessoas(FILME* f)
+void pegaPessoas(FILME* f)
 {
-	for (int i = 0; i < f->sessoes; i++)
+	for (int i = 0; i < f->sessoes; i++) // Adicionando a quantidade de pessoas por sessao e colocando no array.
 	{
 		printf("Digite a quantidade de pessoas que assistiram a seção %d: ", i + 1);
 		int status = scanf("%d", &f->p.pessoas[i]);
 		fflush(stdin);
-		validavalor(&status, &f->p.pessoas[i], 1, 0, 0);
+		validaValor(&status, &f->p.pessoas[i], 1, 0); // Valida o valor do input
 
 		if (f->p.pessoas[i] < NUM_PESSOAS) // 10
 		{
 			printf("É aceito no mínimo 10 por sessão:\n");
-			pegapessoas(f);
+			pegaPessoas(f); // Se for menor que o numero mínimo volta a função
 		}
 	}
-	alocamemoria_(f);
+	alocaMemoria_(f); // Alocando memoria de acordo com a quantidade pessoas por sessao
 }
 
 // PEGA O VALOR DA IDADE DE TODOS POR SESSAO
-void pegaidades(FILME* f, int k, int v)
+void pegaIdades(FILME* f, int sessao, int pessoa)
 {
-	for (int i = k; i < f->sessoes; i++)
+	for (int i = sessao; i < f->sessoes; i++) // Para cada sessao se adiciona as idades no array
 	{
 		printf("SESSÃO %d:\n", i + 1);
-		for (int j = v; j < f->p.pessoas[i]; j++)
+		for (int j = pessoa; j < f->p.pessoas[i]; j++) 
 		{
 			printf("Digite a idade da pessoa %d: ", j + 1);
 			int status = scanf("%d", &f->p.idades[i][j]);
-			validavalor(&status, &f->p.idades[i][j], 2, i, j);
+			validaValor(&status, &f->p.idades[i][j], 2, j);
 			fflush(stdin);
-			pegasexo(f, i, j); // Pega o sexo das pessoas
+			pegaSexo(f, i, j); // Pega o sexo das pessoas
 		}
 	}
 }
 
 // PEGA O VALOR DO SEXO DE TODOS POR SESSAO
-void pegasexo(FILME* f, int i, int j)
+void pegaSexo(FILME* f, int i, int j)
 {
-	printf("Digite o sexo da pessoa %d: ", j + 1);
+	printf("Digite o sexo da pessoa %d: ", j + 1); 
 	scanf("%c", &f->p.s.sexo[i][j]);
 	f->p.s.sexo[i][j] = toupper(f->p.s.sexo[i][j]);
-	validasexo(&f->p.s.sexo[i][j], j);
+	validaSexo(&f->p.s.sexo[i][j], j);
 }
 
 // PEGA O NOME DO FILME
-void pegafilmes(FILME* f)
+void pegaFilmes(FILME* f) 
 {
-	f->nome = malloc(sizeof(char) * TAM_NOME);
-	printf("Digite o nome do filme: ");
-	fgets(f->nome, TAM_NOME, stdin);
 	fflush(stdin);
-	int len = strlen(f->nome);
+	f->nome = malloc(sizeof(char) * TAM_NOME); // aloca a memória 
+	printf("Digite o nome do filme: "); // Pede o nome do filme 
+	fgets(f->nome, TAM_NOME, stdin); 
+	fflush(stdin);
+	int len = strlen(f->nome); // conta o tamanho
+	validaFilme(f->nome, &len); // Valida o nome
 	printf("Nome do filme: %s\n", f->nome);
-	validafilme(f->nome, &len, TAM_FILME, TAM_NOME);
-	pegasessoes(f);
+	pegaSessoes(f); // Pega as sessoes
+}
+
+char* retornaFilme(FILME f) // Funçao de retorno para o nome
+{
+	return f.nome;
 }
 // FIM DE PEGANDO OS DADOS
 
 // ALOCANDO MEMÓRIA:
-void alocamemoria(FILME* f)
+void alocaMemoria(FILME* f)
 {
-	f->p.idades = malloc(sizeof(int*) * f->sessoes);
-	f->p.s.sexo = malloc(sizeof(int*) * f->sessoes);
-	f->p.pessoas = malloc(sizeof(int) * f->sessoes);
-	f->p.s.masculino = malloc(sizeof(int) * f->sessoes);
-	f->p.s.feminino = malloc(sizeof(int) * f->sessoes);
+	f->p.idades = malloc(sizeof(int*) * f->sessoes); // Ponteiro de ponteiro contendo todos os valores da idade por sessao
+	f->p.s.sexo = malloc(sizeof(int*) * f->sessoes); // Ponteiro de ponteiro contendo todos os valores do sexo por sessao
+	f->p.pessoas = malloc(sizeof(int) * f->sessoes); // Ponteiro contendo o valor todal de pessoas por sessao
+	f->p.s.masculino = malloc(sizeof(int) * f->sessoes); // Ponteiro contento o valor das pessoas do sexo masculino por sessao
+	f->p.s.feminino = malloc(sizeof(int) * f->sessoes); // Ponteiro contendo o valor das pessoas do sexo feninino por sessao
 
-	pegapessoas(f);
+	pegaPessoas(f); // Pega a quantidade de pessoas
 }
 
-void alocamemoria_(FILME* f)
+void alocaMemoria_(FILME* f) // Criando um array com os dados para cada sessao com a quantidade de pessoas 
 {
 	for (int i = 0; i < f->sessoes; i++) // aloca um vetor com todos os elementos da matriz
 	{
 		f->p.idades[i] = malloc(sizeof(int) * f->p.pessoas[i]);
 		f->p.s.sexo[i] = malloc(sizeof(int*) * f->p.pessoas[i]);
 	}
-	pegaidades(f, 0, 0);
+	pegaIdades(f, 0, 0); // Pegando as idades
 }
 // FIM ALOCANDO MEMÓRIA
 
 // LIBERANDO MEMÓRIA:
-void liberamemoria(FILME* f)
+void liberaMemoria(FILME* f)
 {
 	for (int i; i < f->sessoes; i++)
 	{
@@ -183,28 +194,28 @@ void liberamemoria(FILME* f)
 }
 
 // CONTA A QUANTIDADE DE PESSOAS DO SEXO MASCULINO E FEMININO PARA O MESMO FILME
-int contasexo(FILME* f,int valor, int questao, int sexo)
+int contaSexo(FILME* f,int valor, int questao, int sexo) 
 {
-	for (int i = valor; i <= valor; i++)
+	for (int i = valor; i <= valor; i++) // Zerando os valores de acordo com a sessao
 	{
 		f->p.s.masculino[i] = 0;
 		f->p.s.feminino[i] = 0;
 	}
-	switch (questao)
+	switch (questao) 
 	{
-	case 1:
-		for (int i = valor; i <= valor; i++)
+	case 1: // Caso seja a resposta da questao 1
+		for (int i = valor; i <= valor; i++) // Para cada sessao sera:
 		{
-			for (int j = 0; j < f->p.pessoas[i]; j++)
+			for (int j = 0; j < f->p.pessoas[i]; j++) // Vai passar por cada elemento 
 			{
-				if (f->p.s.sexo[i][j] == 'M') f->p.s.masculino[i] += 1;
-				else if (f->p.s.sexo[i][j] == 'F') f->p.s.feminino[i] += 1;
+				if (f->p.s.sexo[i][j] == 'M') f->p.s.masculino[i] += 1; // somar 1 se masculino
+				else if (f->p.s.sexo[i][j] == 'F') f->p.s.feminino[i] += 1; // somar1 se feminino
 			}
-			if (sexo == 0) return  f->p.s.masculino[i];
-			else if (sexo == 1) return f->p.s.feminino[i];
+			if (sexo == 0) return  f->p.s.masculino[i]; // Se sexo = 0 vai retornar os valores masculinos
+			else if (sexo == 1) return f->p.s.feminino[i]; // Se sexo = 1 vai retornar os valores femininos
 		}
 
-	case 2:
+	case 2: // caso questão 2 : Igual ao anterior mas adicionando o critério de idade
 		for (int i = valor; i <= valor; i++)
 		{
 			for (int j = 0; j < f->p.pessoas[i]; j++)
@@ -222,7 +233,7 @@ int contasexo(FILME* f,int valor, int questao, int sexo)
 }
 
 // CONTA A QUANTIDADE DE PESSOAS DE ACORDO A SUA CLASSIFICACAO: 
-void contaidades(FILME* f, CLASSIFICACAO* c, int sessoes)
+void contaIdades(FILME* f, CLASSIFICACAO* c, int sessoes)
 {
 	for (int i = 0; i < f->sessoes; i++) // Passa por cada sessão e soma a idade de acordo com a classificacao
 	{

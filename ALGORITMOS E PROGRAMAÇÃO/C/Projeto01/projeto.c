@@ -1,4 +1,32 @@
 
+/*
+NOME: Antonio João da Silva Pereira\n"
+MATRÍCULA: UC21106344
+CURSO: Ciências da Computação
+
+Para esse projeto, eu tentei utilizar 3 conceitos implementados pelo autor do livro:
+
+1- O uso do código limpo do capítulo 1:
+
+	Segundo Grandy Booch, autor do livro Object Oriented Analysis:
+
+		"Um código limpo é simple e direto. Ele é tão bem legivel
+		quanto uma prosa bem escrita. Ele jamais torna confuso o
+		objetivo do desenvolvedor, em vez disso, ele está repleto de
+		abstrações claras e linhas de controle objetivas.
+
+2- Uso de Nomes Significativos do capítulo 2:
+
+	"O nome de uma variável, função ou classe deve responder a todas as grandes questões.
+	Ela deve lhe dizer porque existe, o que faz e como é usado. Se um nome requer um
+	comentário, então não revela seu propósito.
+
+3 - capítulo 3:
+
+	Funções pequenas com no máximo 20 linhas, bem endentadas e com um propósito único.
+	(A função deve fazer apenas uma coisa).
+*/
+
 #include<stdio.h> // Esta biblioteca contém várias funções de entrada e saída. 
 #include<locale.h> // para implementar a localização de programas.
 #include<stdlib.h> // nescessário para usar as funções malloc e free e system
@@ -14,34 +42,35 @@ CLASSIFICACAO c;
 
 
 // IMPRIME OS DADOS DO ALUNO:
-void dados_aluno()
+
+void dadosAluno()
 {
 	printf("NOME: Antonio João da Silva Pereira\n"
-			"MATRÍCULA: \n"
+			"MATRÍCULA: UC21106344\n"
 			"CURSO: Ciências da Computação\n\n");
 	Espera();
 }
 
 // LIMPA A TELA 
-void limpa_tela()
+void limpaTela()
 {
 	system("cls");
 }
 
 // APLICA AS FUNÇÕES DE ACORDO COM OS INPUTS DO IMPRIMEMENU();
-void direciona_resposta(int resp1, char* resp2)
+void direcionaResposta(int resp1, char* resp2)
 {
 	if (resp1 < 1 || resp1 > 6)
 	{
 		printf("Input inválido!\n");
-		imprime_menu();
+		imprimeMenu();
 	}
 	//DIRECIONA AS FUNÇÕES DE ACORDO COM O INPUT:
-	else if (resp1 == 1) pegafilmes(&f);
-	else if (resp1 == 2) imprime_filme();
-	else if (resp1 == 3) imprime_sessoes(c);
-	else if (resp1 == 4) le_texto();
-	else if (resp1 == 5) dados_aluno(); 
+	else if (resp1 == 1) pegaFilmes(&f);
+	else if (resp1 == 2) imprimeFilme();
+	else if (resp1 == 3) imprimeSessoes(c);
+	else if (resp1 == 4) leTexto();
+	else if (resp1 == 5) dadosAluno(); 
 	else if (resp1 == 6)
 	{
 		// PERGUNTA SE DESEJA SAIR OU CONTINUAR NO MENU
@@ -52,10 +81,10 @@ void direciona_resposta(int resp1, char* resp2)
 }
 
 // LÊ O TEXTO COM O ASSUNTO TEÓRICO
-void le_texto()
+void leTexto()
 {
 	FILE* arq;
-	char Linha[500];
+	char Linha[150];
 	char* result;
 	int i;
 
@@ -94,17 +123,17 @@ void Espera()  // Definição da função "Espera"
 void menu()
 {
 	printf("Digite 1 para inserir os dados:\n"
-		"Digite 2 para imprimir o nome do filme, a quantidade de pessoas do sexo feminino e a quantidade de pessoas do sexo"
-		"masculino que assistiram ao filme:\n"
-		"Digite 3 para imprimir quantidade de pessoas maiores de idade(idade maior ou igual a 18 anos) do sexo masculino e a\n"
-		"            quantidade de pessoas maiores de idade do sexo feminino que estiveram presentes em cada sessão:\n"
-		"Digite 4 para ler o texo com a base teórica:\n"
-		"Digite 5 para imprimir os dados do aluno:\n"
-		"Digite 6 para sair:\n");
+		   "Digite 2 para imprimir o nome do filme, a quantidade de pessoas do sexo feminino e a quantidade de pessoas do sexo\n"
+		   "         masculino que assistiram ao filme:\n"
+		   "Digite 3 para imprimir quantidade de pessoas maiores de idade(idade maior ou igual a 18 anos) do sexo masculino e a\n"
+		   "         quantidade de pessoas maiores de idade do sexo feminino que estiveram presentes em cada sessão:\n"
+		   "Digite 4 para ler o texo com a base teórica:\n"
+		   "Digite 5 para imprimir os dados do aluno:\n"
+		   "Digite 6 para sair:\n");
 }
 
 // 
-void imprime_menu()
+void imprimeMenu()
 {
 	int resp1;
 	char resp2 = 'N';
@@ -116,37 +145,38 @@ void imprime_menu()
 		// INPUT
 
 		int status = scanf("%d", &resp1);
-		validavalor(&status, &resp1, 3, 0, 0);
-		limpa_tela();
+		validaValor(&status, &resp1, 3, 0);
+		limpaTela();
 
 		// JOGA PARA AS FUNÇÕES DE ACORDO COM O INPUT
-		direciona_resposta(resp1, &resp2);
+		direcionaResposta(resp1, &resp2);
 		Espera();
-		limpa_tela();
+		limpaTela();
 
 	} while (resp2 == 'N'); 
 }
 
 // IMPRIME DADOS DE ACORDO COM A QUESTÃO 1 DO PROJETO
-void imprime_filme()
+void imprimeFilme()
 {
 	int soma_f = 0;
 	int soma_m = 0;
-	for (int i = 0; i < f.sessoes; i++)
+	for (int i = 0; i < retornaSessoes(f); i++)
 	{
-		soma_f += contasexo(&f, i, 1, 1);
-		soma_m += contasexo(&f, i, 1, 0);
+		soma_f += contaSexo(&f, i, 1, 1);
+		soma_m += contaSexo(&f, i, 1, 0);
 	}
-	printf("NOME DO FILME: %s", f.nome);
+
+	printf("NOME DO FILME: %s", retornaFilme(f));
 	printf("PESSOAS DO SEXO FEMININO: %d\n", soma_f);
 	printf("PESSOAS DO SEXO MASCULINO: %d\n", soma_m);
 	Espera();
 }
 
 // IMPRIME DADOS DE ACORDO COM A QUESTÃO 2 DO PROJETO
-void imprime_sessoes()
+void imprimeSessoes()
 {
-	contaidades(&f,&c,f.sessoes);
+	contaIdades(&f,&c,retornaSessoes(f));
 	printf("QUANTIDADE DE PESSOAS POR CLASSIFICAÇÃO DE IDADE:\n\n");
 	printf("CRIANÇAS (3 ATÉ 13 ANOS): %d\n", c.criancas);
 	printf("ADOLESCENTES (14 ATÉ 17 ANOS): %d\n", c.adolecentes);
@@ -157,11 +187,11 @@ void imprime_sessoes()
 	int masculino = 0;
 	int feminino = 0;
 	printf("\nPESSOAS MAIORES QUE 18: \n\n");
-	for (int i = 0; i < f.sessoes; i++)
+	for (int i = 0; i < retornaSessoes(f); i++)
 	{
 		printf("SESSÃO %d:\n", i + 1);
-		masculino += contasexo(&f,i, 2, 0);
-		feminino += contasexo(&f,i, 2, 1);
+		masculino = contaSexo(&f,i, 2, 0);
+		feminino = contaSexo(&f,i, 2, 1);
 		printf("PESSOAS MAIORES DE 18 DO SEXO MASCULINO: %d \n", masculino);
 		printf("PESSOAS MAIORES DE 18 DO SEXO FEMININO: %d \n", feminino);
 	}
@@ -173,8 +203,8 @@ int main()
 	setlocale(LC_ALL, "");
 	printf("Projeto prático 01:\n");
 
-	imprime_menu();
-	liberamemoria(&f);
+	imprimeMenu();
+	liberaMemoria(&f);
 
 	return 0;
 }
