@@ -14,7 +14,7 @@ CLASSIFICACAO c;
 
 
 // IMPRIME OS DADOS DO ALUNO:
-void dadosaluno()
+void dados_aluno()
 {
 	printf("NOME: Antonio João da Silva Pereira\n"
 			"MATRÍCULA: \n"
@@ -23,25 +23,25 @@ void dadosaluno()
 }
 
 // LIMPA A TELA 
-void limpatela()
+void limpa_tela()
 {
 	system("cls");
 }
 
 // APLICA AS FUNÇÕES DE ACORDO COM OS INPUTS DO IMPRIMEMENU();
-void direcionaresposta(int resp1, char* resp2)
+void direciona_resposta(int resp1, char* resp2)
 {
 	if (resp1 < 1 || resp1 > 6)
 	{
 		printf("Input inválido!\n");
-		imprimemenu();
+		imprime_menu();
 	}
 	//DIRECIONA AS FUNÇÕES DE ACORDO COM O INPUT:
 	else if (resp1 == 1) pegafilmes(&f);
-	else if (resp1 == 2) imprimedadosfilme();
-	else if (resp1 == 3) imprimesessoes(c);
-	else if (resp1 == 4) letexto();
-	else if (resp1 == 5) dadosaluno(); 
+	else if (resp1 == 2) imprime_filme();
+	else if (resp1 == 3) imprime_sessoes(c);
+	else if (resp1 == 4) le_texto();
+	else if (resp1 == 5) dados_aluno(); 
 	else if (resp1 == 6)
 	{
 		// PERGUNTA SE DESEJA SAIR OU CONTINUAR NO MENU
@@ -52,7 +52,7 @@ void direcionaresposta(int resp1, char* resp2)
 }
 
 // LÊ O TEXTO COM O ASSUNTO TEÓRICO
-void letexto()
+void le_texto()
 {
 	FILE* arq;
 	char Linha[500];
@@ -104,7 +104,7 @@ void menu()
 }
 
 // 
-void imprimemenu()
+void imprime_menu()
 {
 	int resp1;
 	char resp2 = 'N';
@@ -117,18 +117,18 @@ void imprimemenu()
 
 		int status = scanf("%d", &resp1);
 		validavalor(&status, &resp1, 3, 0, 0);
-		limpatela();
+		limpa_tela();
 
 		// JOGA PARA AS FUNÇÕES DE ACORDO COM O INPUT
-		direcionaresposta(resp1, &resp2);
+		direciona_resposta(resp1, &resp2);
 		Espera();
-		limpatela();
+		limpa_tela();
 
 	} while (resp2 == 'N'); 
 }
 
 // IMPRIME DADOS DE ACORDO COM A QUESTÃO 1 DO PROJETO
-void imprimedadosfilme()
+void imprime_filme()
 {
 	int soma_f = 0;
 	int soma_m = 0;
@@ -144,7 +144,7 @@ void imprimedadosfilme()
 }
 
 // IMPRIME DADOS DE ACORDO COM A QUESTÃO 2 DO PROJETO
-void imprimesessoes()
+void imprime_sessoes()
 {
 	contaidades(&f,&c,f.sessoes);
 	printf("QUANTIDADE DE PESSOAS POR CLASSIFICAÇÃO DE IDADE:\n\n");
@@ -173,7 +173,7 @@ int main()
 	setlocale(LC_ALL, "");
 	printf("Projeto prático 01:\n");
 
-	imprimemenu();
+	imprime_menu();
 	liberamemoria(&f);
 
 	return 0;

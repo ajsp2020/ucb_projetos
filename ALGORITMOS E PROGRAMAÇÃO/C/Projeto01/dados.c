@@ -34,7 +34,7 @@ void validavalor(int* status, int* valor, int j, int k, int v)
 			break;
 
 		case 3:
-			limpatela();
+			limpa_tela();
 			menu();
 			break;
 		}

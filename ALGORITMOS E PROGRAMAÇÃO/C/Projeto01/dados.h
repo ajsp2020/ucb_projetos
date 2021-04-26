@@ -61,5 +61,5 @@ void contaidades(FILME* f, CLASSIFICACAO* c, int sessoes);
 int contasexo(FILME* f, int valor, int questao, int sexo);
 
 void menu();
-void limpatela();
+void limpa_tela();
 #endif
