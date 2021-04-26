@@ -175,4 +175,6 @@ int main()
 
 	imprimemenu();
 	liberamemoria(&f);
+
+	return 0;
 }

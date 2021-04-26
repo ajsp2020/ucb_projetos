@@ -22,7 +22,7 @@ class AcessoMB:
         elif escolha == 3:
             valor = (input("Digite o número em hexadecimal: "))
             print("Valor em decimal:")
-            print(Hexadecimal().calcula_decimal(valor))
+            print(Hexadecimal(valor).decimal())
 
 
         else:
