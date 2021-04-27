@@ -11,13 +11,24 @@ class AcessoMB:
                             "Digite 3: Para transformar o valor de HEXADECIMAL em BINÁRIO ou DECIMAL:\n"))
         if escolha == 1:
             valor = input("Digite o número em decimal: ")
-            print("Valor em binário:")
-            Decimal().calcula_binario_int(valor)
+            base = int(input("Digite 1 para valor em binário:\nDigite 2 para valor em hexadecimal:\n"))
+            if (base == 1):
+                print("Valor em binário:")
+                Decimal().calcula_binario_int(valor, 2)
+
+            elif (base == 2):
+                Decimal().calcula_binario_int(valor, 16)
 
         elif escolha == 2:
             valor = (input("Digite o número em binário: "))
-            print("Valor em decimal:")
-            print(Binario().calcula_decimal(valor))
+            base = int(input("Digite 1 para valor em decimal:\nDigite 2 para valor em hexadecimal:\n"))
+            if (base == 1):
+                print("Valor em decimal:")
+                print(Binario().calcula_decimal(valor))
+
+            elif (base == 2):
+                print("Valor em hexadecimal:")
+                print(Binario().calcula_hexadecimal(valor))
 
         elif escolha == 3:
             valor = (input("Digite o número em hexadecimal: "))

@@ -17,7 +17,7 @@ class Hexadecimal: # Transforma classe de hexadecimal em Binario ou Decimal
         self.__base = 16
         self.__soma = 0
 
-        inteiro = self.calcula_decimal(self.__inteiro)
+        inteiro = self.calcula_decimal_int(self.__inteiro)
         try:
             fracao = self.calcula_decimal(self.__fracao)
             print(f"{inteiro},{fracao}")
@@ -36,7 +36,7 @@ class Hexadecimal: # Transforma classe de hexadecimal em Binario ou Decimal
 
         return numeros
 
-    def calcula_decimal(self, numeros): # Calcula os valores de hexadecimal em decimal
+    def calcula_decimal_int(self, numeros): # Calcula os valores de hexadecimal em decimal
 
         numeros = [int(numero) for numero in numeros] # Transformando os valores em inteiro
         n = len(numeros) - 1

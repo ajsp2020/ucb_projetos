@@ -33,8 +33,8 @@ class Binario: # Transforma um valor binário ou hexadecimal em decimal
             print(f"({numero} * ({self.__base} ** {n})): ", _) # Impressão parcial
             self.__soma += numero * (self.__base ** n) # formula genérica, valida para base qualquer base
             n -= 1
-        print("")
-        print(f"O valor em decimal é: {self.__soma}") # impressão total
+        #print("")
+        #print(f"O valor em decimal é: {self.__soma}") # impressão total
         return self.__soma
 
     def calcula_hexadecimal(self, binario):
