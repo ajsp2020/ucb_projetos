@@ -117,9 +117,11 @@ void pegaIdades(FILME* f, int sessao, int pessoa)
 		for (int j = pessoa; j < f->p.pessoas[i]; j++) 
 		{
 			printf("Digite a idade da pessoa %d: ", j + 1);
+
 			int status = scanf("%d", &f->p.idades[i][j]);
 			validaValor(&status, &f->p.idades[i][j], 2, j);
 			fflush(stdin);
+
 			pegaSexo(f, i, j); // Pega o sexo das pessoas
 		}
 	}
@@ -128,9 +130,11 @@ void pegaIdades(FILME* f, int sessao, int pessoa)
 // PEGA O VALOR DO SEXO DE TODOS POR SESSAO
 void pegaSexo(FILME* f, int i, int j)
 {
-	printf("Digite o sexo da pessoa %d: ", j + 1); 
+	printf("Digite o sexo da pessoa (M - Masculino | F - Feminino)  %d: ", j + 1); 
 	scanf("%c", &f->p.s.sexo[i][j]);
+
 	f->p.s.sexo[i][j] = toupper(f->p.s.sexo[i][j]);
+
 	validaSexo(&f->p.s.sexo[i][j], j);
 }
 
@@ -138,12 +142,16 @@ void pegaSexo(FILME* f, int i, int j)
 void pegaFilmes(FILME* f) 
 {
 	fflush(stdin);
+
 	f->nome = malloc(sizeof(char) * TAM_NOME); // aloca a memória 
+
 	printf("Digite o nome do filme: "); // Pede o nome do filme 
 	fgets(f->nome, TAM_NOME, stdin); 
 	fflush(stdin);
+
 	int len = strlen(f->nome); // conta o tamanho
 	validaFilme(f->nome, &len); // Valida o nome
+
 	printf("Nome do filme: %s\n", f->nome);
 	pegaSessoes(f); // Pega as sessoes
 }

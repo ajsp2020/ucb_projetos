@@ -32,6 +32,7 @@ Para esse projeto, eu tentei utilizar 3 conceitos implementados pelo autor do li
 #include<stdlib.h> // nescessário para usar as funções malloc e free e system
 #include<string.h> //  Manipulação de strings
 #include <ctype.h> // para incluir a biblioteca do tooper
+//#include <Windows.h>
 #include"projeto.h" // header file
 #include "dados.h" // header file
 
