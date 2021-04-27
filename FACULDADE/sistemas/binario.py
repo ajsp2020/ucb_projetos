@@ -43,8 +43,8 @@ class Binario: # Transforma um valor binário ou hexadecimal em decimal
         print("PARTE INTEIRO:")
 
         numeros = [int(self.__inteiro )for self.__inteiro in self.__inteiro] # Separando os valores e colocando numa listao
-        n = len(numeros) - 1
 
+        n = len(numeros) - 1
         soma = 0
         for numero in numeros: # Para cada numero o resultado será mutiplicado de acordo com a formula e impresso
             _ = numero * (2 ** n)
@@ -57,12 +57,12 @@ class Binario: # Transforma um valor binário ou hexadecimal em decimal
         print("PARTE FRAÇÃO")
 
         numeros = [int(self.__fracao) for self.__fracao in self.__fracao]
+
         n = 1
         soma = 0
-
         for numero in numeros:
             _ = numero * (2 ** -n)
-            print(f"({numero} * ({2} ** -{n})): ", _)  # Impressão parcial
+            print(f"({numero} * ({2} ** -{n})): ", _ )  # Impressão parcial
             soma += numero * (2 ** -n)  # formula genérica, valida para base qualquer base
             n += 1
 
@@ -152,7 +152,7 @@ class Binario: # Transforma um valor binário ou hexadecimal em decimal
 
 if __name__ == '__main__':
 
-    Binario('11111101,1111').decimal()
+    #Binario('11111101,1111').decimal()
     print("\n\n")
     Binario('1011101100010100011111101,10111010101010111101').hexadecimal()
     #Binario('01,01').hexadecimal()
