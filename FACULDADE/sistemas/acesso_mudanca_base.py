@@ -24,11 +24,11 @@ class AcessoMB:
             base = int(input("Digite 1 para valor em decimal:\nDigite 2 para valor em hexadecimal:\n"))
             if (base == 1):
                 print("Valor em decimal:")
-                print(Binario().calcula_decimal(valor))
+                print(Binario(valor).calcula_decimal_int())
 
             elif (base == 2):
                 print("Valor em hexadecimal:")
-                print(Binario().calcula_hexadecimal(valor))
+                print(Binario(valor).calcula_hexadecimal())
 
         elif escolha == 3:
             valor = (input("Digite o número em hexadecimal: "))

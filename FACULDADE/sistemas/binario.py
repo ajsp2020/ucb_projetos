@@ -17,41 +17,38 @@ class Binario: # Transforma um valor binário ou hexadecimal em decimal
         * b = base
         * an = Algoritmo na posição n
     """
-    def calcula_decimal(self, valor): # Recebendo o valor em binário ou hexadecimal
-        self.__valor = valor
-        self.__base = 2
-        self.__soma = 0
-
-        numeros = [self.__valor for self.__valor in self.__valor] # Separando os valores e colocando numa lista
-
-        numeros = [int(numero) for numero in numeros] # Transformando os valores em inteiro
-        n = len(numeros) - 1
-
-        for numero in numeros: # Para cada numero o resultado será mutiplicado de acordo com a formula e impresso
-
-            _ = numero * (self.__base ** n)
-            print(f"({numero} * ({self.__base} ** {n})): ", _) # Impressão parcial
-            self.__soma += numero * (self.__base ** n) # formula genérica, valida para base qualquer base
-            n -= 1
-        #print("")
-        #print(f"O valor em decimal é: {self.__soma}") # impressão total
-        return self.__soma
-
-    def calcula_hexadecimal(self, binario):
-
+    def __init__(self, binario):
         self.__binario = binario
 
         # Divide a parte fracionária da parte inteira
         if ',' in self.__binario:
             self.__inteiro, self.__fracao = self.__binario.split(',')
-            self.calcula_inteiro()
-            self.calcula_fracao()
             print(self.__inteiro, self.__fracao)
 
         else:
             self.__inteiro = self.__binario
-            self.calcula_inteiro()
             print(self.__inteiro)
+
+
+    def calcula_decimal_int(self): # Recebendo o valor em binário ou hexadecimal
+
+        numeros = [self.__inteiro for self.__inteiro in self.__inteiro] # Separando os valores e colocando numa lista
+
+        numeros = [int(numero) for numero in numeros] # Transformando os valores em inteiro
+        n = len(numeros) - 1
+
+        self.__soma = 0
+        for numero in numeros: # Para cada numero o resultado será mutiplicado de acordo com a formula e impresso
+            _ = numero * (2 ** n)
+            print(f"({numero} * ({2} ** {n})): ", _) # Impressão parcial
+            self.__soma += numero * (2 ** n) # formula genérica, valida para base qualquer base
+            n -= 1
+        #print("")
+        #print(f"O valor em decimal é: {self.__soma}") # impressão total
+        return self.__soma
+
+    def calcula_hexadecimal(self):
+        pass
 
     def calcula_inteiro(self): # Calcula a parte inteira
         self.adiciona_zero_int(self.__inteiro) # Adiciona zero a parte esquerda caso nescessário
