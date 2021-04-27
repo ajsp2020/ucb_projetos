@@ -60,11 +60,12 @@ class Hexadecimal: # Transforma classe de hexadecimal em Binario ou Decimal
         numeros = [int(self.__fracao) for self.__fracao in self.__fracao]
         n = 1
         soma = 0
-        for numero in numeros:
-            _ = numero * (2 ** -n)
-            print(f"({numero} * ({16} ** -{n})): ", _)  # Impressão parcial
-            soma += numero * (16 ** -n)  # formula genérica, valida para base qualquer base
-            n += 1
+        while (self.__fracao != 0 and n < 8):
+            for numero in numeros:
+                _ = numero * (2 ** -n)
+                print(f"({numero} * ({16} ** -{n})): ", _)  # Impressão parcial
+                soma += numero * (16 ** -n)  # formula genérica, valida para base qualquer base
+                n += 1
 
         soma = str(soma)
         zero, soma = soma.split('.')
@@ -111,5 +112,5 @@ class Hexadecimal: # Transforma classe de hexadecimal em Binario ou Decimal
 
 if __name__ == '__main__':
 
-    Hexadecimal('A,A').decimal()
-    Hexadecimal('A,B').binario()
+    Hexadecimal('AB45CD,2357').decimal()
+    #Hexadecimal('A,B').binario()

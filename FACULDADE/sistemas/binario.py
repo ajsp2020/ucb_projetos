@@ -60,11 +60,12 @@ class Binario: # Transforma um valor binário ou hexadecimal em decimal
 
         n = 1
         soma = 0
-        for numero in numeros:
-            _ = numero * (2 ** -n)
-            print(f"({numero} * ({2} ** -{n})): ", _ )  # Impressão parcial
-            soma += numero * (2 ** -n)  # formula genérica, valida para base qualquer base
-            n += 1
+        while (self.__fracao != 0 and n < 8):
+            for numero in numeros:
+                _ = numero * (2 ** -n)
+                print(f"({numero} * ({2} ** -{n})): ", _ )  # Impressão parcial
+                soma += numero * (2 ** -n)  # formula genérica, valida para base qualquer base
+                n += 1
 
         soma = str(soma)
         zero, soma = soma.split('.')
@@ -152,7 +153,7 @@ class Binario: # Transforma um valor binário ou hexadecimal em decimal
 
 if __name__ == '__main__':
 
-    #Binario('11111101,1111').decimal()
+    #Binario('1111000110001,10111').decimal()
     print("\n\n")
-    Binario('1011101100010100011111101,10111010101010111101').hexadecimal()
+    Binario('101111111011111100011111110101010111,0').hexadecimal()
     #Binario('01,01').hexadecimal()

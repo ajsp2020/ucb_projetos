@@ -177,6 +177,6 @@ class Decimal:
 
 if __name__ == '__main__':
 
-    #Decimal('123,238').binario()
-    Decimal('54897,00003662109375').hexadecimal()
+    #Decimal('495,6731').binario()
+    Decimal('9125,31597').hexadecimal()
     #Decimal('54897').hexadecimal()
