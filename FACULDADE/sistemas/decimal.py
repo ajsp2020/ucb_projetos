@@ -31,7 +31,7 @@ class Decimal:
     """
     def __init__(self, decimal):
         self.__decimal = decimal
-
+        print(f"O VALOR EM DECIMAL É DE: {self.__decimal}")
         # Divide a parte fracionária da parte inteira
         if ',' in self.__decimal:
             self.__inteiro, self.__fracao = self.__decimal.split(',')
@@ -60,10 +60,10 @@ class Decimal:
         try:
             fracao = self.calcula_binario_fracionario()
             fracao = "".join(fracao)
-            print(f"{inteiro},{fracao}")
+            print(f"->> O VALOR EM BINÁRIO É DE: {inteiro},{fracao} <<-")
             return inteiro , fracao
         except:
-            print(inteiro)
+            print(f"->> O VALOR EM BINÁRIO É DE: {inteiro} <<_")
             return inteiro
 
 
@@ -87,6 +87,7 @@ class Decimal:
 
 
     def calcula_binario_fracionario(self):
+
         print("PARTE FRACIONÁRIA:\n")
         self.__fracao = float("0." + self.__fracao)
 
@@ -122,10 +123,10 @@ class Decimal:
         try:
             fracao = self.calcula_hexadecimal_fracionario()
             fracao = "".join(fracao)
-            print(f"{inteiro},{fracao}")
+            print(f"->> O VALOR EM HEXADECIMAL É DE: {inteiro},{fracao} <<-")
             return inteiro , fracao
         except:
-            print(inteiro)
+            print(f"->> O VALOR EM HEXADECIMAL É DE: {inteiro} <<-")
             return inteiro
 
     def calcula_hexadecimal_int(self):
@@ -148,7 +149,9 @@ class Decimal:
 
 
     def calcula_hexadecimal_fracionario(self):
-        print("PARTE FRACIONÁRIA:\n")
+        if self.__fracao != None:
+            print("PARTE FRACIONÁRIA:\n")
+
         self.__fracao = float("0." + self.__fracao)
 
         n = 0

@@ -1,4 +1,4 @@
-from teoria import Teoria
+from FACULDADE.sistemas.velho.teoria import Teoria
 from acesso_mudanca_base import AcessoMB
 
 class Acesso:

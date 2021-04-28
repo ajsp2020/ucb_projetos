@@ -1,4 +1,4 @@
-from FACULDADE.sistemas.teoria import Sistemas, Teoria
+from FACULDADE.sistemas.velho.teoria import Sistemas, Teoria
 
 
 class Materias:

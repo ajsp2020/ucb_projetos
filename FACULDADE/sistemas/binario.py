@@ -19,7 +19,7 @@ class Binario: # Transforma um valor binário ou hexadecimal em decimal
     """
     def __init__(self, binario):
         self.__binario = binario
-
+        print("O VALOR EM BINÁRIO É DE: ", self.__binario)
         # Divide a parte fracionária da parte inteira
         if ',' in self.__binario:
             self.__inteiro, self.__fracao = self.__binario.split(',')
@@ -33,10 +33,10 @@ class Binario: # Transforma um valor binário ou hexadecimal em decimal
         inteiro = self.calcula_decimal_int()
         try:
             fracao = self.calcula_decimal_fracao()
-            print(f"{inteiro},{fracao}")
+            print(f"->> O VALOR EM DECIMAL É DE: {inteiro},{fracao} <<-")
             return fracao
         except:
-            print(inteiro)
+            print(f"->> O VALOR EM DECIMAL É DE: {inteiro} <<-")
             return inteiro
 
     def calcula_decimal_int(self): # Recebendo o valor em binário ou hexadecimal
@@ -82,10 +82,10 @@ class Binario: # Transforma um valor binário ou hexadecimal em decimal
         try:
             fracao = self.calcula_fracao()
             fracao = "".join(fracao)
-            print(f"{inteiro},{fracao}")
+            print(f"->> O VALOR EM HEXADECIMAL É DE: {inteiro},{fracao} <<-")
 
         except:
-            print(inteiro)
+            print(f"->> O VALOR EM HEXADECIMAL É DE: {inteiro} <<-")
 
 
     def calcula_inteiro(self): # Calcula a parte inteira

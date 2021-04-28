@@ -14,28 +14,32 @@ class AcessoMB:
             base = int(input("Digite 1 para valor em binário:\nDigite 2 para valor em hexadecimal:\n"))
             if (base == 1):
                 print("Valor em binário:")
-                Decimal().calcula_binario_int(valor, 2)
+                Decimal(valor).binario()
 
             elif (base == 2):
-                Decimal().calcula_binario_int(valor, 16)
+                Decimal(valor).hexadecimal()
 
         elif escolha == 2:
             valor = (input("Digite o número em binário: "))
             base = int(input("Digite 1 para valor em decimal:\nDigite 2 para valor em hexadecimal:\n"))
             if (base == 1):
                 print("Valor em decimal:")
-                print(Binario(valor).calcula_decimal_int())
+                Binario(valor).decimal()
 
             elif (base == 2):
                 print("Valor em hexadecimal:")
-                print(Binario(valor).calcula_hexadecimal())
+                Binario(valor).hexadecimal()
 
         elif escolha == 3:
             valor = (input("Digite o número em hexadecimal: "))
-            print("Valor em decimal:")
-            print(Hexadecimal(valor).decimal())
+            base = int(input("Digite 1 para valor em decimal:\nDigite 2 para valor em binário:\n"))
+            if (base == 1):
+                print("Valor em decimal:")
+                Hexadecimal(valor).decimal()
 
-
+            elif (base == 2):
+                print("Valor em hexadecimal:")
+                Hexadecimal(valor).binario()
         else:
             print("Número não suportado")
 
