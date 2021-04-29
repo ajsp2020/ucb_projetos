@@ -61,7 +61,7 @@ class Hexadecimal: # Transforma classe de hexadecimal em Binario ou Decimal
         numeros = [int(self.__fracao) for self.__fracao in self.__fracao]
         n = 1
         soma = 0
-        while (self.__fracao != 0 and n < 8):
+        while (self.__fracao != 0 and n < len(numeros)):
             for numero in numeros:
                 _ = numero * (2 ** -n)
                 print(f"({numero} * ({16} ** -{n})): ", _)  # Impressão parcial

@@ -60,7 +60,7 @@ class Binario: # Transforma um valor binário ou hexadecimal em decimal
 
         n = 1
         soma = 0
-        while (self.__fracao != 0 and n < 8):
+        while (self.__fracao != 0 and n < len(numeros)):
             for numero in numeros:
                 _ = numero * (2 ** -n)
                 print(f"({numero} * ({2} ** -{n})): ", _ )  # Impressão parcial
