@@ -2,8 +2,8 @@
 #define _VALIDACAO_H_
 
 // VALORES CONSTANTES PARA O PROCESSO DE VALIDAÇÃO:
-#define NUM_SESSOES 2 // quantidade de sessões permitidas
-#define NUM_PESSOAS 10 // quantidade mínima de pessoas permitida
+#define NUM_SESSOES 1 // quantidade de sessões permitidas
+#define NUM_PESSOAS 2 // quantidade mínima de pessoas permitida
 #define TAM_FILME 1 // tamanho mínimo que é aceito como input para o nome do filme
 #define TAM_NOME 40 // tamanho máximo que é aceito como input para o tamanho do filme 
 

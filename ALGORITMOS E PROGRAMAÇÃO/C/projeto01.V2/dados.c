@@ -20,10 +20,6 @@ void validaValor(int* status, int* valor, int entrada, int contador)
 
 		switch (entrada)
 		{
-		case 0: // Para sessoes 
-			printf("Digite a quantidade de seções que serão realizadas: ");
-			break;
-
 		case 1: // Para pessoas
 			printf("Digite a quantidade de pessoas que assistiram a seção: ");
 			break;
@@ -47,9 +43,10 @@ void validaValor(int* status, int* valor, int entrada, int contador)
 void validaSexo(char* sexo, int j)
 {
 	int sexovalido = *sexo == 'M' || *sexo == 'F';
+
 	while (!sexovalido)
 	{
-		printf("Input inválido... \nDigite o sexo da pessoa %d: ", j + 1);
+		printf("Input inválido... \nDigite o sexo da pessoa (M - Masculino | F - Feminino) %d: ", j + 1);
 		scanf(" %c", sexo);
 		*sexo = toupper(*sexo);
 		sexovalido = *sexo == 'M' || *sexo == 'F';
@@ -60,16 +57,16 @@ void validaSexo(char* sexo, int j)
 // PEGANDO A QUANTIDADE DE SESSOES:
 int pegaSessoes(FILME* f)
 {
-	printf("Digite a quantidade de seções que serão realizadas: "); // Pega o numero de sessoes 
-	int status = scanf("%d", &f->sessoes);
-	fflush(stdin);
-	validaValor(&status, &f->sessoes, 0, 0); //Valida o valor do input
-	if (f->sessoes != NUM_SESSOES) // 2
-	{
-		printf("Somente é aceito 2 seções como input:\n");
-		pegaSessoes(f);
-		return 0; // Evitar que continue 
-	}
+		printf("Digite a quantidade de seções que serão realizadas: "); // Pega o numero de sessoes 
+		int status = scanf("%d", &f->sessoes);
+		fflush(stdin);
+	
+		if (f->sessoes != NUM_SESSOES || status == 0)
+		{
+			pegaSessoes(f);
+			return 0;
+		}
+
 	alocaMemoria(f); // aloca a memoria
 }
 
@@ -118,7 +115,6 @@ void pegaIdades(FILME* f, int sessao, int pessoa)
 // PEGA O VALOR DO SEXO DE TODOS POR SESSAO
 void pegaSexo(FILME* f, int i, int j)
 {
-	int sexovalido = *sexo == 'M' || *sexo == 'F';
 	printf("Digite o sexo da pessoa (M - Masculino | F - Feminino)  %d: ", j + 1); 
 	scanf("%c", &f->p.s.sexo[i][j]);
 
@@ -130,16 +126,17 @@ void pegaSexo(FILME* f, int i, int j)
 // PEGA O NOME DO FILME
 void pegaFilmes(FILME* f) 
 {
+	int len;
 	fflush(stdin);
 	f->nome = malloc(sizeof(char) * TAM_NOME); // aloca a memória 
 	do {
 		printf("Digite o nome do filme: "); // Pede o nome do filme 
-		fgets(f->nome, TAM_NOME, stdin);
+		fgets(f->nome, sizeof(f->nome), stdin);
 		fflush(stdin);
 
-		int len = strlen(f->nome); // conta o tamanho
+		len = strlen(f->nome); // conta o tamanho
 		
-	} while (*len == 1);
+	} while (len == 1);
 
 	pegaSessoes(f); // Pega as sessoes
 }

@@ -124,14 +124,16 @@ char* listaFilmes(int filme)
 {
 	switch (filme)
 	{
-		case 1
-			return "O senhor dos anéis - O Retorno do Rei";
+	case 1:
+		return "O senhor dos anéis - O Retorno do Rei";
+		break;
 
-		case 2 
-			return "Harry Potter"
+	case 2:
+		return "Harry Potter";
+		break;
 
-		default:
-			break;
+	default:
+		break;
 	}
 }
 
