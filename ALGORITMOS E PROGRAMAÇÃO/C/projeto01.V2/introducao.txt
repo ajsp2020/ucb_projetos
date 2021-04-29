@@ -1,0 +1,528 @@
+
+-------------                 ALOCANDO MEMÓRIA DINAMICAMENTE               -------------
+ int main(void)
+{
+  float *v; //definindo o ponteiro v
+  int i, num_componentes;
+  
+  printf("Informe o numero de componentes do vetor\n");
+  scanf("%d", &num_componentes);
+  
+  /* ------------- Alocando dinamicamente o espaço necessário-------------
+  
+  1 - Calcular o número de bytes necessários
+  primeiramente multiplicamos o número de componentes do vetor pela
+  quantidade de bytes que é dada pelo comando sizeof,
+  portanto temos:
+  num_componentes * sizeof(float)
+  
+  2 - Reservar a quantidade de memória
+  usamos malloc para reservar essa quantidade de memória,
+  então temos:
+  malloc(num_componentes * sizeof(float))
+  
+  3 - Converter o ponteiro para o tipo de dados desejado
+  como a função malloc retorna um ponteiro do tipo void,
+  precisamos converter esse ponteiro para o tipo da nossa variável, no caso float,
+  por isso usamos o comando de conversão explicita:
+  (float *)
+  
+  4 - juntando tudo e atribuindo em v temos o comando abaixo: */
+  
+  v = (float *) malloc(num_componentes * sizeof(float));
+  
+  //Armazenando os dados em um vetor
+  for (i = 0; i < num_componentes; i++)
+  {
+    printf("\nDigite o valor para a posicao %d do vetor: ", i+1);
+    scanf("%f",&v[i]);
+  }
+  
+  // ------ Percorrendo o vetor e imprimindo os valores ----------
+  printf("\n*********** Valores do vetor dinamico ************\n\n");
+  
+  for (i = 0;i < num_componentes; i++)
+  {
+    printf("%.2f\n",v[i]);
+  }
+  
+  //liberando o espaço de memória alocado
+  free(v);
+  
+  getch();
+  return 0;
+}
+
+
+-------------                        STRUCTS                               -------------
+ 
+Structs, também conhecidas como Registros, definem tipos de dados que agrupam 
+variáveis sob um mesmo tipo de dado.
+
+A ideia de usar uma struct é permitir que, ao armazenar os dados de uma mesma entidade, 
+isto possa ser feito com uma única variável.
+
+Por exemplo, se for preciso armazenar a altura, o peso e a idade de uma pessoa, 
+pode - se criar uma struct chamada Pessoa e agrupar os dados em um único tipo de dado.
+
+Aos dados agruados em uma struct dá - se o nome de campos(fields).
+
+-----------                      HEADER FILE                           --------------------
+
+ 
+Em programação de computadores, um arquivo cabeçalho ou arquivos de cabeçalho (em inglês: header file)
+ é um arquivo que permite que os programadores separem certos elementos de um código fonte de um
+ programa em arquivos reutilizáveis. Arquivos de cabeçalho normalmente contêm declarações de envio 
+de classes, subrotinas, variáveis e outros identificadores.
+
+Notadamente nas linguagens de programação C e C++ um arquivo contendo declarações de classes, 
+tipos, variáveis, protótipos de funções e macros que podem ser compartilhados entre vários arquivos 
+com código fonte.[1][2]
+
+Nas linguagens C e C++ geralmente se convenciona nomear estes arquivos com a extensão .h. 
+Os arquivos cabeçalho são incluídos através da diretiva de pré-processamento #include seguido pelo 
+nome do arquivo. Incluir um arquivo produz o mesmo resultado de copiar o conteúdo do arquivo incluído
+ no arquivo onde é feita a inclusão.[1] Um exemplo é o arquivo stdio.h que fornece a declaração para a 
+função printf[2] de entrada e saída da biblioteca padrão do C.
+
+
+-----------                   LIVRO CÓDIGO LIMPO                         ----------------
+
+Para esse projeto, eu tentei utilizar 3 conceitos implementados pelo autor do livro:
+
+1- O uso do código limpo do capítulo 1: 
+
+	Segundo Grandy Booch, autor do livro Object Oriented Analysis: 
+
+		"Um código limpo é simple e direto. Ele é tão bem legivel 
+		quanto uma prosa bem escrita. Ele jamais torna confuso o 
+		objetivo do desenvolvedor, em vez disso, ele está repleto de
+		abstrações claras e linhas de controle objetivas.
+
+2- Uso de Nomes Significativos do capítulo 2:  
+	
+	"O nome de uma variável, função ou classe deve responder a todas as grandes questões.
+	Ela deve lhe dizer porque existe, o que faz e como é usado. Se um nome requer um 
+	comentário, então não revela seu propósito. 
+
+3 - capítulo 3:
+	
+	Funções pequenas com no máximo 20 linhas, bem endentadas e com um propósito único. 
+	(A função deve fazer apenas uma coisa).
+	 
+
+---------------                BIBLIOTECAS                           -----------------------
+
+-> stdio.h é um cabeçalho da biblioteca padrão do C. Seu nome vem da expressão inglesa standard 
+input-output header, que significa "cabeçalho padrão de entrada/saída".
+
+Possui definições de subrotinas relativas às operações de entrada/saída, como leitura de dados 
+digitados no teclado e exibição de informações na tela do programa de computador. Também possui 
+numerosas definições de constantes, variáveis e tipos. É um dos cabeçalhos mais populares da 
+linguagem de programação C, intensivamente utilizado tanto por programadores iniciantes como por 
+experientes.
+
+Abaixo temos 4 funções desta biblioteca que são muito utilizadas:
+
+printf() Função usada para imprimir dados na tela
+
+scanf() Função usada para capturar dados do usuário
+
+fprintf() Função usada para imprimir dados em arquivo
+
+fscanf() Função usada para ler dados de arquivos
+
+
+-> A função setlocale() pode ser usada para modificar essa localização para outra desejada e 
+que seja adequada ao idioma usado no programa.
+
+Sintaxe:
+
+setlocale(int categoria, const char *local)
+
+onde:
+
+categoria é a categoria a ser modificada ou consultada.
+
+local é uma string que vai corresponder a uma localidade que será atribuída a uma categoria
+representada pelo argumento categoria.
+
+Para utilizar a localização especificada para o idioma português usamos a função setlocale() 
+da seguinte forma:
+
+setlocale(LC_ALL, “Portuguese”);, onde LC_ALL faz referência à todos os aspectos da 
+localização.
+Como a função foi usada com a string “Portuguese” a localização foi configurada como 
+português.
+
+Outra opção é utilizar a localidade especificada pelo sistema operacional. Para isso usamos
+ a função setlocale() da seguinte forma:
+
+set locale(LC_ALL,””);, onde LC_ALL faz referência à todos os aspectos da localização. 
+Como a função foi usada com a string “” a localização foi configurada com o padrão do 
+sistema operacional.
+
+Esta opção é interessante pois é mais portável já que funciona bem em qualquer sistema 
+operacional.
+
+
+-> Stdlib.h é um arquivo cabeçalho da biblioteca de propósito geral padrão da linguagem 
+de programação C.
+Ela possui funções envolvendo alocação de memória, controle de processos, conversões e 
+outras. 
+Ela é compatível com C++ e é chamada cstdlib em C++. O nome "stdlib" vem de standard 
+library 
+(standard library é biblioteca padrão em inglês).
+
+
+-> string.h é um arquivo cabeçalho que fornece funções, macros e definições da biblioteca
+ padrão da linguagem de programação C para manipulação de cadeias de caracteres e regiões 
+de memória. Apesar de fornecer funçõesportáveis entre plataformas, sabidamente há problemas 
+de segurança que expõe os programas a problemas de transbordamento. 
+As funções trabalham apenas com cadeias de caracteres ASCII, mas não são compatíveis com 
+Unicode.
+
+
+-> ctype.h é uma biblioteca da linguagem de programação C do padrão ANSI, contém declarações 
+para manipulação de caracteres. Usada quando se trabalha com diferentes idiomas e alfabetos.
+
+
+----------------                 O CÓDIGO                             ----------------------
+
+Ordem de Execução das funções: 
+
+int main()
+{
+	setlocale(LC_ALL, "");
+	printf("Projeto prático 01:\n");
+
+	imprimeMenu();
+	liberaMemoria(&f);
+
+	return 0;
+}
+
+void imprimeMenu()
+{
+	int resp1;
+	char resp2 = 'N';
+
+	do 
+	{    
+		menu();
+		// Iniciar meu struct com as variáveis iniciar com 0 como padrão
+		// INPUT
+
+		int status = scanf("%d", &resp1);
+		validaValor(&status, &resp1, 3, 0);
+		limpaTela();
+
+		// JOGA PARA AS FUNÇÕES DE ACORDO COM O INPUT
+		direcionaResposta(resp1, &resp2);
+		Espera();
+		limpaTela();
+
+	} while (resp2 == 'N'); 
+}
+
+void menu()
+{
+	printf("Digite 1 para inserir os dados:\n"
+		   "Digite 2 para imprimir o nome do filme, a quantidade de pessoas do sexo feminino e a quantidade de pessoas do sexo\n"
+		   "         masculino que assistiram ao filme:\n"
+		   "Digite 3 para imprimir quantidade de pessoas maiores de idade(idade maior ou igual a 18 anos) do sexo masculino e a\n"
+		   "         quantidade de pessoas maiores de idade do sexo feminino que estiveram presentes em cada sessão:\n"
+		   "Digite 4 para ler o texo com a base teórica:\n"
+		   "Digite 5 para imprimir os dados do aluno:\n"
+		   "Digite 6 para sair:\n");
+}
+
+void validaValor(int* status, int* valor, int entrada, int contador)
+{
+	int temp, input;
+
+	if (entrada == 2 && (*valor < 3 || *valor > 100)) *status = 0;
+
+	while (*status != 1 || *valor < 0)
+	{
+		while ((temp = getchar()) != EOF && temp != '\n');
+		printf("Input inválido....\n");
+
+		switch (entrada)
+		{
+		case 0: // Para sessoes 
+			printf("Digite a quantidade de seções que serão realizadas: ");
+			break;
+
+		case 1: // Para pessoas
+			printf("Digite a quantidade de pessoas que assistiram a seção: ");
+			break;
+
+		case 2: // Para idade
+			printf("Digite a idade da pessoa %d: ", contador + 1);
+			break;
+
+		case 3: 
+			limpaTela();
+			menu();
+			break;
+		}
+		*status = scanf("%d", valor);
+		if (entrada == 2 && (*valor < 3 || *valor > 100)) *status = 0;
+	}
+}
+
+void limpaTela()
+{
+	system("cls");
+}
+
+void direcionaResposta(int resp1, char* resp2)
+{
+	if (resp1 < 1 || resp1 > 6)
+	{
+		printf("Input inválido!\n");
+		imprimeMenu();
+	}
+	//DIRECIONA AS FUNÇÕES DE ACORDO COM O INPUT:
+	else if (resp1 == 1) pegaFilmes(&f);
+	else if (resp1 == 2) imprimeFilme();
+	else if (resp1 == 3) imprimeSessoes(c);
+	else if (resp1 == 4) leTexto();
+	else if (resp1 == 5) dadosAluno(); 
+	else if (resp1 == 6)
+	{
+		// PERGUNTA SE DESEJA SAIR OU CONTINUAR NO MENU
+		printf("Deseja sair (S/N): ");
+		scanf(" %c", resp2);
+		*resp2 = toupper(*resp2);
+	}
+}
+
+void pegaFilmes(FILME* f) 
+{
+	fflush(stdin);
+	f->nome = malloc(sizeof(char) * TAM_NOME); // aloca a memória 
+	printf("Digite o nome do filme: "); // Pede o nome do filme 
+	fgets(f->nome, TAM_NOME, stdin); 
+	fflush(stdin);
+	int len = strlen(f->nome); // conta o tamanho
+	validaFilme(f->nome, &len); // Valida o nome
+	printf("Nome do filme: %s\n", f->nome);
+	pegaSessoes(f); // Pega as sessoes
+}
+
+int pegaSessoes(FILME* f)
+{
+	printf("Digite a quantidade de seções que serão realizadas: "); // Pega o numero de sessoes 
+	int status = scanf("%d", &f->sessoes);
+	fflush(stdin);
+	validaValor(&status, &f->sessoes, 0, 0); //Valida o valor do input
+	if (f->sessoes != NUM_SESSOES) // 2
+	{
+		printf("Somente é aceito 2 seções como input:\n");
+		pegaSessoes(f);
+		return 0; // Evitar que continue 
+	}
+	alocaMemoria(f); // aloca a memoria
+}
+
+void alocaMemoria(FILME* f)
+{
+	f->p.idades = malloc(sizeof(int*) * f->sessoes); // Ponteiro de ponteiro contendo todos os valores da idade por sessao
+	f->p.s.sexo = malloc(sizeof(int*) * f->sessoes); // Ponteiro de ponteiro contendo todos os valores do sexo por sessao
+	f->p.pessoas = malloc(sizeof(int) * f->sessoes); // Ponteiro contendo o valor todal de pessoas por sessao
+	f->p.s.masculino = malloc(sizeof(int) * f->sessoes); // Ponteiro contento o valor das pessoas do sexo masculino por sessao
+	f->p.s.feminino = malloc(sizeof(int) * f->sessoes); // Ponteiro contendo o valor das pessoas do sexo feninino por sessao
+
+	pegaPessoas(f); // Pega a quantidade de pessoas
+}
+
+void pegaPessoas(FILME* f)
+{
+	for (int i = 0; i < f->sessoes; i++) // Adicionando a quantidade de pessoas por sessao e colocando no array.
+	{
+		printf("Digite a quantidade de pessoas que assistiram a seção %d: ", i + 1);
+		int status = scanf("%d", &f->p.pessoas[i]);
+		fflush(stdin);
+		validaValor(&status, &f->p.pessoas[i], 1, 0); // Valida o valor do input
+
+		if (f->p.pessoas[i] < NUM_PESSOAS) // 10
+		{
+			printf("É aceito no mínimo 10 por sessão:\n");
+			pegaPessoas(f); // Se for menor que o numero mínimo volta a função
+		}
+	}
+	alocaMemoria_(f); // Alocando memoria de acordo com a quantidade pessoas por sessao
+}
+
+void alocaMemoria_(FILME* f) // Criando um array com os dados para cada sessao com a quantidade de pessoas 
+{
+	for (int i = 0; i < f->sessoes; i++) // aloca um vetor com todos os elementos da matriz
+	{
+		f->p.idades[i] = malloc(sizeof(int) * f->p.pessoas[i]);
+		f->p.s.sexo[i] = malloc(sizeof(int*) * f->p.pessoas[i]);
+	}
+	pegaIdades(f, 0, 0); // Pegando as idades
+}
+
+void pegaIdades(FILME* f, int sessao, int pessoa)
+{
+	for (int i = sessao; i < f->sessoes; i++) // Para cada sessao se adiciona as idades no array
+	{
+		printf("SESSÃO %d:\n", i + 1);
+		for (int j = pessoa; j < f->p.pessoas[i]; j++) 
+		{
+			printf("Digite a idade da pessoa %d: ", j + 1);
+			int status = scanf("%d", &f->p.idades[i][j]);
+			validaValor(&status, &f->p.idades[i][j], 2, j);
+			fflush(stdin);
+			pegaSexo(f, i, j); // Pega o sexo das pessoas
+		}
+	}
+}
+
+void pegaSexo(FILME* f, int i, int j)
+{
+	printf("Digite o sexo da pessoa %d: ", j + 1); 
+	scanf("%c", &f->p.s.sexo[i][j]);
+	f->p.s.sexo[i][j] = toupper(f->p.s.sexo[i][j]);
+	validaSexo(&f->p.s.sexo[i][j], j);
+}
+
+void imprimeMenu()
+
+void menu()
+
+void validaValor(int* status, int* valor, int entrada, int contador)
+
+void direcionaResposta(int resp1, char* resp2)
+
+void imprimeFilme()
+{
+	int soma_f = 0;
+	int soma_m = 0;
+	for (int i = 0; i < retornaSessoes(f); i++)
+	{
+		soma_f += contaSexo(&f, i, 1, 1);
+		soma_m += contaSexo(&f, i, 1, 0);
+	}
+
+	printf("NOME DO FILME: %s", retornaFilme(f));
+	printf("PESSOAS DO SEXO FEMININO: %d\n", soma_f);
+	printf("PESSOAS DO SEXO MASCULINO: %d\n", soma_m);
+	Espera();
+}
+
+// IMPRIME DADOS DE ACORDO COM A QUESTÃO 2 DO PROJETO
+
+void Espera() 
+
+void limpaTela()
+
+void imprimeMenu()
+
+void menu()
+
+void validaValor(int* status, int* valor, int entrada, int contador)
+
+void direcionaResposta(int resp1, char* resp2)
+
+void imprimeSessoes()
+{
+	contaIdades(&f,&c,retornaSessoes(f));
+	printf("QUANTIDADE DE PESSOAS POR CLASSIFICAÇÃO DE IDADE:\n\n");
+	printf("CRIANÇAS (3 ATÉ 13 ANOS): %d\n", c.criancas);
+	printf("ADOLESCENTES (14 ATÉ 17 ANOS): %d\n", c.adolecentes);
+	printf("ADULTOS (18 ATÉ 64 ANOS): %d\n", c.adultos);
+	printf("IDOSOS (65 ATÉ 100 ANOS): %d\n", c.idosos);
+	
+	int maiores;
+	int masculino = 0;
+	int feminino = 0;
+	printf("\nPESSOAS MAIORES QUE 18: \n\n");
+	for (int i = 0; i < retornaSessoes(f); i++)
+	{
+		printf("SESSÃO %d:\n", i + 1);
+		masculino += contaSexo(&f,i, 2, 0);
+		feminino += contaSexo(&f,i, 2, 1);
+		printf("PESSOAS MAIORES DE 18 DO SEXO MASCULINO: %d \n", masculino);
+		printf("PESSOAS MAIORES DE 18 DO SEXO FEMININO: %d \n", feminino);
+	}
+	Espera();
+}
+
+void Espera() 
+
+void limpaTela()
+
+void imprimeMenu()
+
+void menu()
+
+void validaValor(int* status, int* valor, int entrada, int contador)
+
+void direcionaResposta(int resp1, char* resp2)
+
+void leTexto()
+{
+	FILE* arq;
+	char Linha[500];
+	char* result;
+	int i;
+
+	// Abre um arquivo TEXTO para LEITURA
+	arq = fopen("introducao.txt", "rt");
+	if (arq == NULL)  // Se houve erro na abertura
+	{
+		printf("Problemas na abertura do arquivo\n");
+		return;
+	}
+	i = 1;
+	while (!feof(arq))
+	{
+		// Lê uma linha (inclusive com o '\n')
+		result = fgets(Linha, 150, arq);  // o 'fgets' lê até 149 caracteres ou até o '\n'
+		if (result)  // Se foi possível ler
+			printf("Linha %d : %s", i, Linha);
+		i++;
+	}
+	fclose(arq);
+	Espera();
+}
+
+void Espera() 
+
+void limpaTela()
+
+void imprimeMenu()
+
+void menu()
+
+void validaValor(int* status, int* valor, int entrada, int contador)
+
+void direcionaResposta(int resp1, char* resp2)
+
+void dadosAluno()
+{
+	printf("NOME: Antonio João da Silva Pereira\n"
+			"MATRÍCULA: \n"
+			"CURSO: Ciências da Computação\n\n");
+	Espera();
+}
+
+void liberaMemoria(FILME* f)
+{
+	for (int i; i < f->sessoes; i++)
+	{
+		free(f->p.idades[i]);
+		free(f->p.s.sexo[i]);
+	}
+	free(f->p.idades);
+	free(f->p.s.sexo);
+	free(f->nome);
+	free(f->p.pessoas);
+	free(f->p.s.masculino);
+	free(f->p.s.feminino);
+}
+

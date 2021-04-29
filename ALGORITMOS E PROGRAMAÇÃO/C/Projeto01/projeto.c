@@ -36,6 +36,7 @@ Para esse projeto, eu tentei utilizar 3 conceitos implementados pelo autor do li
 #include"projeto.h" // header file
 #include "dados.h" // header file
 
+
 // VALORES CONSTANTES PARA O PROCESSO DE VALIDAÇÃO:
 
 FILME f;
@@ -202,7 +203,7 @@ void imprimeSessoes()
 int main()
 {
 	setlocale(LC_ALL, "");
-	printf("Projeto prático 01:\n");
+	printf("ANÁLISE	DO PÚBLICO QUE FREQUÊNTA CINENA: CINE BRASÍLIA\n");
 
 	imprimeMenu();
 	liberaMemoria(&f);
