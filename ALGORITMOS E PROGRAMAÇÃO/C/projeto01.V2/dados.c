@@ -7,7 +7,7 @@
 // VALIDANDO OS DADOS:
 // VALIDA DADOS DE ENTRADA PARA VALORES INTEIRO
 //void validavalor(int* status, int* valor, valor no switch, valor de entrada, contador)
-void validaValor(int* status, int* valor, int entrada, int contador)
+void validaValor(int* status, int* valor, int entrada, int contador) // continar arrumando
 {
 	int temp, input;
 
@@ -16,23 +16,9 @@ void validaValor(int* status, int* valor, int entrada, int contador)
 	while (*status != 1 || *valor < 0)
 	{
 		while ((temp = getchar()) != EOF && temp != '\n');
-		printf("Input inválido....\n");
-
-		switch (entrada)
-		{
-		case 1: // Para pessoas
-			printf("Digite a quantidade de pessoas que assistiram a seção: ");
-			break;
-
-		case 2: // Para idade
+			printf("Input inválido....\n");
 			printf("Digite a idade da pessoa %d: ", contador + 1);
-			break;
-
-		case 3: 
-			limpaTela();
-			menu();
-			break;
-		}
+		
 		*status = scanf("%d", valor);
 		if (entrada == 2 && (*valor < 3 || *valor > 100)) *status = 0;
 	}
@@ -55,16 +41,16 @@ void validaSexo(char* sexo, int j)
 
 
 // PEGANDO A QUANTIDADE DE SESSOES:
-int pegaSessoes(FILME* f)
+int pegaSessoes(FILME* f)                                                                   // recebe como parametro a struct filme
 {
-		printf("Digite a quantidade de seções que serão realizadas: "); // Pega o numero de sessoes 
-		int status = scanf("%d", &f->sessoes);
+		printf("Digite a quantidade de seções que serão realizadas: ");                     // Pergunta o nome das pessoas 
+		int status = scanf("%d", &f->sessoes);                                              // Pega o nome: se status for 1 o valor do input é válido
 		fflush(stdin);
 	
-		if (f->sessoes != NUM_SESSOES || status == 0)
+		if (f->sessoes != NUM_SESSOES || status == 0)                                       // se o valor não for válido
 		{
-			pegaSessoes(f);
-			return 0;
+			pegaSessoes(f);                                                                 // Volta a função
+			return 0;                                                                       // Termina evitando que repita diversar vezes 
 		}
 
 	alocaMemoria(f); // aloca a memoria
@@ -75,19 +61,18 @@ int retornaSessoes(FILME f) // Função de retorno para a quantidade de sessoes
 	return f.sessoes;
 }
 // PEGA A QUANTIDADE DE PESSOAS EM CADA SESSAO 
-void pegaPessoas(FILME* f)
+int pegaPessoas(FILME* f, int sessao)
 {
-	for (int i = 0; i < f->sessoes; i++) // Adicionando a quantidade de pessoas por sessao e colocando no array.
+	for (int i = sessao; i < f->sessoes; i++) // Adicionando a quantidade de pessoas por sessao e colocando no array.
 	{
 		printf("Digite a quantidade de pessoas que assistiram a seção %d: ", i + 1);
 		int status = scanf("%d", &f->p.pessoas[i]);
 		fflush(stdin);
-		validaValor(&status, &f->p.pessoas[i], 1, 0); // Valida o valor do input
 
-		if (f->p.pessoas[i] < NUM_PESSOAS) // 10
+		if (f->p.pessoas[i] < NUM_PESSOAS || status == 0) // 10
 		{
-			printf("É aceito no mínimo 10 por sessão:\n");
-			pegaPessoas(f); // Se for menor que o numero mínimo volta a função
+			pegaPessoas(f, i); // Se for menor que o numero mínimo volta a função
+			return 0;
 		}
 	}
 	alocaMemoria_(f); // Alocando memoria de acordo com a quantidade pessoas por sessao
@@ -126,17 +111,18 @@ void pegaSexo(FILME* f, int i, int j)
 // PEGA O NOME DO FILME
 void pegaFilmes(FILME* f) 
 {
-	int len;
+	int len;   
+
 	fflush(stdin);
 	f->nome = malloc(sizeof(char) * TAM_NOME); // aloca a memória 
 	do {
 		printf("Digite o nome do filme: "); // Pede o nome do filme 
-		fgets(f->nome, sizeof(f->nome), stdin);
-		fflush(stdin);
+		fgets(f->nome, sizeof(f->nome), stdin); //Pega o nome do filme com a função fgets
+		fflush(stdin); 
 
 		len = strlen(f->nome); // conta o tamanho
 		
-	} while (len == 1);
+	} while (len == 1); // enquanto o tamanho for igual a 1 volta para o do 
 
 	pegaSessoes(f); // Pega as sessoes
 }
@@ -156,7 +142,7 @@ void alocaMemoria(FILME* f)
 	f->p.s.masculino = malloc(sizeof(int) * f->sessoes); // Ponteiro contento o valor das pessoas do sexo masculino por sessao
 	f->p.s.feminino = malloc(sizeof(int) * f->sessoes); // Ponteiro contendo o valor das pessoas do sexo feninino por sessao
 
-	pegaPessoas(f); // Pega a quantidade de pessoas
+	pegaPessoas(f, 0); // Pega a quantidade de pessoas
 }
 
 void alocaMemoria_(FILME* f) // Criando um array com os dados para cada sessao com a quantidade de pessoas 

@@ -48,7 +48,7 @@ void validaSexo(char* sexo, int j);
 void validaFilme(char* nome_filme, int* len);
 
 int pegaSessoes(FILME* f);
-void pegaPessoas(FILME* f);
+int pegaPessoas(FILME* f, int sessao);
 
 void pegaIdades(FILME* f, int sessao, int pessoa);
 void pegaSexo(FILME* f, int i, int j);

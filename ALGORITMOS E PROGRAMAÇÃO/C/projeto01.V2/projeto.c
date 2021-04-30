@@ -158,11 +158,16 @@ void imprimeMenu()
 
 	do 
 	{    
-		menu();
+		int status;
+		do { // arrumar
+			menu();
+			
+			status = scanf("%d", &resp1);
+			
+		} while (status == 0);
+
 		// Iniciar meu struct com as variáveis iniciar com 0 como padrão
 		// INPUT
-
-		int status = scanf("%d", &resp1);
 		validaValor(&status, &resp1, 3, 0);
 		limpaTela();
 
@@ -185,7 +190,7 @@ void imprimeFilme()
 		soma_m += contaSexo(&f, i, 1, 0);
 	}
 
-	printf("NOME DO FILME: %s", retornaFilme(f));
+	printf("NOME DO FILME: %s\n", retornaFilme(f));
 	printf("PESSOAS DO SEXO FEMININO: %d\n", soma_f);
 	printf("PESSOAS DO SEXO MASCULINO: %d\n", soma_m);
 	Espera();
