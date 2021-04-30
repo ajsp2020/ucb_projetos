@@ -61,7 +61,7 @@ void liberaMemoria(FILME* f);
 void contaIdades(FILME* f, CLASSIFICACAO* c, int sessoes);
 int contaSexo(FILME* f, int valor, int questao, int sexo);
 
-void menu();
+//void menu();
 void limpaTela();
 
 int retornaSessoes(FILME f);

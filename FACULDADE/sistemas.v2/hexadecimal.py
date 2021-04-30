@@ -1,8 +1,9 @@
 from base import Base
 
-class Hexadecimal(): # Transforma classe de hexadecimal em Binario ou Decimal
+class Hexadecimal(Base): # Transforma classe de hexadecimal em Binario ou Decimal
     def __init__(self, valor):
-        self.__valor = valor
+        super().__init__(valor)
+        #print(f"O VALOR EM HEXADECIMAL É DE: {self.__valor}")
 
 # CALCULA VALORES DE HEXADECIMAL -> DECIMAL:
 
@@ -10,10 +11,9 @@ class Hexadecimal(): # Transforma classe de hexadecimal em Binario ou Decimal
         self.__base = 16
         self.__soma = 0
 
-        self.__inteiro = Base(self.__valor).inteiro
         inteiro = self.calcula_decimal_int()
         try:
-            self.__fracao = Base(self.__valor).fracao
+
             fracao = self.calcula_decimal_fracao()
             print(f"->> O VALOR EM DECIMAL É DE: {inteiro},{fracao} <<-")
             return inteiro, fracao
@@ -37,8 +37,8 @@ class Hexadecimal(): # Transforma classe de hexadecimal em Binario ou Decimal
         print("PARTE INTEIRA:")
 
 
-        self.__inteiro = self.transforma_hexadecimal(self.__inteiro)
-        numeros = [int(self.__inteiro) for self.__inteiro in self.__inteiro] # Transformando os valores em inteiro
+
+        numeros = [int(self._inteiro) for self._inteiro in self._inteiro] # Transformando os valores em inteiro
         n = len(numeros) - 1
         soma = 0
         for numero in numeros: # Para cada numero o resultado será mutiplicado de acordo com a formula e impresso
@@ -53,7 +53,7 @@ class Hexadecimal(): # Transforma classe de hexadecimal em Binario ou Decimal
 
     def calcula_decimal_fracao(self):
         print("PARTE FRAÇÃO:")
-        self.__fracao = self.transforma_hexadecimal(self.__fracao)
+
         numeros = [int(self.__fracao) for self.__fracao in self.__fracao]
         n = 1
         soma = 0
@@ -109,6 +109,7 @@ class Hexadecimal(): # Transforma classe de hexadecimal em Binario ou Decimal
 
 if __name__ == '__main__':
 
-    Hexadecimal('AB45CD,ABC').decimal()
+    #Hexadecimal('AB45CD,ABC').decimal()
     #Hexadecimal('1111111,00011111').binario()
+    Hexadecimal('A').decimal()
 

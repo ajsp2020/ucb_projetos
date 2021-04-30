@@ -12,5 +12,6 @@ void Espera();
 void imprimeMenu();
 void imprimeFilme();
 void imprimeSessoes();
+int menu(int* resp1);
 
 #endif

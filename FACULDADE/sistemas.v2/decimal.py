@@ -1,4 +1,4 @@
-from binario import Binario
+from base import Base
 
 """
 - Sistemas de numeração:
@@ -32,12 +32,6 @@ class Decimal:
     def __init__(self, decimal):
         self.__decimal = decimal
         print(f"O VALOR EM DECIMAL É DE: {self.__decimal}")
-        # Divide a parte fracionária da parte inteira
-        if ',' in self.__decimal:
-            self.__inteiro, self.__fracao = self.__decimal.split(',')
-
-        else:
-            self.__inteiro = self.__decimal
 
     def __hexadecimal(self, valor):
         lista = []
@@ -54,10 +48,12 @@ class Decimal:
 # CALCULA VALORES DE DECIMAL -> BINÁRIO:
 
     def binario(self):
+        self.__inteiro = Base(self.__decimal).inteiro
         inteiro = self.calcula_binario_int()
         inteiro = "".join(inteiro)
 
         try:
+            self.__fracao = Base(self.__decimal).fracao
             fracao = self.calcula_binario_fracionario()
             fracao = "".join(fracao)
             print(f"->> O VALOR EM BINÁRIO É DE: {inteiro},{fracao} <<-")
@@ -181,5 +177,5 @@ class Decimal:
 if __name__ == '__main__':
 
     #Decimal('495,6731').binario()
-    Decimal('9125,31597').hexadecimal()
-    #Decimal('54897').hexadecimal()
+    #Decimal('9125,31597').hexadecimal()
+    Decimal('54897').hexadecimal()

@@ -7,11 +7,11 @@
 // VALIDANDO OS DADOS:
 // VALIDA DADOS DE ENTRADA PARA VALORES INTEIRO
 //void validavalor(int* status, int* valor, valor no switch, valor de entrada, contador)
-void validaValor(int* status, int* valor, int entrada, int contador) // continar arrumando
+void validaValor(int* status, int* valor, int contador) // continar arrumando
 {
 	int temp, input;
 
-	if (entrada == 2 && (*valor < 3 || *valor > 100)) *status = 0;
+	if (*valor < 3 || *valor > 100) *status = 0;
 
 	while (*status != 1 || *valor < 0)
 	{
@@ -20,7 +20,7 @@ void validaValor(int* status, int* valor, int entrada, int contador) // continar
 			printf("Digite a idade da pessoa %d: ", contador + 1);
 		
 		*status = scanf("%d", valor);
-		if (entrada == 2 && (*valor < 3 || *valor > 100)) *status = 0;
+		if (*valor < 3 || *valor > 100) *status = 0;
 	}
 }
 
@@ -86,10 +86,10 @@ void pegaIdades(FILME* f, int sessao, int pessoa)
 		printf("SESSÃO %d:\n", i + 1);
 		for (int j = pessoa; j < f->p.pessoas[i]; j++) 
 		{
-			printf("Digite a idade da pessoa %d: ", j + 1);
+			printf("Digite a idade da pessoa %d: ", j + 1); // Pede a idade das pessoas
 
-			int status = scanf("%d", &f->p.idades[i][j]);
-			validaValor(&status, &f->p.idades[i][j], 2, j);
+			int status = scanf("%d", &f->p.idades[i][j]); // Pegando os valores de idade 
+			validaValor(&status, &f->p.idades[i][j], j); // Validado os valores da idade 
 			fflush(stdin);
 
 			pegaSexo(f, i, j); // Pega o sexo das pessoas
@@ -161,15 +161,15 @@ void liberaMemoria(FILME* f)
 {
 	for (int i; i < f->sessoes; i++)
 	{
-		free(f->p.idades[i]);
-		free(f->p.s.sexo[i]);
+		free(f->p.idades[i]); // Liberando a memoria para o array de idades
+		free(f->p.s.sexo[i]); // Liberanda a memoria para o array de sexo
 	}
-	free(f->p.idades);
-	free(f->p.s.sexo);
-	free(f->nome);
-	free(f->p.pessoas);
-	free(f->p.s.masculino);
-	free(f->p.s.feminino);
+	free(f->p.idades); // Liberando a mamoria para o array de idades
+	free(f->p.s.sexo); // Liberando a memoria para o array de sexo
+	free(f->nome); // Liberando a memoria para o array do nome
+	free(f->p.pessoas); // Liberando a memoria para o array de pessoas
+	free(f->p.s.masculino); // Liberando o array de memória de pessoas do sexo masculino
+	free(f->p.s.feminino); // Liberando o array de memória de pessoas do sexo feninino 
 }
 
 // CONTA A QUANTIDADE DE PESSOAS DO SEXO MASCULINO E FEMININO PARA O MESMO FILME

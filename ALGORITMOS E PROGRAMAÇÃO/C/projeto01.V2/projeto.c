@@ -32,7 +32,6 @@ Para esse projeto, eu tentei utilizar 3 conceitos implementados pelo autor do li
 #include<stdlib.h> // nescessário para usar as funções malloc e free e system
 #include<string.h> //  Manipulação de strings
 #include <ctype.h> // para incluir a biblioteca do tooper
-//#include <Windows.h>
 #include"projeto.h" // header file
 #include "dados.h" // header file
 
@@ -49,13 +48,12 @@ void dadosAluno()
 	printf("NOME: Antonio João da Silva Pereira\n"
 			"MATRÍCULA: UC21106344\n"
 			"CURSO: Ciências da Computação\n\n");
-	Espera();
 }
 
 // LIMPA A TELA 
 void limpaTela()
 {
-	system("cls");
+	system("cls"); // Limpa a tela 
 }
 
 // APLICA AS FUNÇÕES DE ACORDO COM OS INPUTS DO IMPRIMEMENU();
@@ -81,8 +79,9 @@ void direcionaResposta(int resp1, char* resp2)
 	}
 }
 
+
 // LÊ O TEXTO COM O ASSUNTO TEÓRICO
-void leTexto()
+void imprimeDados()
 {
 	FILE* arq;
 	char Linha[150];
@@ -106,21 +105,16 @@ void leTexto()
 		i++;
 	}
 	fclose(arq);
-	Espera();
 }
+
 
 // DA UMA PAUSE NO PROGRAMA E ESPERA "ENTER" COMO INPUT:
 void Espera()  // Definição da função "Espera"
 {
-	int tecla;
-	while (tecla != 10) // nl(newline) = 10 na tabela ASCII (\n)
-	{
-		tecla = getchar();
-		printf("Digite ENTER\n");
-	}
+	system("pause"); // Da pause no sistema e sai quando aperta qualquer tecla
 }
 
-char* listaFilmes(int filme)
+char* listaFilmes(int filme) // Falta implementar ainda
 {
 	switch (filme)
 	{
@@ -138,7 +132,7 @@ char* listaFilmes(int filme)
 }
 
 // MENU
-void menu()
+int menu(int* resp1) 
 {
 	printf("Digite 1 para inserir os dados:\n"
 		   "Digite 2 para imprimir o nome do filme, a quantidade de pessoas do sexo feminino e a quantidade de pessoas do sexo\n"
@@ -148,6 +142,16 @@ void menu()
 		   "Digite 4 para ler o texo com a base teórica:\n"
 		   "Digite 5 para imprimir os dados do aluno:\n"
 		   "Digite 6 para sair:\n");
+
+	int status = scanf("%d", resp1); // Pega a resposta do usuário
+	fflush(stdin);
+
+	if (status == 0) // se status == 0:
+	{
+		menu(resp1); // Volta o menu
+		return 0;
+	}
+
 }
 
 // 
@@ -157,24 +161,12 @@ void imprimeMenu()
 	char resp2 = 'N';
 
 	do 
-	{    
-		int status;
-		do { // arrumar
-			menu();
-			
-			status = scanf("%d", &resp1);
-			
-		} while (status == 0);
-
-		// Iniciar meu struct com as variáveis iniciar com 0 como padrão
-		// INPUT
-		validaValor(&status, &resp1, 3, 0);
-		limpaTela();
-
-		// JOGA PARA AS FUNÇÕES DE ACORDO COM O INPUT
-		direcionaResposta(resp1, &resp2);
-		Espera();
-		limpaTela();
+	{   
+		menu(&resp1); // Imprime o menu e pega o input
+		limpaTela();  // Limpa a tela		                                                   
+		direcionaResposta(resp1, &resp2); // Direciona de acordo com input 
+		Espera(); // Função de espera 
+		limpaTela(); // Funçaõ que limpa a tela
 
 	} while (resp2 == 'N'); 
 }
@@ -193,7 +185,6 @@ void imprimeFilme()
 	printf("NOME DO FILME: %s\n", retornaFilme(f));
 	printf("PESSOAS DO SEXO FEMININO: %d\n", soma_f);
 	printf("PESSOAS DO SEXO MASCULINO: %d\n", soma_m);
-	Espera();
 }
 
 // IMPRIME DADOS DE ACORDO COM A QUESTÃO 2 DO PROJETO
@@ -218,7 +209,6 @@ void imprimeSessoes()
 		printf("PESSOAS MAIORES DE 18 DO SEXO MASCULINO: %d \n", masculino);
 		printf("PESSOAS MAIORES DE 18 DO SEXO FEMININO: %d \n", feminino);
 	}
-	Espera();
 }
 
 int main()
