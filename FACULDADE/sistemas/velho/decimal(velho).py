@@ -70,21 +70,21 @@ class Decimal: # Transforma qualquer valor Decimal para binário ou hexadecimal
         print("PARTE FRACIONÁRIA:\n")
         n=0
         self.__parte_fracionaria =[]
-        while (self.__fracao != 0 and n < 8):
+        while (self._fracao != 0 and n < 8):
 
-            self.__intermediario = self.__fracao * base
+            self.__intermediario = self._fracao * base
 
             if self.__intermediario > 0:
-                self.__inteiro = int(self.__intermediario)
-                self.__parte_fracionaria.append(self.__inteiro)
-                print("{:.5f}".format(self.__fracao, 4), f" * {base} =",
+                self._inteiro = int(self.__intermediario)
+                self.__parte_fracionaria.append(self._inteiro)
+                print("{:.5f}".format(self._fracao, 4), f" * {base} =",
                       "{:.5f}".format(self.__intermediario),
-                      f"-> {self.__inteiro}")
+                      f"-> {self._inteiro}")
 
-                self.__fracao = self.__intermediario - self.__inteiro
+                self._fracao = self.__intermediario - self._inteiro
             else:
                 self.__parte_fracionaria.append(0)
-                print("{:.5f}".format(self.__fracao, 4), f" * {base} =",
+                print("{:.5f}".format(self._fracao, 4), f" * {base} =",
                       "{:.5f}".format(self.__intermediario),
                       f"-> {0}")
             n += 1

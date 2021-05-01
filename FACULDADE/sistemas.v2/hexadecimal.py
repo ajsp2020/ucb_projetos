@@ -1,13 +1,9 @@
 from base import Base
 
 class Hexadecimal(Base): # Transforma classe de hexadecimal em Binario ou Decimal
-    def __init__(self, valor):
-        super().__init__(valor)
-        #print(f"O VALOR EM HEXADECIMAL É DE: {self.__valor}")
-
-        print(self._inteiro)
-        print(type(self._inteiro))
-
+    def __init__(self, hexadecimal):
+        super().__init__(hexadecimal)
+        print(f"O VALOR EM HEXADECIMAL É DE: {hexadecimal}")
 
 # CALCULA VALORES DE HEXADECIMAL -> DECIMAL:
 
@@ -76,32 +72,19 @@ class Hexadecimal(Base): # Transforma classe de hexadecimal em Binario ou Decima
 
     def calcula_binario_int(self):
         self._inteiro = [self._inteiro for self._inteiro in self._inteiro]
-        self._inteiro = self.hexadecimal(self._inteiro)
+        self._inteiro = self.transforma_binario(self._inteiro, "hexadecimal")
         return self._inteiro
 
     def calcula_binario_fracao(self):
         self._fracao = [self._fracao for self._fracao in self._fracao]
-        self._fracao = self.hexadecimal(self._fracao)
+        self._fracao = self.transforma_binario(self._fracao, "hexadecimal")
         return  self._fracao
 
-    def hexadecimal(self, valor):
 
-        lista = []
-        hexadecimais = {'1': '0001', '2': '0010', '3': '0011', '4': '0100', '5': '0101', '6': '0110', '7': '0111',
-                        '8': '1000', '9': '1001', 'A': '1010', 'B': '1011', 'C': '1100', 'D': '1101', 'E': '1110',
-                        'F': '1111'}
-        for item in valor:
-            for hexa in hexadecimais.keys():
-                if item == hexa:
-                    item = hexadecimais[hexa]
-
-            lista.append(item)
-
-        return lista
 
 if __name__ == '__main__':
 
-    Hexadecimal('AB45CD,ABC').decimal()
-    #Hexadecimal('1111111,00011111').binario()
+    #Hexadecimal('AB45CD,ABC').decimal()
+    Hexadecimal('AAAA,A').binario()
     #Hexadecimal('A').decimal()
 
