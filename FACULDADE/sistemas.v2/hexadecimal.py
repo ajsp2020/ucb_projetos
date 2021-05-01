@@ -5,6 +5,10 @@ class Hexadecimal(Base): # Transforma classe de hexadecimal em Binario ou Decima
         super().__init__(valor)
         #print(f"O VALOR EM HEXADECIMAL É DE: {self.__valor}")
 
+        print(self._inteiro)
+        print(type(self._inteiro))
+
+
 # CALCULA VALORES DE HEXADECIMAL -> DECIMAL:
 
     def decimal(self): # Recebendo o valor em hexadecimal
@@ -21,23 +25,10 @@ class Hexadecimal(Base): # Transforma classe de hexadecimal em Binario ou Decima
             print(f"->> O VALOR EM DECIMAL É DE: {inteiro} <<-")
             return inteiro
 
-
-    def transforma_hexadecimal(self, valor): # Pega os valores em hexadecial e associa com o seu valor
-        hexa = {'A': 10, 'B': 11, 'C': 12, 'D': 13, 'E': 14, 'F': 15}
-        numeros = [valor for valor in valor] # Separando os valores e colocando numa lista
-
-        for valor in hexa.keys(): # Substituindo os valores caso seja em A, B... F para de 10 a 15
-            for i in range(len(numeros)):
-                if valor == numeros[i]:
-                    numeros[i] = hexa[valor]
-
-        return numeros
-
     def calcula_decimal_int(self): # Calcula os valores de hexadecimal em decimal
         print("PARTE INTEIRA:")
 
-
-
+        self._inteiro = self.transforma_hexadecimal(self._inteiro)
         numeros = [int(self._inteiro) for self._inteiro in self._inteiro] # Transformando os valores em inteiro
         n = len(numeros) - 1
         soma = 0
@@ -54,10 +45,11 @@ class Hexadecimal(Base): # Transforma classe de hexadecimal em Binario ou Decima
     def calcula_decimal_fracao(self):
         print("PARTE FRAÇÃO:")
 
-        numeros = [int(self.__fracao) for self.__fracao in self.__fracao]
+        self._fracao = self.transforma_hexadecimal(self._fracao)
+        numeros = [int(self._fracao) for self._fracao in self._fracao]
         n = 1
         soma = 0
-        while (self.__fracao != 0 and n < len(numeros)):
+        while (self._fracao != 0 and n < len(numeros)):
             for numero in numeros:
                 _ = numero * (2 ** -n)
                 print(f"({numero} * ({16} ** -{n})): ", _)  # Impressão parcial
@@ -83,14 +75,14 @@ class Hexadecimal(Base): # Transforma classe de hexadecimal em Binario ou Decima
             return inteiro
 
     def calcula_binario_int(self):
-        self.__inteiro = [self.__inteiro for self.__inteiro in self.__inteiro]
-        self.__inteiro = self.hexadecimal(self.__inteiro)
-        return  self.__inteiro
+        self._inteiro = [self._inteiro for self._inteiro in self._inteiro]
+        self._inteiro = self.hexadecimal(self._inteiro)
+        return self._inteiro
 
     def calcula_binario_fracao(self):
-        self.__fracao = [self.__fracao for self.__fracao in self.__fracao]
-        self.__fracao = self.hexadecimal(self.__fracao)
-        return  self.__fracao
+        self._fracao = [self._fracao for self._fracao in self._fracao]
+        self._fracao = self.hexadecimal(self._fracao)
+        return  self._fracao
 
     def hexadecimal(self, valor):
 
@@ -109,7 +101,7 @@ class Hexadecimal(Base): # Transforma classe de hexadecimal em Binario ou Decima
 
 if __name__ == '__main__':
 
-    #Hexadecimal('AB45CD,ABC').decimal()
+    Hexadecimal('AB45CD,ABC').decimal()
     #Hexadecimal('1111111,00011111').binario()
-    Hexadecimal('A').decimal()
+    #Hexadecimal('A').decimal()
 

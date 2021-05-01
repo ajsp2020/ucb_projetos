@@ -19,3 +19,13 @@ class Base:
         return self._fracao
 
 
+    def transforma_hexadecimal(self, valor): # Pega os valores em hexadecial e associa com o seu valor
+        hexa = {'A': 10, 'B': 11, 'C': 12, 'D': 13, 'E': 14, 'F': 15}
+        numeros = [valor for valor in valor] # Separando os valores e colocando numa lista
+
+        for valor in hexa.keys(): # Substituindo os valores caso seja em A, B... F para de 10 a 15
+            for i in range(len(numeros)):
+                if valor == numeros[i]:
+                    numeros[i] = hexa[valor]
+
+        return numeros
