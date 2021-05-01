@@ -75,6 +75,7 @@ void direcionaResposta(int resp1, char* resp2)
 	{
 		int inputValido; // Validado o input
 		do { 
+			limpaTela();
 			// PERGUNTA SE DESEJA SAIR OU CONTINUAR NO MENU
 			printf("Deseja sair (S/N): "); // Pede confirmação se deseja sair
 			scanf(" %c", resp2); // Pega a resposta da confirmação
@@ -177,24 +178,23 @@ void imprimeFilme()
 // IMPRIME DADOS DE ACORDO COM A QUESTÃO 2 DO PROJETO
 void imprimeSessoes()
 {
-	contaIdades(&f,&c,retornaSessoes(f));
-	printf("QUANTIDADE DE PESSOAS POR CLASSIFICAÇÃO DE IDADE:\n\n");
-	printf("CRIANÇAS (3 ATÉ 13 ANOS): %d\n", c.criancas);
-	printf("ADOLESCENTES (14 ATÉ 17 ANOS): %d\n", c.adolecentes);
-	printf("ADULTOS (18 ATÉ 64 ANOS): %d\n", c.adultos);
-	printf("IDOSOS (65 ATÉ 100 ANOS): %d\n", c.idosos);
+	contaIdades(&f,&c,retornaSessoes(f)); // Pega o retorno da função conta idade 
+	printf("QUANTIDADE DE PESSOAS POR CLASSIFICAÇÃO DE IDADE:\n\n"); 
+	printf("CRIANÇAS (3 ATÉ 13 ANOS): %d\n", c.criancas); // Imprime a quantidade de crianças
+	printf("ADOLESCENTES (14 ATÉ 17 ANOS): %d\n", c.adolecentes); // Imprime a quantidade de adolecentes
+	printf("ADULTOS (18 ATÉ 64 ANOS): %d\n", c.adultos); // Imprime a quantidade de adultos
+	printf("IDOSOS (65 ATÉ 100 ANOS): %d\n", c.idosos); // Imprime a quantidade de idosos
 	
-	int maiores;
-	int masculino = 0;
-	int feminino = 0;
+	int masculino = 0; //Variável para as pessoas do sexo masculino maior de 18 anos
+	int feminino = 0; // Variável para as pessoas do sexo feminino mair de 18 anos
 	printf("\nPESSOAS MAIORES QUE 18: \n\n");
 	for (int i = 0; i < retornaSessoes(f); i++)
 	{
-		printf("SESSÃO %d:\n", i + 1);
-		masculino = contaSexo(&f,i, 2, 0);
-		feminino = contaSexo(&f,i, 2, 1);
-		printf("PESSOAS MAIORES DE 18 DO SEXO MASCULINO: %d \n", masculino);
-		printf("PESSOAS MAIORES DE 18 DO SEXO FEMININO: %d \n", feminino);
+		printf("SESSÃO %d:\n", i + 1); // Imprime a sessão que está calculando 
+		masculino = contaSexo(&f,i, 2, 0); // soma os maiores de 18 do sexo masculino
+		feminino = contaSexo(&f,i, 2, 1); // soma os maiores de 18 do sexo feminino
+		printf("PESSOAS MAIORES DE 18 DO SEXO MASCULINO: %d \n", masculino); // umprime os do sexo masculino
+		printf("PESSOAS MAIORES DE 18 DO SEXO FEMININO: %d \n", feminino); // Imprime os do sexo feminino
 	}
 }
 

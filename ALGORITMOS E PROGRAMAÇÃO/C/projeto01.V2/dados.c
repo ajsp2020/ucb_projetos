@@ -44,16 +44,16 @@ void validaSexo(char* sexo, int j)
 
 
 // PEGANDO A QUANTIDADE DE SESSOES:
-int pegaSessoes(FILME* f)                                                                   // recebe como parametro a struct filme
+int pegaSessoes(FILME* f) // recebe como parametro a struct filme
 {
-		printf("Digite a quantidade de seções que serão realizadas: ");                     // Pergunta o nome das pessoas 
-		int status = scanf("%d", &f->sessoes);                                              // Pega o nome: se status for 1 o valor do input é válido
+		printf("Digite a quantidade de seções que serão realizadas: "); // Pergunta o nome das pessoas 
+		int status = scanf("%d", &f->sessoes); // Pega o nome: se status for 1 o valor do input é válido
 		fflush(stdin);
 	
-		if (f->sessoes != NUM_SESSOES || status == 0)                                       // se o valor não for válido
+		if (f->sessoes != NUM_SESSOES || status == 0)  // se o valor não for válido
 		{
-			pegaSessoes(f);                                                                 // Volta a função
-			return 0;                                                                       // Termina evitando que repita diversar vezes 
+			pegaSessoes(f); // Volta a função
+			return 0; // Termina evitando que repita diversar vezes 
 		}
 
 	alocaMemoria(f); // aloca a memoria
@@ -120,7 +120,7 @@ void pegaFilmes(FILME* f)
 	f->nome = malloc(sizeof(char) * TAM_NOME); // aloca a memória 
 	do {
 		printf("Digite o nome do filme: "); // Pede o nome do filme 
-		fgets(f->nome, sizeof(f->nome), stdin); //Pega o nome do filme com a função fgets
+		fgets(f->nome, TAM_NOME, stdin); //Pega o nome do filme com a função fgets
 		fflush(stdin); 
 
 		len = strlen(f->nome); // conta o tamanho
