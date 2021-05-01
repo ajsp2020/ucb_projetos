@@ -10,17 +10,20 @@
 void validaValor(int* status, int* valor, int contador) // continar arrumando
 {
 	int temp, input;
+	
+	int ehvalido = (*status == 1 && *valor > 3 && *valor < 100);
 
-	if (*valor < 3 || *valor > 100) *status = 0;
+	//if (*valor < 3 || *valor > 100) *status = 0;
 
-	while (*status != 1 || *valor < 0)
+	while (!ehvalido)
 	{
 		while ((temp = getchar()) != EOF && temp != '\n');
 			printf("Input inválido....\n");
 			printf("Digite a idade da pessoa %d: ", contador + 1);
 		
 		*status = scanf("%d", valor);
-		if (*valor < 3 || *valor > 100) *status = 0;
+		//if (*valor < 3 || *valor > 100) *status = 0;
+		ehvalido = (*status == 1 && *valor > 3 && *valor < 100);
 	}
 }
 
@@ -28,14 +31,14 @@ void validaValor(int* status, int* valor, int contador) // continar arrumando
 // VALIDA OS DADOS PARA O SEXO
 void validaSexo(char* sexo, int j)
 {
-	int sexovalido = *sexo == 'M' || *sexo == 'F';
+	int sexovalido = *sexo == 'M' || *sexo == 'F'; // Se sexo for M ou F retorne 1 caso contrário 0
 
-	while (!sexovalido)
+	while (!sexovalido) // Enquanto não for 1 
 	{
-		printf("Input inválido... \nDigite o sexo da pessoa (M - Masculino | F - Feminino) %d: ", j + 1);
-		scanf(" %c", sexo);
-		*sexo = toupper(*sexo);
-		sexovalido = *sexo == 'M' || *sexo == 'F';
+		printf("Input inválido... \nDigite o sexo da pessoa (M - Masculino | F - Feminino) %d: ", j + 1); // Peça o sexo
+		scanf(" %c", sexo); // Pegue o input
+		*sexo = toupper(*sexo); // Transforme para maiúsculo 
+		sexovalido = *sexo == 'M' || *sexo == 'F'; // Verefique se o valor é válido novamente
 	}
 }
 
@@ -100,12 +103,12 @@ void pegaIdades(FILME* f, int sessao, int pessoa)
 // PEGA O VALOR DO SEXO DE TODOS POR SESSAO
 void pegaSexo(FILME* f, int i, int j)
 {
-	printf("Digite o sexo da pessoa (M - Masculino | F - Feminino)  %d: ", j + 1); 
-	scanf("%c", &f->p.s.sexo[i][j]);
+	printf("Digite o sexo da pessoa (M - Masculino | F - Feminino)  %d: ", j + 1); // Pede o sexo da pessoa
+	scanf("%c", &f->p.s.sexo[i][j]); // Pega o sexo da pessoa
 
-	f->p.s.sexo[i][j] = toupper(f->p.s.sexo[i][j]);
+	f->p.s.sexo[i][j] = toupper(f->p.s.sexo[i][j]); 
 
-	validaSexo(&f->p.s.sexo[i][j], j);
+	validaSexo(&f->p.s.sexo[i][j], j); // Valida o valor 
 }
 
 // PEGA O NOME DO FILME

@@ -6,7 +6,7 @@
 void dadosAluno();
 
 void direcionaResposta(int resp1, char* resp2);
-void leTexto();
+void imprimeDados();
 void Espera();
 
 void imprimeMenu();

@@ -38,6 +38,7 @@ Para esse projeto, eu tentei utilizar 3 conceitos implementados pelo autor do li
 // VALORES CONSTANTES PARA O PROCESSO DE VALIDAÇÃO:
 
 FILME f;
+
 CLASSIFICACAO c;
 
 
@@ -59,23 +60,28 @@ void limpaTela()
 // APLICA AS FUNÇÕES DE ACORDO COM OS INPUTS DO IMPRIMEMENU();
 void direcionaResposta(int resp1, char* resp2)
 {
-	if (resp1 < 1 || resp1 > 6)
+	if (resp1 < 1 || resp1 > 6) //  Retorna a função imprimeMenu caso os valores de input do menu seja menor que 1 ou maior que 6
 	{
 		printf("Input inválido!\n");
-		imprimeMenu();
+		imprimeMenu(); // Função de retorno 
 	}
 	//DIRECIONA AS FUNÇÕES DE ACORDO COM O INPUT:
-	else if (resp1 == 1) pegaFilmes(&f);
+	else if (resp1 == 1) pegaFilmes(&f); 
 	else if (resp1 == 2) imprimeFilme();
 	else if (resp1 == 3) imprimeSessoes(c);
-	else if (resp1 == 4) leTexto();
+	else if (resp1 == 4) imprimeDados();
 	else if (resp1 == 5) dadosAluno(); 
 	else if (resp1 == 6)
 	{
-		// PERGUNTA SE DESEJA SAIR OU CONTINUAR NO MENU
-		printf("Deseja sair (S/N): ");
-		scanf(" %c", resp2);
-		*resp2 = toupper(*resp2);
+		int inputValido; // Validado o input
+		do { 
+			// PERGUNTA SE DESEJA SAIR OU CONTINUAR NO MENU
+			printf("Deseja sair (S/N): "); // Pede confirmação se deseja sair
+			scanf(" %c", resp2); // Pega a resposta da confirmação
+			*resp2 = toupper(*resp2); // Volta com a resposta 
+			inputValido = *resp2 == 'S' || *resp2 == 'N';
+
+		} while (!inputValido);
 	}
 }
 
@@ -83,10 +89,10 @@ void direcionaResposta(int resp1, char* resp2)
 // LÊ O TEXTO COM O ASSUNTO TEÓRICO
 void imprimeDados()
 {
-	FILE* arq;
-	char Linha[150];
-	char* result;
-	int i;
+	FILE* arq; 
+	char Linha[150]; // Cria um array do tamanho de 150 char
+	char* result; // cria um ponteiro para o resultado 
+	int i; 
 
 	// Abre um arquivo TEXTO para LEITURA
 	arq = fopen("introducao.txt", "rt");
@@ -107,28 +113,10 @@ void imprimeDados()
 	fclose(arq);
 }
 
-
 // DA UMA PAUSE NO PROGRAMA E ESPERA "ENTER" COMO INPUT:
 void Espera()  // Definição da função "Espera"
 {
 	system("pause"); // Da pause no sistema e sai quando aperta qualquer tecla
-}
-
-char* listaFilmes(int filme) // Falta implementar ainda
-{
-	switch (filme)
-	{
-	case 1:
-		return "O senhor dos anéis - O Retorno do Rei";
-		break;
-
-	case 2:
-		return "Harry Potter";
-		break;
-
-	default:
-		break;
-	}
 }
 
 // MENU
@@ -151,7 +139,6 @@ int menu(int* resp1)
 		menu(resp1); // Volta o menu
 		return 0;
 	}
-
 }
 
 // 
@@ -174,17 +161,17 @@ void imprimeMenu()
 // IMPRIME DADOS DE ACORDO COM A QUESTÃO 1 DO PROJETO
 void imprimeFilme()
 {
-	int soma_f = 0;
-	int soma_m = 0;
+	int soma_f = 0; // Variável para a soma das pessoas do sexo masculino 
+	int soma_m = 0; // Variável para a soma das pessoas do sexo feminino
 	for (int i = 0; i < retornaSessoes(f); i++)
 	{
-		soma_f += contaSexo(&f, i, 1, 1);
-		soma_m += contaSexo(&f, i, 1, 0);
+		soma_f += contaSexo(&f, i, 1, 1); // Soma o retorno da função para o sexo feminino
+		soma_m += contaSexo(&f, i, 1, 0); // Soma a retorno da função para o sexo masculino
 	}
 
-	printf("NOME DO FILME: %s\n", retornaFilme(f));
-	printf("PESSOAS DO SEXO FEMININO: %d\n", soma_f);
-	printf("PESSOAS DO SEXO MASCULINO: %d\n", soma_m);
+	printf("NOME DO FILME: %s\n", retornaFilme(f)); // Imprime o retorno da função para o nome
+	printf("PESSOAS DO SEXO FEMININO: %d\n", soma_f); // Imprime a soma das pessoas do sexo feminino
+	printf("PESSOAS DO SEXO MASCULINO: %d\n", soma_m); // Imprime a soma das pessoas do sexo masculino
 }
 
 // IMPRIME DADOS DE ACORDO COM A QUESTÃO 2 DO PROJETO

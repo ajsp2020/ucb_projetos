@@ -43,7 +43,7 @@ typedef struct classificacao CLASSIFICACAO;
 
 typedef struct filme FILME;
 
-void validaValor(int* status, int* valor, int entrada, int contador);
+void validaValor(int* status, int* valor, int contador);
 void validaSexo(char* sexo, int j);
 void validaFilme(char* nome_filme, int* len);
 
