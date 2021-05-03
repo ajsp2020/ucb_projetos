@@ -38,12 +38,9 @@ Para esse projeto, eu tentei utilizar 3 conceitos implementados pelo autor do li
 // VALORES CONSTANTES PARA O PROCESSO DE VALIDAÇÃO:
 
 FILME f;
-
 CLASSIFICACAO c;
 
-
 // IMPRIME OS DADOS DO ALUNO:
-
 void dadosAluno()
 {
 	printf("NOME: Antonio João da Silva Pereira\n"
@@ -85,7 +82,6 @@ void direcionaResposta(int resp1, char* resp2)
 		} while (!inputValido);
 	}
 }
-
 
 // LÊ O TEXTO COM O ASSUNTO TEÓRICO
 void imprimeDados()
