@@ -34,8 +34,7 @@ class Hexadecimal(Base): # Transforma classe de hexadecimal em Binario ou Decima
             print(f"({numero} * ({self.__base} ** {n})): ", _) # Impressão parcial
             soma += numero * (self.__base ** n) # formula genérica, valida para base qualquer base
             n -= 1
-        #print("")
-        #print(f"O valor em decimal é: {self.__soma}") # impressão total
+
         return soma
 
     def calcula_decimal_fracao(self):

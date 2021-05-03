@@ -6,7 +6,8 @@ class Acesso:
     def sistemas_computacionais(self):
         print("Digite o assunto que deseja acessar: \n")
         print("1- Teoria sobre mudança de Base:\n"
-              "2 -Exercício mudança de Base: ")
+              "2 -Exercício mudança de Base: "
+              "3 - Para sair: ")
         self.__assunto = input()
 
         if self.__assunto == "1":
