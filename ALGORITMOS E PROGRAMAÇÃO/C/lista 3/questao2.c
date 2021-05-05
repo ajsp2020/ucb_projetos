@@ -14,22 +14,16 @@ int multiplicacao(int valor1, int valor2)
 	else return valor1 + multiplicacao(valor1, valor2 - 1);
 }
 
-void validaValor(int* status, int* valor)
-{
-	while (status != 1)
-	{
-		printf("Digite os valores que deseja mutiplicar:");
-		status = scanf("%d", valor);
-	}
-}
 
 void pegaValor(int* valor1, int* valor2)
 {
 	int status;
 
 		fflush(stdin);
-		printf("Digite o %d valor");
-		status = scanf("%d", valor1);
+		printf("Digite o primeiro valor: ");
+		scanf("%d", valor1);
+		printf("Digite o segundo valor: ");
+		scanf("%d", valor2);
 }
 
 int main()
@@ -39,6 +33,5 @@ int main()
 	apresentacao();
 	pegaValor(&valor1, &valor2);
 	int resultado = multiplicacao(valor1, valor2);
-	printf("%d", resultado);
-
+	printf("%d X %d = %d",valor1, valor2, resultado);
 }

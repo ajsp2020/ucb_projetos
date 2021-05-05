@@ -12,6 +12,7 @@ class Hexadecimal(Base): # Transforma classe de hexadecimal em Binario ou Decima
         self.__soma = 0
 
         inteiro = self.calcula_decimal_int()
+
         try:
 
             fracao = self.calcula_decimal_fracao()
@@ -84,6 +85,6 @@ class Hexadecimal(Base): # Transforma classe de hexadecimal em Binario ou Decima
 if __name__ == '__main__':
 
     #Hexadecimal('AB45CD,ABC').decimal()
-    Hexadecimal('AAAA,A').binario()
-    #Hexadecimal('A').decimal()
+    #Hexadecimal('A').binario()
+    Hexadecimal('A').decimal()
 
