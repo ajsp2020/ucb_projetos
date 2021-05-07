@@ -36,7 +36,7 @@ class Hexadecimal(Base): # Transforma classe de hexadecimal em Binario ou Decima
             soma += numero * (self.__base ** n) # formula genérica, valida para base qualquer base
             n -= 1
 
-        return str(soma)
+        return soma
 
     def calcula_decimal_fracao(self):
         print("PARTE FRAÇÃO:")
@@ -45,7 +45,7 @@ class Hexadecimal(Base): # Transforma classe de hexadecimal em Binario ou Decima
         numeros = [int(self._fracao) for self._fracao in self._fracao]
         n = 1
         soma = 0
-        while (self._fracao != 0 and n <= len(numeros)):
+        while (self._fracao != 0 and n < len(numeros)):
             for numero in numeros:
                 _ = numero * (2 ** -n)
                 print(f"({numero} * ({16} ** -{n})): ", _)  # Impressão parcial
@@ -56,6 +56,8 @@ class Hexadecimal(Base): # Transforma classe de hexadecimal em Binario ou Decima
         zero, soma = soma.split('.')
 
         return soma
+
+
 # CALCULA VALORES DE HEXADECIMAL -> BINÁRIO:
     def binario(self):
 
@@ -78,13 +80,13 @@ class Hexadecimal(Base): # Transforma classe de hexadecimal em Binario ou Decima
     def calcula_binario_fracao(self):
         self._fracao = [self._fracao for self._fracao in self._fracao]
         self._fracao = self.transforma_binario(self._fracao, "hexadecimal")
-        return  self._fracao
+        return self._fracao
 
 
 
 if __name__ == '__main__':
 
     #Hexadecimal('AB45CD,ABC').decimal()
-    #Hexadecimal('A').binario()
-    Hexadecimal('A,A').decimal()
+    Hexadecimal('A').binario()
+    Hexadecimal('A').decimal()
 
