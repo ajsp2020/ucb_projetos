@@ -65,7 +65,7 @@ class Hexadecimal(Base): # Transforma classe de hexadecimal em Binario ou Decima
             fracao = self.calcula_binario_fracao()
             fracao = ''.join(fracao)
             print(f"->> O VALOR EM BINÁRIO É DE: {inteiro},{fracao} <<-")
-            return fracao
+            return inteiro, fracao
         except:
             print(f"->> O VALOR EM BINÁRIO É DE: {inteiro} <<-")
             return inteiro

@@ -28,7 +28,7 @@ class Binario(Base): # Transforma um valor binário ou hexadecimal em decimal
         try:
             fracao = self.calcula_decimal_fracao()
             print(f"->> O VALOR EM DECIMAL É DE: {inteiro},{fracao} <<-")
-            return fracao
+            return inteiro, fracao
         except:
             print(f"->> O VALOR EM DECIMAL É DE: {inteiro} <<-")
             return inteiro
@@ -45,7 +45,7 @@ class Binario(Base): # Transforma um valor binário ou hexadecimal em decimal
             print(f"({numero} * ({2} ** {n})): ", _) # Impressão parcial
             soma += numero * (2 ** n) # formula genérica, valida para base qualquer base
             n -= 1
-        return int(soma)
+        return str(soma)
 
     def calcula_decimal_fracao(self): # Calculando a parte fracionária
         print("PARTE FRAÇÃO")
@@ -64,7 +64,7 @@ class Binario(Base): # Transforma um valor binário ou hexadecimal em decimal
         soma = str(soma)
         zero, soma = soma.split('.')
 
-        return int(soma)
+        return str(soma)
 
 # CALCULA VALORES DE BINÁRIO -> HEXADECIMAL
 
@@ -77,9 +77,11 @@ class Binario(Base): # Transforma um valor binário ou hexadecimal em decimal
             fracao = self.calcula_fracao()
             fracao = "".join(fracao)
             print(f"->> O VALOR EM HEXADECIMAL É DE: {inteiro},{fracao} <<-")
+            return inteiro, fracao
 
         except:
             print(f"->> O VALOR EM HEXADECIMAL É DE: {inteiro} <<-")
+            return inteiro
 
 
     def calcula_inteiro(self): # Calcula a parte inteira
@@ -125,4 +127,4 @@ if __name__ == '__main__':
     #Binario('101111111011111100011111110101010111,0').hexadecimal()
     #Binario('01,01').hexadecimal()
 
-    Binario('11111111,1001').hexadecimal()
+    Binario('1111010').hexadecimal()

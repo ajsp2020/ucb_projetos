@@ -162,6 +162,6 @@ class Decimal(Base):
 
 if __name__ == '__main__':
 
-    Decimal('495,6731').binario()
+    Decimal('10,625').binario()
     #Decimal('9125,31597').hexadecimal()
     #Decimal('54897').hexadecimal()
