@@ -1,0 +1,37 @@
+Comando de repeticao
+for - para
+quando eu tiver uma quantidade pré0-definida de laços - quantas vezes o código deverá se repetir
+
+
+for(contador = 0; contador < 5; contador++){
+	imprementação
+}
+
+int contador = 0;
+while (contador < 5){
+	Código
+	contador ++;
+}
+
+#include <stdio.h> //blliloteca de funções
+#include <string.h>
+ 
+int main() //funções principais
+{ //variaveis utilizadas
+ char nome[100], genero[20];
+ //recebimento de informação do usuario
+ printf("Digite seu nome: ");
+ fgets(nome, 100, stdin);
+ printf("Digite seu genero(masculino ou feminino): ");
+ gets(genero);
+ //sistema de condições(comparando palavras)
+ if (strcmp(genero, "feminino") == 0)
+ {
+ printf("Ilma Sra.%s", nome);
+ }
+ else
+ {
+ printf("Ilmo Sr.%s", nome);
+ }
+ return 0;
+}

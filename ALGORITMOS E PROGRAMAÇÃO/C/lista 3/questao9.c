@@ -11,10 +11,7 @@ int main()
 	int* idades = malloc(sizeof(int) * TAM);
 	int i = 0;
 
-	int sexoValido;
-	int olhosValidos;
-	int cabelosValidos;
-	int idadeValida;
+	int sexoValido, olhosValidos, cabelosValidos, idadeValida;
 
 	setlocale(LC_ALL, "");
 
