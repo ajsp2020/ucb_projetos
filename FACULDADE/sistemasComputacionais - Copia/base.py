@@ -54,7 +54,6 @@ class Base:
             hexadecimais = {'0001': '1', '0010': '2', '0011': '3', '0100': '4', '0101': '5', '0110': '6', '0111': '7',
                             '1000': '8', '1001': '9', '1010': 'A', '1011': 'B', '1100': 'C', '1101': 'D', '1110': 'E',
                             '1111': 'F'}
-
         for valor in valores:
             for key in hexadecimais.keys():
                 if valor == key:
@@ -63,3 +62,10 @@ class Base:
             lista.append(valor)
 
         return lista
+
+if __name__ == "__main__":
+    x = '101010'
+    binary_x = Base('A').transforma_binario(x, "binario")
+
+    x = 'A'
+    binary_x = Base('A').transforma_binario(x, "hexadecimal")

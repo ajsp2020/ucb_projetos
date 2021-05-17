@@ -128,7 +128,7 @@ class Corretor:
         fim = time.time()
 
         print(f"PALAVRA INCORRETA = {self.__palavra}")
-        print(f"PALAVRA CORRETA = {palavra_correta}")
+        print(f"PALAVRA CORRIGIDA = {palavra_correta}")
         return palavra_correta
 
     def probabilidade(self, palavra_gerada):

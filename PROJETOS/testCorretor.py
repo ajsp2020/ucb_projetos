@@ -25,16 +25,19 @@ class Teste:
         for correta, errada in testes:
             ini = time.time()
             palavra_corrigida = Palavra().corrige_palavra(errada)
+            print(f"PALAVRA CORRETA: {correta}")
             fim = time.time()
             print(f"{contador}/{numero_palavras} - TEMPO PARA CORRIGIR A PALAVRA ({errada}): {round(fim - ini)} SEGUNDOS ")
             print(f"TEMPO TOTAL: {round(tempo_total + (fim - ini))} SEGUNDOS")
 
             if palavra_corrigida == correta:
                 acertou += 1
+                print(f"ACERTOU: {acertou}")
             else:
                 self.palavras_desconhecidas = []
                 self.palavras_desconhecidas.append(palavra_corrigida)
                 desconhecida += (correta not in vocabulario)
+                print(f"DESCONHECIDA: {desconhecida}")
 
             tempo_total += fim - ini
             contador += 1
