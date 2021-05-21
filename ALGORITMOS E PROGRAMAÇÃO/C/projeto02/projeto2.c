@@ -79,30 +79,83 @@ int main()
 				printf("QUANTIDADE DE ASSENTOS DISPONÍVEIS: %d\n", assentosExistentes[posicao]);
 				printf("POLTRONAS DISPONÍVEIS: \n\n");
 
-				printf("   abc  def");
+				
 
-				int corredor = 1;
-				for (int i = 0; i < assentosExistentes[posicao]; i++)
-				{
-					
-					if (i % 3 == 0) printf("\t");
-					if (i % 6 == 0) printf("\n");
-					if (i % 6 == 0 || i == 0)
+
+				/* IMPRIMINDO O ESQUEMA DO AVIÃO COM A OCUPAÇÃO DAS POLTRONAS */
+				
+				do {
+
+					int corredor = 1;
+					printf("D - DISPONÍVEL\n"
+						"R - RESERVADO\n"
+						"C - CONFIRMADO\n");
+
+					printf("\n   a b c        d e f");
+					for (int i = 0; i < assentosExistentes[posicao]; i++)
 					{
-						if(corredor < 10) printf(" %d ", corredor);
-						else printf("%d ", fileira);
-			
-						corredor++;
-					}
-					if(rioBranco[i] == 0) printf("D");
-				}
-				// -->  Arrumar para conseguir com a fileira e seu numero conseguir marcar como reservado. 
+						
+						if (i % 3 == 0) printf("\t");
+						if (i % 6 == 0) printf("\n");
+						if (i % 6 == 0 || i == 0)
+						{
+							if (corredor < 10) printf(" %d ", corredor);
+							else printf("%d ", corredor);
 
-				printf("QUAL ASSENTO DESEJA RESERVAR? "); 
-				printf("FILEIRA: ");
-				int fileira;
-				scanf("%c", fileira);
-				printf("%d", fileira);
+							corredor++;
+						}
+						if (rioBranco[i] == 0) printf("D ");
+						else if (rioBranco[i] == 1) printf("R ");
+						else if (rioBranco[i] == 2) printf("C ");
+					}
+					/* TERMINANDO DE IMPRIMIR */
+
+					// -->  Arrumar um sistema que gere um numero de identificação para cada cliente com dados do cliente;
+
+					/*INICIO: PERGUNTANDO E RESERVANDO O LOCAL DE ACORDOR COM A FILEIRA E SEU NÚMERO */
+
+					char fileira;
+					int fileiraInt;
+					int numeroFileira;
+					int posicao;
+					fflush(stdin);
+					printf("\nQUAL ASSENTO DESEJA RESERVAR? ");
+					scanf("%c %d", &fileira, &numeroFileira);
+
+					printf("%c", fileira);
+					printf("%d", numeroFileira);
+
+					/* FIM: PERGUNTANDO E RESERVANDO O LOCAL DE ACORDOR COM A FILEIRA E SEU NÚMERO */
+
+
+
+					/* INICIO: RESERVAR O LOCAL */
+
+					if (fileira == 'a') fileiraInt = 0;
+					if (fileira == 'b') fileiraInt = 1;
+					if (fileira == 'c') fileiraInt = 2;
+					if (fileira == 'd') fileiraInt = 3;
+					if (fileira == 'e') fileiraInt = 4;
+					if (fileira == 'f') fileiraInt = 5;
+
+					posicao = fileiraInt + (numeroFileira -1) * 6;
+					
+
+					/* INICIO: VERIFICAR SE O ASSENTO FOI OU NÃO JÁ RESERVADO */
+
+					if (rioBranco[posicao] != 0)
+					{
+						printf("\nO ASSENTO NÃO PODE SER RESERVADO:\n");
+						system("pause");
+					}
+					else rioBranco[posicao] = 1;
+
+					/* FIM: VERIFICAR SE O ASSENTO FOI OU NÃO JÁ RESERVADO */	
+
+					/* FIM: RESERVAR O LOCAL */
+					
+
+				} while (1);
 
 				break;
 
