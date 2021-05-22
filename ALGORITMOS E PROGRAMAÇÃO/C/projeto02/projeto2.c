@@ -3,7 +3,7 @@
 #include<locale.h>
 #include<ctype.h>
 #include<stdlib.h>
-
+#include<time.h>
 
 int main()
 {
@@ -17,7 +17,16 @@ int main()
 	for (int i = 0; i < 27; i++) destinosNacionaisPosicao[i] = i;
 	for (int i = 0; i < 27; i++) assentosExistentes[i] = 0; // Assentos existentes por voo.
 
-	// Desocupando todos os assentos dos voos:
+
+	/* INICIO: CRIANDO UM ARRAY COM TODAS AS RESERVAS POSSÍVEIS */
+
+	int reservas[100];
+	for (int i = 0; i < 100; i++) reservas[i] = 0;
+
+	/* FIM: CRIANDO UM ARRAY COM TODAS AS RESERVAS POSSÍVEIS */
+
+	/* INICIO: CRIANDO UM ARRAY COM TODOS OS VOOS E VAGANDO TODOS OS LUGARES */
+
 	// 0 -> Lugares disponíveis;
 	// 1 -> Lugares com reserva;
 	// 2 -> Lugares Comfirmados;
@@ -33,7 +42,7 @@ int main()
 		fortaleza[i] = 0;
 		brasilia[i] = 0;
 	}
-
+	/* FIM: CRIANDO UM ARRAY COM TODOS OS VOOS E VAGANDO TODOS OS LUGARES */
 
 	do {
 
@@ -66,101 +75,132 @@ int main()
 			}
 		}
 
+
+
 		if (temDestino == 1)
 		{
 			system("cls");
 
 			printf("DESTINO: %s\n", destinosNacionais[posicao]);
 
-			switch (posicao)
+			fflush(stdin);
+			char respostaReserva;
+			printf("DESEJA FAZER UMA RESERVA?");
+			scanf(" %c", &respostaReserva);
+
+
+
+			if (respostaReserva == 'S')
 			{
-			case 0:
-				
-				printf("QUANTIDADE DE ASSENTOS DISPONÍVEIS: %d\n", assentosExistentes[posicao]);
-				printf("POLTRONAS DISPONÍVEIS: \n\n");
+				/* INICIO: GERANDO UM CÓDIGO DE RESERVA UNICO */
 
-				
-
-
-				/* IMPRIMINDO O ESQUEMA DO AVIÃO COM A OCUPAÇÃO DAS POLTRONAS */
-				
+				int lista = 0, temIgual, temNaLista;
+				srand((unsigned)time(NULL));
+				int reserva = 1 + (rand() % 100);
 				do {
 
-					int corredor = 1;
-					printf("D - DISPONÍVEL\n"
-						"R - RESERVADO\n"
-						"C - CONFIRMADO\n");
+					for (temNaLista = 0; temNaLista < 100; temNaLista++) temIgual = reservas[temNaLista] == reserva;
+					if (temIgual) reserva = 1 + (rand() % 100);
+					else reservas[lista] = reserva;
 
-					printf("\n   a b c        d e f");
-					for (int i = 0; i < assentosExistentes[posicao]; i++)
-					{
-						
-						if (i % 3 == 0) printf("\t");
-						if (i % 6 == 0) printf("\n");
-						if (i % 6 == 0 || i == 0)
+				} while (temIgual == reserva);
+
+				lista++;
+
+				printf("RESERVA: %d\n", reserva);
+
+				/* FIM: GERANDO UM CÓDIGO DE RESERVA UNICO */
+
+				switch (posicao)
+				{
+				case 0:
+
+					printf("QUANTIDADE DE ASSENTOS DISPONÍVEIS: %d\n", assentosExistentes[posicao]);
+					printf("POLTRONAS DISPONÍVEIS: \n\n");
+
+
+
+
+					/* INICIO: IMPRIMINDO O ESQUEMA DO AVIÃO COM A OCUPAÇÃO DAS POLTRONAS */
+
+
+
+					do {
+
+						int corredor = 1;
+						printf("D - DISPONÍVEL\n"
+							"R - RESERVADO\n"
+							"C - CONFIRMADO\n");
+
+						printf("\n   a b c        d e f");
+						for (int i = 0; i < assentosExistentes[posicao]; i++)
 						{
-							if (corredor < 10) printf(" %d ", corredor);
-							else printf("%d ", corredor);
 
-							corredor++;
+							if (i % 3 == 0) printf("\t");
+							if (i % 6 == 0) printf("\n");
+							if (i % 6 == 0 || i == 0)
+							{
+								if (corredor < 10) printf(" %d ", corredor);
+								else printf("%d ", corredor);
+
+								corredor++;
+							}
+							if (rioBranco[i] == 0) printf("D ");
+							else if (rioBranco[i] == 1) printf("R ");
+							else if (rioBranco[i] == 2) printf("C ");
 						}
-						if (rioBranco[i] == 0) printf("D ");
-						else if (rioBranco[i] == 1) printf("R ");
-						else if (rioBranco[i] == 2) printf("C ");
-					}
-					/* TERMINANDO DE IMPRIMIR */
+						/* FIM: IMPRIMINDO O ESQUEMA DO AVIÃO COM A OCUPAÇÃO DAS POLTRONAS */
 
-					// -->  Arrumar um sistema que gere um numero de identificação para cada cliente com dados do cliente;
+						// -->  Dar uma forma de conseguir associar o numero da reserva com as poltronas escolhidas;
 
-					/*INICIO: PERGUNTANDO E RESERVANDO O LOCAL DE ACORDOR COM A FILEIRA E SEU NÚMERO */
+						/*INICIO: PERGUNTANDO E RESERVANDO O LOCAL DE ACORDOR COM A FILEIRA E SEU NÚMERO */
 
-					char fileira;
-					int fileiraInt;
-					int numeroFileira;
-					int posicao;
-					fflush(stdin);
-					printf("\nQUAL ASSENTO DESEJA RESERVAR? ");
-					scanf("%c %d", &fileira, &numeroFileira);
+						char fileira;
+						int fileiraInt;
+						int numeroFileira;
+						int posicao;
+						fflush(stdin);
+						printf("\nQUAL ASSENTO DESEJA RESERVAR? ");
+						scanf("%c %d", &fileira, &numeroFileira);
 
-					printf("%c", fileira);
-					printf("%d", numeroFileira);
+						printf("%c", fileira);
+						printf("%d", numeroFileira);
 
-					/* FIM: PERGUNTANDO E RESERVANDO O LOCAL DE ACORDOR COM A FILEIRA E SEU NÚMERO */
+						/* FIM: PERGUNTANDO E RESERVANDO O LOCAL DE ACORDOR COM A FILEIRA E SEU NÚMERO */
+
+						/* INICIO: RESERVAR O LOCAL */
+
+						if (fileira == 'a') fileiraInt = 0;
+						if (fileira == 'b') fileiraInt = 1;
+						if (fileira == 'c') fileiraInt = 2;
+						if (fileira == 'd') fileiraInt = 3;
+						if (fileira == 'e') fileiraInt = 4;
+						if (fileira == 'f') fileiraInt = 5;
+
+						posicao = fileiraInt + (numeroFileira - 1) * 6;
 
 
+						/* INICIO: VERIFICAR SE O ASSENTO FOI OU NÃO JÁ RESERVADO */
 
-					/* INICIO: RESERVAR O LOCAL */
+						if (rioBranco[posicao] != 0)
+						{
+							printf("\nO ASSENTO NÃO PODE SER RESERVADO:\n");
+							system("pause");
+						}
+						else rioBranco[posicao] = 1;
 
-					if (fileira == 'a') fileiraInt = 0;
-					if (fileira == 'b') fileiraInt = 1;
-					if (fileira == 'c') fileiraInt = 2;
-					if (fileira == 'd') fileiraInt = 3;
-					if (fileira == 'e') fileiraInt = 4;
-					if (fileira == 'f') fileiraInt = 5;
+						/* FIM: VERIFICAR SE O ASSENTO FOI OU NÃO JÁ RESERVADO */
 
-					posicao = fileiraInt + (numeroFileira -1) * 6;
-					
+						/* FIM: RESERVAR O LOCAL */
 
-					/* INICIO: VERIFICAR SE O ASSENTO FOI OU NÃO JÁ RESERVADO */
 
-					if (rioBranco[posicao] != 0)
-					{
-						printf("\nO ASSENTO NÃO PODE SER RESERVADO:\n");
-						system("pause");
-					}
-					else rioBranco[posicao] = 1;
+					} while (1);
 
-					/* FIM: VERIFICAR SE O ASSENTO FOI OU NÃO JÁ RESERVADO */	
+					break;
 
-					/* FIM: RESERVAR O LOCAL */
-					
-
-				} while (1);
-
-				break;
-
-			default:
-				break;
+				default:
+					break;
+				}
 			}
 		}
 		else
