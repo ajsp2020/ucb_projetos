@@ -12,11 +12,9 @@ int main()
 									"Cuiaba", "Campo Grande", "Belo Horizonte", "Belem", "Joao Pessoa", "Curitiba", "Recife", "Teresina", "Rio de Janeiro",
 									"Natal", "Porto Alegre", "Porto Velho", "Boa Vista", "Florianopolis", "Sao Paulo", "Aracaju", "Palmas" };
 	char destino[40], resposta;
+	int destinosNacionaisPosicao[27], assentosExistentes[27];
 
-	int destinosNacionaisPosicao[27];
 	for (int i = 0; i < 27; i++) destinosNacionaisPosicao[i] = i;
-	
-	int assentosExistentes[27];
 	for (int i = 0; i < 27; i++) assentosExistentes[i] = 0; // Assentos existentes por voo.
 
 
@@ -47,19 +45,18 @@ int main()
 	}
 	/* FIM: CRIANDO UM ARRAY COM TODOS OS VOOS E VAGANDO TODOS OS LUGARES */
 
-	/* INICIO: CRIA A QUANTIDADE DE ASSENTOS CADA VOO VAI TER: */
-
-	char respostaSaida1;
 	do {
+
+		int temDestino = 0, posicao;
 		fflush(stdin);
 		printf("DESTINO: ");
 		fgets(destino, 40, stdin);
+
 
 		for (int i = 0; i < 27; i++)
 		{
 			int status = 0;
 			int respostaValida;
-			
 
 			if (strncmp(destinosNacionais[i], destino, 5) == 0)
 			{
@@ -67,52 +64,29 @@ int main()
 				do {
 					fflush(stdin);
 
-					printf("QUANTIDADE DE ASSENTOS EXISTENTES PARA: %s ", destinosNacionais[i]);
+					printf("QUANTIDADE DE ASSENTOS EXISTENTES: ");
 					status = scanf("%d", &assentosExistentes[i]);
 
 					respostaValida = assentosExistentes[i] >= 90 && assentosExistentes[i] <= 200 && status == 1;
 
 				} while (!respostaValida);
-
+				posicao = i;
+				temDestino = 1;
 				break;
 			}
 		}
 
-		printf("DESEJA ADICIONAR MAIS VOOS? (S/N): ");
-		scanf(" %c", &respostaSaida1);
 
-	} while (respostaSaida1 == 'S' || respostaSaida1 == 's');
-
-
-	/* FIM: CRIA A QUANTIDADE DE ASSENTOS CADA VOO VAI TER. */
-
-	do {
-		int temDestino = 0, voo, numeroVoo;
-		int numeroAssento;
-		fflush(stdin);
-		printf("DIGITE O DESTINO:");
-		fgets(destino, 40, stdin);
-
-		for (int i = 0; i < 27; i++)
-		{
-
-			if (strncmp(destinosNacionais[i], destino, 5) == 0)
-			{
-				voo = i;
-				temDestino = 1;
-			}
-		}
 
 		if (temDestino == 1)
 		{
-
 			system("cls");
 
-			printf("DESTINO: %s\n", destinosNacionais[voo]);
+			printf("DESTINO: %s\n", destinosNacionais[posicao]);
 
 			fflush(stdin);
 			char respostaReserva;
-			printf("DESEJA FAZER UMA RESERVA? ");
+			printf("DESEJA FAZER UMA RESERVA?");
 			scanf(" %c", &respostaReserva);
 
 
@@ -126,37 +100,35 @@ int main()
 				printf("LISTA %d\n", lista);
 
 				srand((unsigned)time(NULL));
-				int reserva = 1 + (rand() % 1000);
+				int reserva = 1 + (rand() % 100);
 				do {
 
 					for (temNaLista = 0; temNaLista < 100; temNaLista += 8) temIgual = reservas[temNaLista] == reserva;
-					if (temIgual) reserva = 1 + (rand() % 1000);
-					else
-					{
-						reservas[lista] = reserva; // O primeiro vai receber a reserva
-						numeroVoo = lista + 1;
-						reservas[numeroVoo] = voo; // O segundo recebe o voo
-						numeroAssento = numeroVoo + 1;
-					}
+					if (temIgual) reserva = 1 + (rand() % 100);
+					else reservas[lista] = reserva;
 
 				} while (temIgual == reserva);
 
 				lista += 8;
 
 
-				printf("NUMERO DA RESERVA: %d\n", reserva);
+				printf("RESERVA: %d\n", reserva);
 
 				/* FIM: GERANDO UM CÓDIGO DE RESERVA UNICO */
 
-				switch (voo)
+				switch (posicao)
 				{
 				case 0:
-					printf("DESTINO: %s\n", destinosNacionais[voo]);
-					printf("QUANTIDADE DE ASSENTOS DISPONÍVEIS: %d\n", assentosExistentes[voo] ); // colocar o assento disponivel menos oq ja foi escolhido
+
+					printf("QUANTIDADE DE ASSENTOS DISPONÍVEIS: %d\n", assentosExistentes[posicao]);
 					printf("POLTRONAS DISPONÍVEIS: \n\n");
 
 
+
+
 					/* INICIO: IMPRIMINDO O ESQUEMA DO AVIÃO COM A OCUPAÇÃO DAS POLTRONAS */
+
+
 
 					do {
 
@@ -166,7 +138,7 @@ int main()
 							"C - CONFIRMADO\n");
 
 						printf("\n   a b c        d e f");
-						for (int i = 0; i < assentosExistentes[voo]; i++)
+						for (int i = 0; i < assentosExistentes[posicao]; i++)
 						{
 
 							if (i % 3 == 0) printf("\t");
@@ -184,7 +156,7 @@ int main()
 						}
 						/* FIM: IMPRIMINDO O ESQUEMA DO AVIÃO COM A OCUPAÇÃO DAS POLTRONAS */
 
-						// -->  Criar uma forma de sair da area de reserva, dar o preço e perguntar de deseja confirmar a passagem
+						// -->  Dar uma forma de conseguir associar o numero da reserva com as poltronas escolhidas; --> Tenho como ideia cada reserva somente poder reservar 5 assentos. sendo que preciso criar um array cuja de 6 em 6 tenha o valor da reserva com  o assento em seguida
 
 						/*INICIO: PERGUNTANDO E RESERVANDO O LOCAL DE ACORDOR COM A FILEIRA E SEU NÚMERO */
 
@@ -192,14 +164,12 @@ int main()
 						int fileiraInt;
 						int numeroFileira;
 						int posicao;
-						
-
 						fflush(stdin);
 						printf("\nQUAL ASSENTO DESEJA RESERVAR? ");
 						scanf("%c %d", &fileira, &numeroFileira);
 
 						printf("%c", fileira);
-						printf("%d\n", numeroFileira);
+						printf("%d", numeroFileira);
 
 						/* FIM: PERGUNTANDO E RESERVANDO O LOCAL DE ACORDOR COM A FILEIRA E SEU NÚMERO */
 
@@ -222,24 +192,7 @@ int main()
 							printf("\nO ASSENTO NÃO PODE SER RESERVADO:\n");
 							system("pause");
 						}
-						else
-						{	
-							if (numeroAssento > numeroVoo && numeroAssento < numeroVoo + 7)
-							{
-								rioBranco[posicao] = 1;
-								reservas[numeroAssento] = posicao;
-								numeroAssento++;
-							}
-							else
-							{
-								printf("NÃO É PERMITIDO RESERVAR MAIS POLTRONAS:\n");
-							}
-								
-						}
-						for (int i = 0; i < 16; i++) // testando
-						{
-							printf("reservas[%d] = %d\n",i,  reservas[i]);
-						}
+						else rioBranco[posicao] = 1;
 
 						/* FIM: VERIFICAR SE O ASSENTO FOI OU NÃO JÁ RESERVADO */
 
