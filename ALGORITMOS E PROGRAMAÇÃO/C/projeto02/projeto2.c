@@ -311,8 +311,6 @@ int main()
 					
 				}
 
-	
-
 			break;
 
 		case 4:
