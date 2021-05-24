@@ -5,8 +5,6 @@
 #include<stdlib.h>
 #include<time.h>
 
-#define TAM_RESERVA 100
-
 int main()
 {
 	setlocale(LC_ALL, "Portuguese");
@@ -21,7 +19,7 @@ int main()
 	int assentosExistentes[27];
 	for (int i = 0; i < 27; i++) assentosExistentes[i] = 0; // Assentos existentes por voo.
 
-	int lista = 0; // Variavel que controla o ponteiro da lista de reservas
+
 	/* INICIO: CRIANDO UM ARRAY COM TODAS AS RESERVAS POSSÍVEIS */
 
 	// reserva = {numero da reserva/ voo/ poltronas}
@@ -75,9 +73,10 @@ int main()
 		printf("*     5 - CANCELAR UMA RESERVA:                                                                                             *\n");
 		printf("*     6 - DADOS DO VOO:                                                                                                     *\n");
 		printf("*     7 - SAIR:                                                                                                             *\n");
-		printf("*                                                                                                                           *\n");
-		printf("*****************************************************************************************************************************\n");
 		scanf(" %d", &respostaMenu);
+		printf("*                                                                                                                           *\n");
+		printf("*****************************************************************************************************************************\n")
+		
 		/* FIM: CRIANDO UM MENU. */
 
 		switch (respostaMenu)
@@ -157,7 +156,7 @@ int main()
 					{
 						/* INICIO: GERANDO UM CÓDIGO DE RESERVA UNICO */
 
-						int  temIgual, temNaLista;
+						int lista = 0, temIgual, temNaLista;
 
 						printf("LISTA %d\n", lista);
 
@@ -165,7 +164,7 @@ int main()
 						int reserva = 1 + (rand() % 1000);
 						do {
 
-							for (temNaLista = 0; temNaLista < TAM_RESERVA; temNaLista += 8) temIgual = reservas[temNaLista] == reserva;
+							for (temNaLista = 0; temNaLista < 100; temNaLista += 8) temIgual = reservas[temNaLista] == reserva;
 							if (temIgual) reserva = 1 + (rand() % 1000);
 							else
 							{
@@ -227,7 +226,7 @@ int main()
 								/*INICIO: PERGUNTANDO E RESERVANDO O LOCAL DE ACORDOR COM A FILEIRA E SEU NÚMERO */
 
 								char fileira;
-								int letraFileira;
+								int fileiraInt;
 								int numeroFileira;
 								int posicao;
 
@@ -243,14 +242,14 @@ int main()
 
 								/* INICIO: RESERVAR O LOCAL */
 
-								if (fileira == 'a') letraFileira = 0;
-								if (fileira == 'b') letraFileira = 1;
-								if (fileira == 'c') letraFileira = 2;
-								if (fileira == 'd') letraFileira = 3;
-								if (fileira == 'e') letraFileira = 4;
-								if (fileira == 'f') letraFileira = 5;
+								if (fileira == 'a') fileiraInt = 0;
+								if (fileira == 'b') fileiraInt = 1;
+								if (fileira == 'c') fileiraInt = 2;
+								if (fileira == 'd') fileiraInt = 3;
+								if (fileira == 'e') fileiraInt = 4;
+								if (fileira == 'f') fileiraInt = 5;
 
-								posicao = letraFileira + (numeroFileira - 1) * 6;
+								posicao = fileiraInt + (numeroFileira - 1) * 6;
 
 
 								/* INICIO: VERIFICAR SE O ASSENTO FOI OU NÃO JÁ RESERVADO */
@@ -314,95 +313,8 @@ int main()
 
 			break;
 
-		case 4:; // CONFIRMAR UMA RESERVA: 
-			
-			int codigoReserva;
-			printf("DIGITE O CÓDIGO DA RESERVA:");
-			scanf("%d", &codigoReserva);
-
-			/* INICIO: PEGANDO O VALOR DO ASSENTO */
-
-	
-			char letra[6];
-			int numero[6];
-
-			for (int i = 0; i < TAM_RESERVA; i += 8)
-			{
-				if (reservas[i] == codigoReserva)
-				{
-					printf("CÓDIGO DE RESERVA: %d\n", reservas[i]);
-					printf("DESTINO: %s\n", destinosNacionais[reservas[i + 1]]);
-
-					for (int poltrona = i + 2; poltrona < i + 8; poltrona++)
-					{
-						if (reservas[poltrona] != 0) 
-						{
-							for (int fileiraNumero = 0; fileiraNumero < 33; fileiraNumero++)
-							{
-								for (int fileiraLetra = 0; fileiraLetra < 6; fileiraLetra++)
-								{
-									if (reservas[poltrona] == fileiraLetra + fileiraNumero * 6)
-									{
-										switch (fileiraLetra)
-										{
-										case 0:
-											printf("POLTRONA = a %d \n", fileiraNumero + 1);
-											break;
-
-										case 1:
-											printf("POLTRONA = b %d \n", fileiraNumero + 1);
-											break;
-
-										case 2:
-											printf("POLTRONA = c %d \n", fileiraNumero + 1);
-											break;
-
-										case 3:
-											printf("POLTRONA = d %d \n", fileiraNumero + 1);
-											break;
-
-										case 4:
-											printf("POLTRONA = e %d \n", fileiraNumero + 1);
-											break;
-
-										case 5:
-											printf("POLTRONA = f %d \n", fileiraNumero + 1);
-											break;
-
-										default:
-											break;
-										}
-										
-									}
-								}
-							}
-						}		
-					}
-
-					// continuar
-				}
-			}
-			
-
-			/* INICIO: PEGANDO O VALOR DO ASSENTO */
-
-			//for (int i = 0; i < TAM_RESERVA; i += 8)
-			//{
-			//	if (reservas[i] == codigoReserva)
-			//	{
-			//		printf("RESERVA NÚMERO: %d\n", reservas[i]);
-			//		printf("DESTINO: %s\n", destinosNacionais[reservas[i + 1]]);
-			//		for (int i = 0; i < 6; i++) printf("ASSENTOS: %c%d", letra[i], numero[i]);
-			//	}
-			//}
-
-
-
-
-
-			break;
-
-		case 5:
+		case 4:
+			printf("CASO 4");
 
 			break;
 
