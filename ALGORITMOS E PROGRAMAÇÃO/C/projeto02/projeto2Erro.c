@@ -5,7 +5,7 @@
 #include<stdlib.h>
 #include<time.h>
 
-#define TAM_RESERVA 100
+#define TAM_RESERVA 200
 
 int main()
 {
@@ -14,6 +14,9 @@ int main()
 									"Cuiaba", "Campo Grande", "Belo Horizonte", "Belem", "Joao Pessoa", "Curitiba", "Recife", "Teresina", "Rio de Janeiro",
 									"Natal", "Porto Alegre", "Porto Velho", "Boa Vista", "Florianopolis", "Sao Paulo", "Aracaju", "Palmas" };
 	char destino[40], resposta;
+
+	float precoReal = 599.49;
+	int preco;
 
 	int destinosNacionaisPosicao[27];
 	for (int i = 0; i < 27; i++) destinosNacionaisPosicao[i] = i;
@@ -25,7 +28,7 @@ int main()
 	/* INICIO: CRIANDO UM ARRAY COM TODAS AS RESERVAS POSSÍVEIS */
 
 	// reserva = {numero da reserva/ voo/ poltronas}
-	int reservas[100];
+	int reservas[200];
 	for (int i = 0; i < 100; i++) reservas[i] = 0;
 
 	/* FIM: CRIANDO UM ARRAY COM TODAS AS RESERVAS POSSÍVEIS */
@@ -125,6 +128,9 @@ int main()
 			
 				int temDestino = 0, voo, numeroVoo;
 				int numeroAssento;
+				int numeroIdade;
+				
+
 				fflush(stdin);
 				printf("DIGITE O DESTINO:");
 				fgets(destino, 40, stdin);
@@ -159,25 +165,33 @@ int main()
 
 						int  temIgual, temNaLista;
 
-						printf("LISTA %d\n", lista);
+						//printf("LISTA %d\n", lista);
 
 						srand((unsigned)time(NULL));
 						int reserva = 1 + (rand() % 1000);
-						do {
-
-							for (temNaLista = 0; temNaLista < TAM_RESERVA; temNaLista += 8) temIgual = reservas[temNaLista] == reserva;
-							if (temIgual) reserva = 1 + (rand() % 1000);
-							else
+						for (int i = 0; i < TAM_RESERVA; i += 14)
+						{
+							if (reservas[i] == 0)
 							{
-								reservas[lista] = reserva; // O primeiro vai receber a reserva
-								numeroVoo = lista + 1;
-								reservas[numeroVoo] = voo; // O segundo recebe o voo
-								numeroAssento = numeroVoo + 1;
+								do {
+
+									for (temNaLista = 0; temNaLista < TAM_RESERVA; temNaLista += 14) temIgual = reservas[temNaLista] == reserva;
+									if (temIgual) reserva = 1 + (rand() % 1000);
+									else
+									{
+										reservas[i] = reserva; // O primeiro vai receber a reserva
+										numeroVoo = i + 1;
+										reservas[numeroVoo] = voo; // O segundo recebe o voo					
+										numeroAssento = numeroVoo + 1;
+										numeroIdade = numeroAssento + 6;
+
+									}
+
+								} while (temIgual == reserva);
 							}
+						
 
-						} while (temIgual == reserva);
-
-						lista += 8;
+						//lista += 14;
 
 
 						printf("NUMERO DA RESERVA: %d\n", reserva);
@@ -203,7 +217,7 @@ int main()
 									"R - RESERVADO\n"
 									"C - CONFIRMADO\n");
 
-								printf("\n   a b c        d e f");
+								printf("\n\t\t\t\t\t\t   a b c        d e f");
 								for (int i = 0; i < assentosExistentes[voo]; i++)
 								{
 
@@ -211,14 +225,30 @@ int main()
 									if (i % 6 == 0) printf("\n");
 									if (i % 6 == 0 || i == 0)
 									{
-										if (corredor < 10) printf(" %d ", corredor);
-										else printf("%d ", corredor);
+										if (corredor < 10) printf("\t\t\t\t\t\t %d ", corredor);
+										else printf("\t\t\t\t\t\t%d ", corredor);
 
 										corredor++;
 									}
-									if (rioBranco[i] == 0) printf("D ");
-									else if (rioBranco[i] == 1) printf("R ");
-									else if (rioBranco[i] == 2) printf("C ");
+									if (rioBranco[i] == 0)
+									{
+										printf("\033[0;32m");
+										printf("D ");
+										printf("\033[0;37m");
+									}
+									else if (rioBranco[i] == 1)
+									{
+										printf("\033[0;31m");
+										printf("R ");
+										printf("\033[0;37m");
+									}
+										
+									else if (rioBranco[i] == 2)
+									{
+										printf("\033[0;34m");
+										printf("C ");
+										printf("\033[0;37m");
+									}
 								}
 								/* FIM: IMPRIMINDO O ESQUEMA DO AVIÃO COM A OCUPAÇÃO DAS POLTRONAS */
 
@@ -230,11 +260,18 @@ int main()
 								int letraFileira;
 								int numeroFileira;
 								int posicao;
+								int idade;
+								
 
 
 								fflush(stdin);
-								printf("\nQUAL ASSENTO DESEJA RESERVAR? ");
+								printf("\n\nQUAL ASSENTO DESEJA RESERVAR? ");
 								scanf("%c %d", &fileira, &numeroFileira);
+								printf("QUAL A IDADE DO PASSAGEIRO?");
+								scanf("%d", &idade);
+
+								if (idade <= 5) preco = precoReal * 0.5 * 100;
+								else preco = precoReal * 100;
 
 								printf("%c", fileira);
 								printf("%d\n", numeroFileira);
@@ -244,11 +281,11 @@ int main()
 								/* INICIO: RESERVAR O LOCAL */
 
 								if (fileira == 'a') letraFileira = 0;
-								if (fileira == 'b') letraFileira = 1;
-								if (fileira == 'c') letraFileira = 2;
-								if (fileira == 'd') letraFileira = 3;
-								if (fileira == 'e') letraFileira = 4;
-								if (fileira == 'f') letraFileira = 5;
+								else if (fileira == 'b') letraFileira = 1;
+								else if (fileira == 'c') letraFileira = 2;
+								else if (fileira == 'd') letraFileira = 3;
+								else if (fileira == 'e') letraFileira = 4;
+								else if (fileira == 'f') letraFileira = 5;
 
 								posicao = letraFileira + (numeroFileira - 1) * 6;
 
@@ -266,7 +303,9 @@ int main()
 									{
 										rioBranco[posicao] = 1;
 										reservas[numeroAssento] = posicao;
+										reservas[numeroIdade] = preco;
 										numeroAssento++;
+										numeroIdade++;
 									}
 									else
 									{
@@ -274,7 +313,7 @@ int main()
 									}
 
 								}
-								for (int i = 0; i < 16; i++) // testando
+								for (int i = 0; i < 28; i++) // testando
 								{
 									printf("reservas[%d] = %d\n", i, reservas[i]);
 								}
@@ -283,21 +322,21 @@ int main()
 
 								/* FIM: RESERVAR O LOCAL */
 
-								int valoresValidos;
-								do { // DO WHILE DA SAIDA DA RESERVA
+								printf("Resposta = %d", resposta);
+								int status;
+								do { // Validando a resposta.
+									fflush(stdin);
+									printf("DESEJA RESERVAR MAIS UM ASSENTO?\n");
+									printf(" 1 - SIM:\n");
+									printf(" 2 - NÃO:\n");
+									status = scanf("%d", &resposta);
+									printf("Resposta = %d", resposta);
 
-									printf("DESEJA RESERVAR MAIS UM ASSENTO? \n");
-									printf(" 1 - SIM: \n");
-									printf(" 2 - NÃO: \n");
-									scanf("%d", &sairReserva);
-
-									valoresValidos = sairReserva == 1 || sairReserva == 2;
-
-								} while (!valoresValidos); // FIM DO DO WHILE DA SAIDA DA RESERVA
+								} while (status != 1 && (resposta != 1 || resposta != 2));
 				
-							} while (sairReserva == 1);
+							} while (resposta == 1);
 
-							continue;
+							break;
 
 						case 1:
 
@@ -315,19 +354,20 @@ int main()
 			break;
 
 		case 4:; // CONFIRMAR UMA RESERVA: 
-			
+			/* 4 -> INICIO: CALCELAMENTO DA RESERVA */
+
 			int codigoReserva;
 			printf("DIGITE O CÓDIGO DA RESERVA:");
 			scanf("%d", &codigoReserva);
 
-			/* INICIO: PEGANDO O VALOR DO ASSENTO */
+			/* 4.1 -> INICIO: IMPRIMIDO O CÓDIGO DA RESERVA, O DESTINO, O ASSENTO E SEU VALOR */
 
-	
-			char letra[6];
-			int numero[6];
+			float valor;
+			float soma = 0;
 
-			for (int i = 0; i < TAM_RESERVA; i += 8)
+			for (int i = 0; i < TAM_RESERVA; i += 14)
 			{
+				//printf("reservas[%d] = %d\n",i, reservas[i]);
 				if (reservas[i] == codigoReserva)
 				{
 					printf("CÓDIGO DE RESERVA: %d\n", reservas[i]);
@@ -345,28 +385,40 @@ int main()
 									{
 										switch (fileiraLetra)
 										{
-										case 0:
-											printf("POLTRONA = a %d \n", fileiraNumero + 1);
+										case 0:;
+											valor = (float)reservas[poltrona + 6] / 100;
+											printf("POLTRONA: a %d \n", fileiraNumero + 1);
+											printf("PREÇO: R$ %.2f\n", valor);
 											break;
 
 										case 1:
-											printf("POLTRONA = b %d \n", fileiraNumero + 1);
+											valor = (float)reservas[poltrona + 6] / 100;
+											printf("POLTRONA: b %d \n", fileiraNumero + 1);
+											printf("PREÇO: R$ %.2f\n", valor);
 											break;
 
 										case 2:
-											printf("POLTRONA = c %d \n", fileiraNumero + 1);
+											valor = (float)reservas[poltrona + 6] / 100;
+											printf("POLTRONA: c %d \n", fileiraNumero + 1);
+											printf("PREÇO: R$ %.2f\n", valor);
 											break;
 
 										case 3:
-											printf("POLTRONA = d %d \n", fileiraNumero + 1);
+											valor = (float)reservas[poltrona + 6] / 100;
+											printf("POLTRONA: d %d \n", fileiraNumero + 1);
+											printf("PREÇO: R$ %.2f\n", valor);
 											break;
 
 										case 4:
-											printf("POLTRONA = e %d \n", fileiraNumero + 1);
+											valor = (float)reservas[poltrona + 6] / 100;
+											printf("POLTRONA: e %d \n", fileiraNumero + 1);
+											printf("PREÇO: R$ %.2f\n", valor);
 											break;
 
 										case 5:
-											printf("POLTRONA = f %d \n", fileiraNumero + 1);
+											valor = (float)reservas[poltrona + 6] / 100;
+											printf("POLTRONA: f %d \n", fileiraNumero + 1);
+											printf("PREÇO: R$ %.2f\n", valor);
 											break;
 
 										default:
@@ -376,39 +428,141 @@ int main()
 									}
 								}
 							}
-						}		
+						}	
+
+						soma += (float)reservas[poltrona + 6] / 100;
+						
 					}
 
-					// continuar
+					/* 4.1.2 -> INICIO: IMPRIMINDO O TOTAL DA PASSAGEM E ATUALIZANDO O VOO */
+
+					printf("TAXA DE EMBARQUE: R$ 35,00\n");
+					printf("PREÇO TOTAL: R$ %.2f\n\n", soma + 35.00);
+
+					int status;
+					do { // Validando a resposta.
+						fflush(stdin);
+						printf("DESEJA CONFIRMAR A RESERVA?\n");
+						printf(" 1 - SIM:\n");
+						printf(" 2 - NÃO:\n");
+						status = scanf("%d", &resposta);
+
+					} while (status != 1 && (resposta != 1 || resposta != 2));
+					
+					if (resposta == 1) // Ser quer Confirmar a reserva
+					{
+						for (int poltrona = i + 2; poltrona < i + 8; poltrona++)
+						{
+							if (reservas[poltrona] != 0)
+							{
+								switch (reservas[i + 1]) // Pegue o numeroo do voo
+								{
+								case 0:
+									rioBranco[reservas[poltrona]] = 2;
+									break;
+
+								case 1:
+									//continuar ...
+									break;
+
+								default:
+									break;
+								}
+							}
+
+						}
+
+					}
+					/* 4.1.2 -> FIM: IMPRIMINDO O TOTAL DA PASSAGEM E ATUALIZANDO O VOO */
 				}
+				/* 4.1 -> FIM: IMPRIMIDO O CÓDIGO DA RESERVA, O DESTINO, O ASSENTO E SEU VALOR */
 			}
 			
-
-			/* INICIO: PEGANDO O VALOR DO ASSENTO */
-
-			//for (int i = 0; i < TAM_RESERVA; i += 8)
-			//{
-			//	if (reservas[i] == codigoReserva)
-			//	{
-			//		printf("RESERVA NÚMERO: %d\n", reservas[i]);
-			//		printf("DESTINO: %s\n", destinosNacionais[reservas[i + 1]]);
-			//		for (int i = 0; i < 6; i++) printf("ASSENTOS: %c%d", letra[i], numero[i]);
-			//	}
-			//}
-
-
-
-
-
+			/* 4 -> FIM: CALCELAMENTO DA RESERVA */
 			break;
 
-		case 5:
+		case 5: 
+			/* 5 -> INICIO: CANCELAMENTO DA RESERVA*/
+			
+			printf("DIGITE O CÓDIGO DA RESERVA:");
+			scanf("%d", &codigoReserva);
 
-			break;
+			/* 5.1 -> INICIO: IMPRIMIDO O CÓDIGO DA RESERVA, O DESTINO */
 
-		default:
 
-			break;
+			for (int i = 0; i < TAM_RESERVA; i += 14)
+			{
+				//printf("reservas[%d] = %d\n",i, reservas[i]);
+				if (reservas[i] == codigoReserva)
+				{
+					printf("CÓDIGO DE RESERVA: %d\n", reservas[i]);
+					printf("DESTINO: %s\n", destinosNacionais[reservas[i + 1]]);
+				}
+			}
+			/* 5.1 -> FIM: IMPRIMIDO O CÓDIGO DA RESERVA, O DESTINO */
+
+			/* 5.2 -> INÍCIO: CONFIRMAR SE DESEJA CANCELAR A RESERVA */ 
+
+			int status;
+
+			do { // Validando a resposta.
+				fflush(stdin);
+				printf("DESEJA CANCELAR A RESERVA?\n");
+				printf(" 1 - SIM:\n");
+				printf(" 2 - NÃO:\n");
+				status = scanf("%d", &resposta);
+
+			} while (status != 1 && (resposta != 1 || resposta != 2));
+
+
+			/* 5.2 -> FIM: CONFIRMAR SE DESEJA CANCELAR A RESERVA */
+
+			/* 5.3 -> INICIO: ATUALIZANDO O SISTEMA DO VOO */
+	
+			for (int i = 0; i < TAM_RESERVA; i += 14)
+			{
+				if (reservas[i] == codigoReserva)
+				{
+
+					if (resposta == 1) // Ser quer Confirmar a reserva
+					{
+
+
+						for (int poltrona = i + 2; poltrona < i + 8; poltrona++)
+						{
+
+							if (reservas[poltrona] != 0)
+							{
+
+								switch (reservas[i + 1]) // Pegue o numeroo do voo
+								{
+								case 0:
+									rioBranco[reservas[poltrona]] = 0; // Vagando o lugar no voo
+									for (int reserva = i; reserva < i + 14; reserva++) reservas[reserva] = 0; //Zerando a reserva
+
+									break;
+
+								case 1:
+									//continuar ...
+									break;
+
+								default:
+									break;
+								}
+							}
+						}
+					}
+				}
+
+				/* 5.3 -> FIM: ATUALIZANDO O SISTEMA DO VOO */
+				}
+
+			}
+				
+			/* 5 -> FIM: CANCELAMENTO DA RESERVA*/
+			default:
+
+				break;
 
 
 				/*else
@@ -440,7 +594,7 @@ int main()
 
 				} while (!respostaValida);*/
 
-			
+
 
 		}  // FIM DO WHILE MENU:
 
