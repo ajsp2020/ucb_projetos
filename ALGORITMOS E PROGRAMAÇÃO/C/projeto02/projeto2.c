@@ -143,7 +143,7 @@ int main()
 				do {
 					system("cls");
 					fflush(stdin);
-					printf("DESEJA ADICIONAR OUTRO VOO?  \n"); // Arrumar -> dando erro quando coloca valor diferente de 1 e 2******
+					printf("DESEJA ADICIONAR OUTRO VOO?  \n");
 					printf(" 1 - SIM: \n");
 					printf(" 2 - NÃO: \n");
 					int status = scanf(" %d", &adicionarVoos);
@@ -183,9 +183,7 @@ int main()
 			/* 3.2 -> Início: Gera um código de reserva, cria um mapa, pega a poltrona */
 			if (temDestino == 1 && assentosDestinosNacionais[voo][1] != 0)
 			{
-
 				system("cls");
-
 				printf("DESTINO: %s\n", destinosNacionais[voo]);
 
 				/* 3.2.1 -> Início: confirma se quer fazer uma reserva */
@@ -194,12 +192,12 @@ int main()
 				do { 
 
 					fflush(stdin);
-					printf("DESEJA FAZER UMA RESERVA?  \n"); // Arrumar -> dando erro quando coloca valor diferente de 1 e 2******
+					printf("DESEJA FAZER UMA RESERVA?  \n"); 
 					printf(" 1 - SIM: \n");
 					printf(" 2 - NÃO: \n");
-					scanf(" %d", &fazerReserva);
+					int status = scanf(" %d", &fazerReserva);
 
-					valoresValidos = fazerReserva == 1 || fazerReserva == 2;
+					valoresValidos = (fazerReserva == 1 || fazerReserva == 2) && status ==1;
 					system("cls");
 				} while (!valoresValidos); 
 				/* 3.2.1 -> Fim: confirma se quer fazer uma reserva */
@@ -231,133 +229,156 @@ int main()
 					lista += 14;
 				/* 3.2.2 -> Fim: Cria um código de reserva único e adiciona na lista de reservas seu numero e voo correspondente */
 
-					/* 3.2.3 -> Inicio: Cria um mapa do avião com a ocupação das pontronas */
-					printf("NUMERO DA RESERVA: %d\n", reserva);
-					printf("DESTINO: %s\n", destinosNacionais[voo]);
-					printf("TOTAL DE ASSENTOS: %d\n", assentosDestinosNacionais[voo][1]); // colocar o assento disponivel menos oq ja foi escolhido
-					printf("POLTRONAS DISPONÍVEIS: \n\n");
+					/* 3.2.4 -> Inicio: Pega o assento e a idade do passageiro, calcula o preco e atualiza os dados da reserva */
 
+					printf("\n\n");
+					char fileira;
+					int letraFileira, numeroFileira, posicao, idade, numeroValido = 0;
 					int sairReserva;
-
+					// Pegando o assento e a idade
+					fflush(stdin);
 					do { 
+						/* 3.2.3 -> Inicio: Cria um mapa do avião com a ocupação das pontronas */
 
-						int corredor = 1;
-						printf("D - DISPONÍVEL\n"
-							"R - RESERVADO\n"
-							"C - CONFIRMADO\n");
+						do {
 
-						printf("\n\t\t\t\t\t\t   a b c        d e f\n");
-						for (int i = 0; i < assentosDestinosNacionais[voo][1]; i++)
-						{
+							printf("NUMERO DA RESERVA: %d\n", reserva);
+							printf("DESTINO: %s\n", destinosNacionais[voo]);
+							printf("TOTAL DE ASSENTOS: %d\n", assentosDestinosNacionais[voo][1]); // colocar o assento disponivel menos oq ja foi escolhido
+							printf("POLTRONAS DISPONÍVEIS: \n\n");
 
-							if (i % 3 == 0) printf("\t");
-							if (i % 6 == 0) printf("\n");
-							if (i % 6 == 0 || i == 0)
+
+							int corredor = 1;
+							printf("D - DISPONÍVEL\n"
+								"R - RESERVADO\n"
+								"C - CONFIRMADO\n");
+
+							printf("\n\t\t\t\t\t\t   a b c        d e f\n");
+							for (int i = 0; i < assentosDestinosNacionais[voo][1]; i++)
 							{
-								if (corredor < 10) printf("\t\t\t\t\t\t %d ", corredor);
-								else printf("\t\t\t\t\t\t%d ", corredor);
 
-								corredor++;
-							}
-							if (assentosDestinosNacionais[voo][i + 4] == 0)
-							{
-								printf("\033[0;32m");
-								printf("D ");
-								printf("\033[0;37m");
-							}
-							else if (assentosDestinosNacionais[voo][i + 4] == 1)
-							{
-								printf("\033[0;31m");
-								printf("R ");
-								printf("\033[0;37m");
-							}
-										
-							else if (assentosDestinosNacionais[voo][i + 4] == 2)
-							{
-								printf("\033[0;34m");
-								printf("C ");
-								printf("\033[0;37m");
-							}
-						}
-						/* 3.2.3 -> Fim: Cria um mapa do avião com a ocupação das pontronas */
+								if (i % 3 == 0) printf("\t");
+								if (i % 6 == 0) printf("\n");
+								if (i % 6 == 0 || i == 0)
+								{
+									if (corredor < 10) printf("\t\t\t\t\t\t %d ", corredor);
+									else printf("\t\t\t\t\t\t%d ", corredor);
 
-						/* 3.2.4 -> Inicio: Pega o assento e a idade do passageiro, calcula o preco e atualiza os dados da reserva */
+									corredor++;
+								}
+								if (assentosDestinosNacionais[voo][i + 4] == 0)
+								{
+									printf("\033[0;32m");
+									printf("D ");
+									printf("\033[0;37m");
+								}
+								else if (assentosDestinosNacionais[voo][i + 4] == 1)
+								{
+									printf("\033[0;31m");
+									printf("R ");
+									printf("\033[0;37m");
+								}
 
-						char fileira;
-						int letraFileira, numeroFileira, posicao, idade;
-							
-						// Pegando o assento e a idade
-						fflush(stdin);
-						do { // Arrumar <========================
+								else if (assentosDestinosNacionais[voo][i + 4] == 2)
+								{
+									printf("\033[0;34m");
+									printf("C ");
+									printf("\033[0;37m");
+								}
+							}
+							/* 3.2.3 -> Fim: Cria um mapa do avião com a ocupação das pontronas */
 
+							printf("\n");
 							fflush(stdin);
-							printf("\n\nQUAL ASSENTO DESEJA RESERVAR? ");
+							printf("QUAL ASSENTO DESEJA RESERVAR? ");
 							scanf("%d %c", &numeroFileira, &fileira);
 
-							valoresValidos = fazerReserva == 1 || fazerReserva == 2;
+							char letrasValidas[6][1] = { 'a', 'b', 'c', 'd', 'e', 'f' };
+							
+							if (isalpha(fileira) != 0 && isdigit(numeroFileira) == 0 && numeroFileira < corredor && numeroFileira > 0) numeroValido = 1;
+							else
+							{
+								printf("INPUT INVÁLIDO:\n");
+								system("pause");
+							}
+
 							system("cls");
-						} while (!valoresValidos);
 
+						} while (!numeroValido);
 
-						printf("QUAL A IDADE DO PASSAGEIRO?"); // Arrumar <========================
+					int idadeValida;
+					do {
+							
+						printf("QUAL A IDADE DO PASSAGEIRO?");
 						scanf("%d", &idade);
 
-						// Calculando o preço por passagem
-						if (idade <= 5) preco = assentosDestinosNacionais[voo][2] * 0.5;
-						else preco = assentosDestinosNacionais[voo][2];
-
-						printf("%c", fileira);
-						printf("%d\n", numeroFileira);
-
-						// Encontrando a posição da poltrona
-						if (fileira == 'a') letraFileira = 0;
-						else if (fileira == 'b') letraFileira = 1;
-						else if (fileira == 'c') letraFileira = 2;
-						else if (fileira == 'd') letraFileira = 3;
-						else if (fileira == 'e') letraFileira = 4;
-						else if (fileira == 'f') letraFileira = 5;
-
-						posicao = letraFileira + (numeroFileira - 1) * 6;
-
-						// atualizando os dados da reserva
-						if (assentosDestinosNacionais[voo][posicao + 4] != 0)
+						idadeValida = idade >= 0 && idade <= 120;
+						if (!idadeValida)
 						{
-							printf("\nO ASSENTO NÃO PODE SER RESERVADO:\n");
+							printf("INPUT INVÁLIDO:\n");
 							system("pause");
+							system("cls");
+						}
+
+					} while (!idadeValida);
+					
+
+					// Calculando o preço por passagem
+					if (idade <= 5) preco = assentosDestinosNacionais[voo][2] * 0.5;
+					else preco = assentosDestinosNacionais[voo][2];
+
+					printf("%c", fileira);
+					printf("%d\n", numeroFileira);
+
+					// Encontrando a posição da poltrona
+					if (fileira == 'a') letraFileira = 0;
+					else if (fileira == 'b') letraFileira = 1;
+					else if (fileira == 'c') letraFileira = 2;
+					else if (fileira == 'd') letraFileira = 3;
+					else if (fileira == 'e') letraFileira = 4;
+					else if (fileira == 'f') letraFileira = 5;
+
+					posicao = letraFileira + (numeroFileira - 1) * 6;
+
+					// atualizando os dados da reserva
+					if (assentosDestinosNacionais[voo][posicao + 4] != 0)
+					{
+						printf("\nO ASSENTO NÃO PODE SER RESERVADO:\n");
+						system("pause");
+					}
+					else
+					{
+						if (numeroAssento > numeroVoo && numeroAssento < numeroVoo + 7)
+						{
+							assentosDestinosNacionais[voo][posicao + 4] = 1;
+							reservas[numeroAssento] = posicao;
+							reservas[numeroIdade] = preco;
+							numeroAssento++;
+							numeroIdade++;
 						}
 						else
 						{
-							if (numeroAssento > numeroVoo && numeroAssento < numeroVoo + 7)
-							{
-								assentosDestinosNacionais[voo][posicao + 4] = 1;
-								reservas[numeroAssento] = posicao;
-								reservas[numeroIdade] = preco;
-								numeroAssento++;
-								numeroIdade++;
-							}
-							else
-							{
-								printf("NÃO É PERMITIDO RESERVAR MAIS POLTRONAS:\n");
-							}
-
-						}
-						/* 3.2.4 -> Fim: Pega o assento e a idade do passageiro e atualiza os dados da reserva */
-
-						for (int i = 0; i < 28; i++) // testando
-						{
-							printf("reservas[%d] = %d\n", i, reservas[i]);
+							printf("NÃO É PERMITIDO RESERVAR MAIS POLTRONAS:\n");
 						}
 
-						do { 
+					}
+					/* 3.2.4 -> Fim: Pega o assento e a idade do passageiro e atualiza os dados da reserva */
 
-							printf("DESEJA RESERVAR MAIS UM ASSENTO? \n"); 
-							printf(" 1 - SIM: \n");
-							printf(" 2 - NÃO: \n");
-							int status = scanf(" %d", &sairReserva);
+					for (int i = 0; i < 28; i++) // testando
+					{
+						printf("reservas[%d] = %d\n", i, reservas[i]);
+					}
 
-							valoresValidos = (sairReserva == 1 || sairReserva == 2) && status == 1;
+					do { 
+						fflush(stdin);
+						printf("DESEJA RESERVAR MAIS UM ASSENTO? \n"); 
+						printf(" 1 - SIM: \n");
+						printf(" 2 - NÃO: \n");
+						int status = scanf(" %d", &sairReserva);
 
-						} while (!valoresValidos); 
+						valoresValidos = (sairReserva == 1 || sairReserva == 2) && status == 1;
+
+					} while (!valoresValidos); 
 				
 					} while (sairReserva == 1);
 				} 
