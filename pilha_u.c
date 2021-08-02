@@ -88,6 +88,45 @@ void pilha_construtor(int pilha[TAM], int* topo){
     }
 }
 
+int retorna_maior_valor(int pilha[TAM], int topo) 
+{
+    int maior = 0;
+    for(int i = 0; i < topo - 1; i++)
+    {
+        if(pilha[i] > pilha[i + 1]) {
+            maior = i;
+        }else{
+            maior = i + 1;
+        }
+        // for(int j = i + 1; j < topo - 1 - i; j++)
+        // {
+        //     if(pilha[i] > pilha[j]) 
+        //     {
+        //         maior = i;
+        //         printf("maior = %d\n", maior);
+        //     }
+        // }
+   
+    }
+    printf("%d\n", maior);
+    return maior;
+}
+
+void retira_maior_valor(int pilha[TAM], int* topo){
+
+    printf("\n");
+    int maior_valor;
+    if(pilha_vazia(*topo)) {
+        printf("A Pilha está vazia\n");
+    }else{
+        maior_valor = retorna_maior_valor(pilha, *topo);
+        printf("Valor Removido: %d\n",pilha[maior_valor]);
+        pilha[*topo] = 0;
+        *topo = maior_valor - 1; 
+    }
+}
+
+
 int menu()
 {
     int opt;
@@ -98,6 +137,8 @@ int menu()
     printf("2 - Exibir a PILHA\n");
     printf("3 - Adicionar um valor a PILHA\n");
     printf("4 - Tirar um valor da PILHA\n");
+    printf("5 - Tirar o maior valor da PILHA\n");
+
     printf("Opcão: "); scanf("%d", &opt);
 
     return opt;
@@ -124,6 +165,10 @@ void opcao(int pilha[TAM], int valor, int* topo, int opt){
 
     case 4:
         pilha_pop(pilha, topo);
+        break;
+
+    case 5:
+        retira_maior_valor(pilha, topo);
         break;
 
     default:
