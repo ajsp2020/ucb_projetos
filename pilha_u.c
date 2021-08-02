@@ -6,7 +6,7 @@
 #define TAM 10
 
 bool pilha_vazia(int topo){
-    if(pilha_vazia(topo)){
+    if(topo < 0){
         return true;
     }else{
         return false;
@@ -26,9 +26,9 @@ int pilha_tamanho(topo){
 }
 
 // Retorna o ultimo valor na pilha
-int pilha_get(int vetor[TAM], int *topo){
+int pilha_get(int pilha[TAM], int *topo){
     if(pilha_vazia(*topo)){
-        printf("A pilha está vazia");
+        printf("A pilha está vazia\n");
         return 0;
     }else{
         return pilha[*topo];
@@ -41,16 +41,21 @@ void imprime_vetor(int vetor[TAM], int topo){
     printf("\n");
 
     for(cont = 0; cont <=topo; cont++){
-        printf("%d - ", vetor[cont]);
+        printf("%d ", vetor[cont]);
     }
+    printf("\n");
+    for(cont = 0; cont <=topo; cont++){
+        printf("^ ");
+    }
+    if (topo < 0) printf("A PILHA está vazia");
 
-    printf("Topo: %d", topo);
+    printf("\nTopo: %d\n", topo);
 
 }
 
 void pilha_push(int pilha[TAM], int valor, int* topo){
-        if(*topo == TAM - 1){
-        printf("Pilha cheia");
+        if(pilha_cheia(*topo)){
+        printf("Pilha cheia\n");
     }else{
         *topo = *topo + 1;
         pilha[*topo] = valor; 
@@ -61,10 +66,10 @@ void pilha_pop(int pilha[TAM], int* topo){
     
     printf("\n");
 
-    if(pilha_cheia(*topo)) {
-        printf("A Pilha está vazia");
+    if(pilha_vazia(*topo)) {
+        printf("A Pilha está vazia\n");
     }else{
-        printf("Valor Removido: %d",pilha[*topo]);
+        printf("Valor Removido: %d\n",pilha[*topo]);
         pilha[*topo] = 0;
         *topo = *topo - 1; 
     }
@@ -90,7 +95,7 @@ int menu()
     printf("O que deseja fazer?\n");
     printf("0 - Sair\n");
     printf("1 - Zerar a PILHA\n");
-    printf("2 - Exibir a PILH\nA");
+    printf("2 - Exibir a PILHA\n");
     printf("3 - Adicionar um valor a PILHA\n");
     printf("4 - Tirar um valor da PILHA\n");
     printf("Opcão: "); scanf("%d", &opt);
@@ -105,20 +110,20 @@ void opcao(int pilha[TAM], int valor, int* topo, int opt){
         
         break;
     case 1:
-
+        pilha_construtor(pilha, topo);
         break;
 
     case 2:
-        imprime_vetor(pilha, topo);
+        imprime_vetor(pilha, *topo);
         break;
 
     case 3:
         printf("Digite um valor que queira adicionar: "); scanf("%d", &valor);
-        pilha_push(pilha, valor, &topo); 
+        pilha_push(pilha, valor, topo); 
         break;
 
     case 4:
-        pilha_pop(pilha, &topo);
+        pilha_pop(pilha, topo);
         break;
 
     default:
@@ -132,8 +137,6 @@ int main()
     int topo = -1, valortRetirado; // topo da pilha
 
     pilha_construtor(pilha, &topo);
-
-    
 
     // Caso não possa colocar mais valores
 
