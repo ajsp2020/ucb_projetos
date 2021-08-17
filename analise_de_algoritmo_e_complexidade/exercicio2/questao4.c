@@ -14,10 +14,8 @@ struct array
 };
 typedef struct array ARRAY;
 
-// Solução para procurar o valor um por um no array
+// Varre o array procurando o menor valor
 void solucao1(ARRAY* a){
-    clock_t t; 
-    t = clock();
 
     int menor = 9999999;
     for(int i = 0; i < a->tamanho; i++){
@@ -26,17 +24,9 @@ void solucao1(ARRAY* a){
         }
     }
     printf("Valor menor solucao 1 = %d\n", menor);
-
-    t = clock() - t;
-
-    // Imprimindo o tempo
-    printf("Tempo de execução da solução 1: %lf milissegundos\n", ((double)t)/((CLOCKS_PER_SEC/1000)));
 }
-// bubbleSort()
+// bubbleSort() -> Ordenando e pegando o menor valorr
 void solucao2(ARRAY* a){
-
-    clock_t t;
-    t = clock();
 
     int i, j, aux;
     for(i = a->tamanho -1; i>= 1; i--){
@@ -48,17 +38,10 @@ void solucao2(ARRAY* a){
             }
         }
     }
-
-    printf("Valor menor solucao 2  = %d\n", a->vetor[0]);
-
-    t = clock() - t;
-
-    // Imprimindo o tempo
-    printf("Tempo de execução da solução 2: %lf milissegundos\n", ((double)t)/((CLOCKS_PER_SEC/1000)));
     }
 
 
-    // QuickSort
+    
 
     // Trocando os valores
     void troca(int* a, int* b){
@@ -80,9 +63,10 @@ void solucao2(ARRAY* a){
             }
         }
         troca(&a->vetor[i + 1], &a->vetor[alto]);
+
         return (i + 1);
     }
-
+    // QuickSort -> Ordenando e pegando o menor valor
     void solucao3(ARRAY* a, int p, int r){
         if(p < r){
             int q;
@@ -90,18 +74,11 @@ void solucao2(ARRAY* a){
             solucao3(a, p, q-1);
             solucao3(a, q+1, r);
         }
-        printf("Valor menor solucao 3  = %d\n", a->vetor[0]);
-        // Conttinuar .. ver questão da impresssao do menor valor e o calulo do tempop
+
 
     }
 
-    void calculaTemmpo(){
-        
-    }
 
-    void imprimeValor(){
-        
-    }
 
 
 
@@ -112,15 +89,15 @@ void criaArray(ARRAY* a){
 
     int segundos = time(0);
     srand(segundos);
-    printf("Array = { ");
+    //printf("Array = { ");
     for (i = 0; i < a->tamanho; i++){
         int numero = rand();
         a->vetor[i] = numero % 1000 ;
         
-        printf("%d ", a->vetor[i]);
+        //printf("%d ", a->vetor[i]);
         
     }
-    printf("}\n");
+    //printf("}\n");
 }
 
 void liberaArray(ARRAY* a){
@@ -128,18 +105,37 @@ void liberaArray(ARRAY* a){
 }
 
 int main(){
-
+    clock_t t; 
     ARRAY a;
     ARRAY b;
     ARRAY c;
-s
+
+    criaArray(&a);
     criaArray(&b);
     criaArray(&c);
 
+    // Tempo solucao 1:
+    t = clock();
     solucao1(&a);
-    solucao2(&b);
-    solucao3(&c, 0, a.tamanho -1);
+    printf("Valor menor solucao 3  = %d\n", c.vetor[0]);
+    t = clock() - t;  
+    printf("Tempo de execução da solução 3: %lf milissegundos\n", ((double)t)/((CLOCKS_PER_SEC/1000)));
 
+    // Tempo solucao 2:
+    t = clock();
+    solucao2(&b); 
+    printf("Valor menor solucao 2  = %d\n", c.vetor[0]);
+    t = clock() - t;  
+    printf("Tempo de execução da solução 2: %lf milissegundos\n", ((double)t)/((CLOCKS_PER_SEC/1000)));
+    
+    // Tempo solucao 3:
+    t = clock();
+    solucao3(&c, 0, a.tamanho -1);
+    printf("Valor menor solucao 3  = %d\n", c.vetor[0]);
+    t = clock() - t;  
+    printf("Tempo de execução da solução 3: %lf milissegundos\n", ((double)t)/((CLOCKS_PER_SEC/1000)));
+
+    // Liberando os Arrays:
     liberaArray(&a);
     liberaArray(&b);
     liberaArray(&c);
