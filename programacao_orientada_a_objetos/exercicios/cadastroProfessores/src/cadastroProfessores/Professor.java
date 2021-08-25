@@ -11,8 +11,7 @@ public class Professor {
 	private String departamento;
 	private List<Aula> aulas = new ArrayList<>();
 	private Dados dadoPessoais;
-	
-	
+		
 	
 	public Dados getDado() {
 		return dadoPessoais;
