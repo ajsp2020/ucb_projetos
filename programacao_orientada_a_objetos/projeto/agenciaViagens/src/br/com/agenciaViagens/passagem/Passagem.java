@@ -1,6 +1,6 @@
-package agenciaViagens;
+package br.com.agenciaViagens.passagem;
 
-public class Passagem {
+public class Passagem extends Voo  {
 	
 	private String voo;
 	private String dataDoVoo;
