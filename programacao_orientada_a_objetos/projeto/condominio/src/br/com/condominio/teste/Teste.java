@@ -12,6 +12,14 @@ public class Teste {
 		for(int i = 0; i < manutencao.getServicos().length; i++) {
 			System.out.println(manutencao.getServicos()[i]);
 		}
+		
+		
+		manutencao.setDataAtual();	
+		System.out.println(manutencao.getDataAtual());
+		
+		manutencao.setDataProxima();
+		System.out.println(manutencao.getDataProxima());
+		
 	}
 
 }

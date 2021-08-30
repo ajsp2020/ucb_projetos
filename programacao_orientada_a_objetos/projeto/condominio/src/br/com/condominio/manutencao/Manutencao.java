@@ -1,9 +1,11 @@
 package br.com.condominio.manutencao;
 
+import br.com.condominio.operacoes.Data;
+
 public class Manutencao {
 	
-	private String dataAtual;
-	private String dataProxima;
+	private Data dataAtual;
+	private Data dataProxima;
 	private String[] servicos = {"Pintura", "Limpeza", "Troca"};
 	private String nomeDaEmpresa;
 	private String observacao;
@@ -14,7 +16,28 @@ public class Manutencao {
 	public String[] getServicos() {
 		return servicos;
 	}
-	
+
+
+	public Data getDataAtual() {
+		return dataAtual;
+	}
+
+
+	public Data getDataProxima() {
+		return dataProxima;
+	}
+
+
+	public void setDataProxima() {
+		this.dataProxima = new Data();
+		
+	}
+
+
+	public void setDataAtual() {
+		this.dataAtual = new Data();
+	}
+
 	
 	
 }
